@@ -1,0 +1,50 @@
+/* 
+당근마켓 헤더 스타일
+추출 위치: https://www.daangn.com/kr/ 헤더 요소들
+추출 방법: Elements 탭에서 요소 선택 → Computed 탭에서 스타일 확인
+
+확인할 요소들:
+- 헤더 컨테이너
+- 로고  
+- "검색" 링크
+- "앱 다운로드" 버튼
+*/
+
+/* 헤더 컨테이너 */
+.header {
+  /* display: [확인 필요] */
+  /* height: [확인 필요] */
+  /* padding: [확인 필요] */ 
+  /* background-color: [확인 필요] */
+  /* align-items: [확인 필요] */
+  /* justify-content: [확인 필요] */
+}
+
+/* 로고 */
+.logo {
+  /* width: [확인 필요] */
+  /* height: [확인 필요] */
+}
+
+/* 검색 링크 */
+.search-link {
+  /* font-size: [확인 필요] */
+  /* color: [확인 필요] */
+  /* text-decoration: [확인 필요] */
+}
+
+/* 앱 다운로드 버튼 */
+.download-button {
+  /* background-color: [확인 필요] - 당근 오렌지? */
+  /* color: [확인 필요] */
+  /* padding: [확인 필요] */
+  /* border-radius: [확인 필요] */
+  /* font-weight: [확인 필요] */
+  /* border: [확인 필요] */
+}
+
+.download-button:hover {
+  /* 호버 상태 스타일 확인 필요 */
+}
+
+/* 여기에 실제 추출한 CSS 스타일을 붙여넣으세요 */ 

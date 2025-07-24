@@ -1,0 +1,42 @@
+---
+description: HeroSection 컴포넌트 구현 가이드
+globs: "**/HeroSection*"
+alwaysApply: false
+---
+
+# 🎯 HeroSection 컴포넌트 구현
+
+## **필수 구조**
+```jsx
+// ✅ 반드시 포함해야 할 구조
+const HeroSection = () => {
+  return (
+    <section className="hero-section">
+      <h1>{currentLocation}에서 <AnimatedText /> 찾고 계신가요?</h1>
+      <SearchForm />
+    </section>
+  );
+};
+```
+
+## **동적 텍스트 애니메이션 (필수)**
+```jsx
+// ✅ 반드시 이 패턴으로 구현하세요
+const [currentKeyword, setCurrentKeyword] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentKeyword(prev => (prev + 1) % animatedKeywords.length);
+  }, 3000);
+  return () => clearInterval(interval);
+}, []);
+```
+
+## **검색 폼 요구사항**
+- **검색창**: placeholder "검색어를 입력해주세요"
+- **동적 텍스트**: ['동네친구', '맛집', '중고거래', '알바'] 순환 (3초마다)
+- **위치**: `src/components/HeroSection.jsx`
+
+## **주의사항**
+- ⚠️ **useEffect cleanup**: interval 사용 시 cleanup 함수 필수
+- ⚠️ **Key prop 필수**: map() 사용 시 반드시 key 설정
