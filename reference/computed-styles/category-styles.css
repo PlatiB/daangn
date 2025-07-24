@@ -1,0 +1,66 @@
+/* 
+당근마켓 카테고리 그리드 스타일
+추출 위치: https://www.daangn.com/kr/ 카테고리 영역
+추출 방법: Elements 탭에서 요소 선택 → Computed 탭에서 스타일 확인
+
+확인할 요소들:
+- 그리드 컨테이너 (7개 카테고리)
+- 개별 카테고리 카드
+- 카테고리 아이콘
+- 카테고리 텍스트
+*/
+
+/* 카테고리 그리드 컨테이너 */
+.category-grid {
+  /* display: [확인 필요] - grid인지 flex인지 */
+  /* grid-template-columns: [확인 필요] - 7개 컬럼? */
+  /* gap: [확인 필요] */
+  /* padding: [확인 필요] */
+  /* max-width: [확인 필요] */
+  /* margin: [확인 필요] */
+}
+
+/* 개별 카테고리 카드 */
+.category-card {
+  /* display: [확인 필요] */
+  /* flex-direction: [확인 필요] */
+  /* align-items: [확인 필요] */
+  /* padding: [확인 필요] */
+  /* border-radius: [확인 필요] */
+  /* background-color: [확인 필요] */
+  /* border: [확인 필요] */
+  /* cursor: [확인 필요] */
+  /* transition: [확인 필요] */
+}
+
+.category-card:hover {
+  /* 호버 효과 확인 필요 */
+  /* transform: [확인 필요] - scale? */
+  /* box-shadow: [확인 필요] */
+  /* background-color: [확인 필요] */
+}
+
+/* 카테고리 아이콘 */
+.category-icon {
+  /* width: [확인 필요] */
+  /* height: [확인 필요] */
+  /* margin-bottom: [확인 필요] */
+}
+
+/* 카테고리 텍스트 */
+.category-text {
+  /* font-size: [확인 필요] */
+  /* font-weight: [확인 필요] */
+  /* color: [확인 필요] */
+  /* text-align: [확인 필요] */
+}
+
+/* 반응형 (확인 필요) */
+@media (max-width: 768px) {
+  .category-grid {
+    /* 모바일에서 컬럼 수 변경? */
+    /* grid-template-columns: [확인 필요] */
+  }
+}
+
+/* 여기에 실제 추출한 CSS 스타일을 붙여넣으세요 */ 
