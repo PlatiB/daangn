@@ -1,0 +1,62 @@
+---
+description: 당근마켓 클론 프로젝트 기본 설정 및 데이터 구조
+globs: "**/*.{js,jsx,ts,tsx}"
+alwaysApply: true
+---
+
+# 🥕 당근마켓 클론 - 기본 설정
+
+## 📁 **데이터 구조 표준**
+
+### **반드시 사용할 데이터 파일**
+```javascript
+// src/data/mockData.js - 이 파일을 생성하고 사용하세요
+export const categories = [
+  {
+    id: 'buy-sell',
+    name: '중고거래',
+    href: '/kr/buy-sell',
+    color: '#FF6F0F',
+    // SVG path 포함
+  }
+  // ... 7개 카테고리
+];
+
+export const currentLocation = {
+  name: '정자동',
+  code: '1339'
+};
+
+export const animatedKeywords = [
+  '동네친구', '맛집', '중고거래', '알바', '부동산', '중고차', '동네업체'
+];
+```
+
+### **컴포넌트에서 데이터 import 방식**
+```jsx
+// ✅ DO: 표준 데이터 사용
+import { categories, popularTags, currentLocation } from '../data/mockData';
+
+// ❌ DON'T: 하드코딩
+const categories = [
+  { name: '중고거래' }, // 이렇게 하지 마세요
+];
+```
+
+## 🎨 **색상 팔레트 (필수 사용)**
+```css
+:root {
+  --primary: #FF6F0F;
+  --secondary: #FF9F30;
+  --text: #212529;
+  --text-muted: #6C757D;
+  --background: #FFFFFF;
+  --border: #DEE2E6;
+}
+```
+
+## 🚫 **금지 사항**
+- **HTML 복사 붙여넣기**: 원본 당근마켓 HTML을 그대로 복사하지 마세요
+- **인라인 스타일 남발**: style={{}} 대신 CSS 클래스 사용
+- **하드코딩**: 데이터를 직접 컴포넌트에 작성하지 마세요
+- **컴포넌트 미분리**: 모든 코드를 App.js에 넣지 마세요

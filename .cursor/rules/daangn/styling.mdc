@@ -1,0 +1,81 @@
+---
+description: 당근마켓 클론 반응형 디자인 및 스타일링 가이드
+globs: "**/*.{css,scss,module.css}"
+alwaysApply: false
+---
+
+# 🎨 스타일링 & 반응형 가이드
+
+## **반응형 브레이크포인트**
+```css
+/* 모바일 우선 접근법 사용 */
+.component {
+  /* 기본: 모바일 스타일 */
+}
+
+@media (min-width: 768px) {
+  /* 태블릿 스타일 */
+}
+
+@media (min-width: 1024px) {
+  /* 데스크톱 스타일 */
+}
+```
+
+## **가로 스크롤 구현**
+```css
+.tags-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+
+.tags-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+```
+
+## **이미지 최적화**
+```jsx
+// SVG 아이콘 사용 시
+<svg viewBox="0 0 24 24" width="24" height="24">
+  <path d={iconPath} fill={color} />
+</svg>
+```
+
+## **표준 컴포넌트 구조**
+```jsx
+// ✅ 이 구조를 따르세요
+import React, { useState, useEffect } from 'react';
+import { 필요한데이터 } from '../data/mockData';
+import './ComponentName.css';
+
+const ComponentName = () => {
+  // 1. State 선언
+  const [state, setState] = useState(initialValue);
+  
+  // 2. Effect hooks
+  useEffect(() => {
+    // logic
+    return () => {
+      // cleanup
+    };
+  }, [dependencies]);
+  
+  // 3. Event handlers
+  const handleEvent = () => {
+    // handler logic
+  };
+  
+  // 4. Render
+  return (
+    <section className="component-name">
+      {/* JSX */}
+    </section>
+  );
+};
+
+export default ComponentName;
+```
