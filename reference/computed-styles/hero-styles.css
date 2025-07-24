@@ -1,0 +1,61 @@
+/* 
+당근마켓 히어로 섹션 스타일
+추출 위치: https://www.daangn.com/kr/ 메인 콘텐츠 영역
+추출 방법: Elements 탭에서 요소 선택 → Computed 탭에서 스타일 확인
+
+확인할 요소들:
+- "당신 근처의 당근" 메인 타이틀
+- "정자동에서 아이폰 찾고 계신가요?" 서브타이틀
+- 검색 입력창
+- 지역 드롭다운
+*/
+
+/* 히어로 섹션 컨테이너 */
+.hero-section {
+  /* max-width: [확인 필요] */
+  /* padding: [확인 필요] */
+  /* margin: [확인 필요] */
+  /* text-align: [확인 필요] */
+}
+
+/* 메인 타이틀 "당신 근처의 당근" */
+.main-title {
+  /* font-size: [확인 필요] */
+  /* font-weight: [확인 필요] */
+  /* color: [확인 필요] */
+  /* line-height: [확인 필요] */
+  /* margin: [확인 필요] */
+}
+
+/* 서브타이틀 "정자동에서 아이폰 찾고 계신가요?" */
+.sub-title {
+  /* font-size: [확인 필요] */
+  /* color: [확인 필요] */
+  /* margin: [확인 필요] */
+}
+
+/* 검색 입력창 */
+.search-input {
+  /* width: [확인 필요] */
+  /* height: [확인 필요] */
+  /* padding: [확인 필요] */
+  /* border: [확인 필요] */
+  /* border-radius: [확인 필요] */
+  /* font-size: [확인 필요] */
+}
+
+.search-input:focus {
+  /* 포커스 상태 스타일 확인 필요 */
+  /* border-color: [확인 필요] */
+  /* box-shadow: [확인 필요] */
+}
+
+/* 지역 드롭다운 */
+.location-dropdown {
+  /* background: [확인 필요] */
+  /* border: [확인 필요] */
+  /* padding: [확인 필요] */
+  /* font-size: [확인 필요] */
+}
+
+/* 여기에 실제 추출한 CSS 스타일을 붙여넣으세요 */ 

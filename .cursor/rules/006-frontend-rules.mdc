@@ -1,0 +1,76 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# ⚛️ 프론트엔드 표준 (React/TypeScript)
+
+> 이 문서는 상위 표준인 **@004-coding-standards.mdc** 와 **@005-architecture-standards.mdc** 를 확장하며, React 및 TypeScript 기반 프론트엔드 개발에 특화된 규칙을 정의합니다.
+
+## 1. 디렉토리 구조 (Directory Structure)
+
+- `src` 디렉토리는 기능/도메인 중심으로 구성하는 것을 원칙으로 합니다.
+
+```
+src/
+├── apis/            # API 클라이언트 및 관련 타입 정의
+├── assets/          # 이미지, 폰트 등 정적 에셋
+├── components/
+│   ├── ui/          # (Presentational) 재사용 가능한 순수 UI 컴포넌트
+│   └── domain/      # (Container) 비즈니스 로직, 상태를 포함하는 도메인 컴포넌트
+├── hooks/           # 여러 컴포넌트에서 재사용되는 커스텀 훅
+├── pages/           # 라우팅 단위가 되는 페이지 컴포넌트
+├── services/        # API 호출 외의 비즈니스 로직 (유틸성)
+├── store/           # 전역 상태 관리 (Zustand, Context API)
+└── styles/          # 전역 CSS, 디자인 토큰(변수)
+```
+
+## 2. 파일 명명 규칙 (File Naming)
+
+- 상위 표준인 전역 명명 규칙(@004-coding-standards.mdc)을 따르되, 아래는 프론트엔드에만 적용되는 규칙입니다.
+- **컴포넌트 & Hooks**: `PascalCase` (예: `UserProfile.tsx`, `useForm.ts`)
+- **스타일**: `kebab-case.module.css` (예: `user-profile.module.css`)
+
+## 3. 컴포넌트 설계 (Component Design)
+
+- **`export default` 금지**: 모든 컴포넌트와 모듈은 `export`를 사용하여 명시적으로 내보냅니다. 이는 Tree Shaking 최적화와 코드 자동완성에 유리합니다.
+- **관심사 분리**: UI(JSX), 로직(Hooks), 스타일(CSS Module), 타입(Types)을 가능한 분리하여 관리합니다.
+
+```typescript
+// --- Import 순서 ---
+// 1. 외부 라이브러리 (react, etc.)
+// 2. 내부 절대 경로 모듈 (@/hooks, @/components, etc.)
+// 3. 내부 상대 경로 모듈 (./, ../)
+// 4. 스타일, 타입
+import React from 'react';
+import { useUserProfile } from '@/hooks/useUserProfile';
+import type { UserProfileProps } from './UserProfile.types';
+import styles from './UserProfile.module.css';
+
+// --- 컴포넌트 정의 ---
+export function UserProfile({ userId }: UserProfileProps) {
+  const { user, isLoading } = useUserProfile(userId);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  return (
+    <div className={styles.container}>
+      <h1>{user?.name}</h1>
+    </div>
+  );
+}
+```
+
+## 4. 상태 관리 (State Management)
+
+- **서버 상태**: `React Query` 또는 `SWR` 사용을 표준으로 하여 API 데이터의 캐싱, 동기화, 재요청을 관리합니다.
+- **클라이언트 전역 상태**: 여러 페이지/도메인에서 공유되어야 하는 상태는 `Zustand`를 우선적으로 사용합니다.
+- **지역 상태**: 단일 컴포넌트 또는 직계 자식과만 공유되는 상태는 `useState`, `useReducer`를 사용합니다.
+
+## 5. 스타일링 (Styling)
+
+- **CSS Modules**: 컴포넌트 스코프 스타일링을 위해 CSS Modules 사용을 표준으로 합니다.
+- **전역 스타일**: `styles/globals.css`에 리셋 CSS, 기본 폰트, 공용 레이아웃 클래스 등을 정의합니다.
+- **디자인 토큰**: 색상, 폰트 크기, 간격 등 디자인 시스템의 기본 요소는 CSS 변수(`var(--primary-color)`)로 관리하여 `styles/variables.css`에 정의합니다.
