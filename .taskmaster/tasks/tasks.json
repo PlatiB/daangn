@@ -1,0 +1,571 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "프로젝트 초기 설정 및 기본 구조",
+      "description": "Parcel + React + TypeScript 개발 환경 구축 및 기본 폴더 구조 생성",
+      "status": "done",
+      "priority": "high",
+      "dependencies": [],
+      "details": [
+        "Parcel + React + TypeScript 프로젝트 생성",
+        "기본 폴더 구조 및 컴포넌트 파일 생성",
+        "CSS Reset 및 기본 스타일 설정",
+        "당근마켓 브랜드 컬러 및 폰트 적용",
+        "개념별 실습을 위한 폴더 구조 생성",
+        "각 concepts/ 하위 폴더별 독립적인 React 앱 설정",
+        "playground/ 실험 환경 구축"
+      ],
+      "testStrategy": "프로젝트가 성공적으로 시작되고 기본 React 앱이 렌더링되는지 확인",
+      "subtasks": [
+        {
+          "id": "1.1",
+          "title": "Parcel React TypeScript 환경 설정",
+          "description": "새 프로젝트 생성 및 필요한 의존성 설치",
+          "status": "done"
+        },
+        {
+          "id": "1.2", 
+          "title": "기본 폴더 구조 생성",
+          "description": "src/, public/, components/ 등 기본 폴더 구조 생성",
+          "status": "done"
+        },
+        {
+          "id": "1.3",
+          "title": "CSS Reset 및 기본 스타일 설정",
+          "description": "브라우저 기본 스타일 초기화 및 당근마켓 브랜드 컬러 적용",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "헤더 컴포넌트 구현 & 픽셀 퍼펙트 스타일링",
+      "description": "Reference 기반으로 당근마켓과 동일한 헤더 외관 구현",
+      "status": "done", 
+      "priority": "high",
+      "dependencies": ["1"],
+      "details": [
+        "Reference 기반 구현: /reference/rendered-html/header.html 구조 정확히 준수",
+        "원본 스타일 적용: /reference/computed-styles/header-styles.css 값들 활용", 
+        "Logo, DownloadButton 컴포넌트 구현",
+        "헤더 레이아웃 및 스타일링 (픽셀 퍼펙트 구현)",
+        "반응형 헤더 구현 (원본과 동일한 브레이크포인트)",
+        "시스템 테마 대응: prefers-color-scheme 활용한 다크/라이트 모드"
+      ],
+      "testStrategy": "당근마켓 원본과 헤더 외관을 비교하여 픽셀 퍼펙트 수준인지 확인",
+      "subtasks": [
+        {
+          "id": "2.1",
+          "title": "Header 컴포넌트 기본 구조 생성",
+          "description": "Reference HTML 구조를 따라 Header 컴포넌트 생성",
+          "status": "done"
+        },
+        {
+          "id": "2.2",
+          "title": "Logo 컴포넌트 구현",
+          "description": "당근마켓 로고 컴포넌트 구현 (대체 이미지 사용)",
+          "status": "done"
+        },
+        {
+          "id": "2.3",
+          "title": "DownloadButton 컴포넌트 구현",
+          "description": "앱 다운로드 버튼 컴포넌트 구현",
+          "status": "done"
+        },
+        {
+          "id": "2.4",
+          "title": "반응형 헤더 스타일링",
+          "description": "모바일/태블릿/데스크톱 반응형 레이아웃 구현",
+          "status": "done"
+        },
+        {
+          "id": "2.5",
+          "title": "시스템 테마 대응",
+          "description": "다크/라이트 모드 자동 적용 기능 구현",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "메인 히어로 섹션 구현 & 외관 완성",
+      "description": "Reference 기반으로 복합 검색창과 히어로 섹션의 모든 시각적 요소 완성",
+      "status": "done",
+      "priority": "high", 
+      "dependencies": ["2"],
+      "details": [
+        "Reference 기반 구현: /reference/rendered-html/hero-section.html 구조 정확히 준수",
+        "복합 검색창 구현: 지역 선택 + 서비스 선택 + 검색 입력창 (원본과 동일)",
+        "애니메이션 텍스트 영역: 고정폭 wrapper로 줄바꿈 방지 필수",
+        "정적 UI 완성: 모든 시각적 요소를 먼저 완성 (기능은 나중에)",
+        "인기검색어 올바른 구현: 작은 텍스트 링크 (큰 버튼 ❌)",
+        "모바일/데스크톱 반응형: 원본과 동일한 레이아웃 변화"
+      ],
+      "testStrategy": "당근마켓 원본과 히어로 섹션 외관을 비교하여 동일한 수준인지 확인",
+      "subtasks": [
+        {
+          "id": "3.1",
+          "title": "HeroSection 컴포넌트 기본 구조",
+          "description": "Reference HTML을 따라 히어로 섹션 기본 구조 생성",
+          "status": "done"
+        },
+        {
+          "id": "3.2",
+          "title": "복합 검색창 UI 구현",
+          "description": "지역 선택 + 서비스 선택 + 검색 입력창 복합 구조 구현",
+          "status": "done"
+        },
+        {
+          "id": "3.3",
+          "title": "애니메이션 텍스트 영역 구현",
+          "description": "고정폭 wrapper로 줄바꿈 방지하는 텍스트 영역 구현",
+          "status": "done"
+        },
+        {
+          "id": "3.4",
+          "title": "인기 검색어 링크 구현",
+          "description": "작은 텍스트 링크 형태의 인기 검색어 영역 구현",
+          "status": "done"
+        },
+        {
+          "id": "3.5",
+          "title": "히어로 섹션 반응형 스타일링",
+          "description": "모바일/데스크톱 반응형 레이아웃 완성",
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "카테고리 그리드 & 전체 외관 완성",
+      "description": "7개 카테고리의 완벽한 그리드 레이아웃과 전체 페이지 외관 완성",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["3"],
+      "details": [
+        "Reference 기반 구현: /reference/rendered-html/category-grid.html 구조 준수",
+        "7개 카테고리 완성: 중고거래, 알바, 부동산, 중고차, 동네업체, 동네생활, 모임",
+        "아이콘 + 텍스트 구조: 원본과 동일한 카드 레이아웃",
+        "반응형 그리드: 모바일 1열 → 태블릿 2열 → 데스크톱 4열",
+        "임시 컨텐츠 제거: 모든 테스트/더미 데이터 정리",
+        "전체 외관 점검: 당근마켓과 최대한 유사한 완성도 확보"
+      ],
+      "testStrategy": "전체 페이지가 당근마켓과 구별하기 어려운 수준의 완성도인지 확인",
+      "subtasks": [
+        {
+          "id": "4.1",
+          "title": "CategoryGrid 컴포넌트 구조 생성",
+          "description": "Reference HTML을 따라 카테고리 그리드 기본 구조 생성",
+          "status": "pending"
+        },
+        {
+          "id": "4.2",
+          "title": "CategoryCard 컴포넌트 구현",
+          "description": "아이콘 + 텍스트 구조의 개별 카테고리 카드 구현",
+          "status": "pending"
+        },
+        {
+          "id": "4.3",
+          "title": "7개 카테고리 데이터 구현",
+          "description": "모든 카테고리 아이콘과 텍스트 데이터 정확히 구현",
+          "status": "pending"
+        },
+        {
+          "id": "4.4",
+          "title": "반응형 그리드 레이아웃",
+          "description": "모바일/태블릿/데스크톱별 그리드 컬럼 수 조정",
+          "status": "pending"
+        },
+        {
+          "id": "4.5",
+          "title": "임시 컨텐츠 정리 및 외관 완성",
+          "description": "모든 더미 데이터 제거하고 전체 외관 최종 점검",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Props와 State 기본 개념 & 컴포넌트 분리",
+      "description": "완성된 외관을 독립적인 컴포넌트로 분리하고 React 기본 개념 적용",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["4"],
+      "details": [
+        "컴포넌트 분리: HeroSection, SearchForm, PopularTags, CategoryGrid 독립적 분리",
+        "Props 패턴: 부모에서 자식으로 데이터 전달 (location, categories 등)",
+        "기본 State: 간단한 상태 관리 (검색어 입력, 드롭다운 열림/닫힘)",
+        "mockData.js 활용: 하드코딩 대신 데이터 파일 import 사용",
+        "이벤트 핸들링: 기본적인 onClick, onChange 이벤트 처리",
+        "상태 끌어올리기: 형제 컴포넌트 간 데이터 공유 패턴"
+      ],
+      "testStrategy": "컴포넌트가 독립적으로 동작하고 Props를 통해 데이터가 올바르게 전달되는지 확인",
+      "subtasks": [
+        {
+          "id": "5.1",
+          "title": "컴포넌트 분리 작업",
+          "description": "기존 컴포넌트들을 독립적인 파일로 분리",
+          "status": "pending"
+        },
+        {
+          "id": "5.2",
+          "title": "Props 패턴 구현",
+          "description": "부모-자식 간 데이터 전달을 위한 Props 구조 설계",
+          "status": "pending"
+        },
+        {
+          "id": "5.3",
+          "title": "기본 State 관리",
+          "description": "useState를 사용한 간단한 상태 관리 구현",
+          "status": "pending"
+        },
+        {
+          "id": "5.4",
+          "title": "mockData.js 연동",
+          "description": "하드코딩된 데이터를 mockData.js 파일로 분리하고 import",
+          "status": "pending"
+        },
+        {
+          "id": "5.5",
+          "title": "기본 이벤트 핸들링",
+          "description": "onClick, onChange 등 기본 이벤트 핸들러 구현",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "동적 기능 구현 & 생명주기 관리",
+      "description": "애니메이션, 상호작용, useEffect를 통한 동적 기능 구현",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["5"],
+      "details": [
+        "애니메이션 텍스트: 동적으로 변경되는 키워드 구현 (줄바꿈 방지 유지)",
+        "Controlled Components: 검색창 입력 상태 관리",
+        "useEffect Hook: 컴포넌트 생명주기 이해 (애니메이션 타이머)",
+        "이벤트 핸들러: 태그 클릭 시 검색창 연동 기능",
+        "조건부 렌더링: 상태에 따른 UI 변화 (드롭다운, 호버 효과)",
+        "cleanup 함수: 타이머 정리로 메모리 누수 방지"
+      ],
+      "testStrategy": "애니메이션이 부드럽게 동작하고 메모리 누수 없이 정리되는지 확인",
+      "subtasks": [
+        {
+          "id": "6.1",
+          "title": "애니메이션 텍스트 구현",
+          "description": "동적으로 변경되는 키워드 애니메이션 구현",
+          "status": "pending"
+        },
+        {
+          "id": "6.2",
+          "title": "Controlled Components 구현",
+          "description": "검색창을 controlled component로 변환",
+          "status": "pending"
+        },
+        {
+          "id": "6.3",
+          "title": "useEffect Hook 적용",
+          "description": "컴포넌트 생명주기 관리를 위한 useEffect 구현",
+          "status": "pending"
+        },
+        {
+          "id": "6.4",
+          "title": "태그-검색창 연동 기능",
+          "description": "인기 검색어 태그 클릭 시 검색창에 자동 입력 기능",
+          "status": "pending"
+        },
+        {
+          "id": "6.5",
+          "title": "조건부 렌더링 및 정리 함수",
+          "description": "상태 기반 UI 변화와 메모리 정리 함수 구현",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "API 호출 & 비동기 처리",
+      "description": "외부 데이터 연동 및 비동기 상태 관리 구현",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["6"],
+      "details": [
+        "API 호출: fetch API 및 axios 활용",
+        "지역 목록 데이터 API 호출",
+        "인기 검색어 데이터 가져오기",
+        "카테고리 정보 API 연동",
+        "비동기 상태 관리: 로딩, 성공, 에러 상태 처리",
+        "async/await 패턴 구현",
+        "useEffect와 API 호출 연동",
+        "에러 핸들링: API 실패 시 사용자 친화적 메시지 표시"
+      ],
+      "testStrategy": "API 호출이 성공적으로 이루어지고 에러 상황도 적절히 처리되는지 확인",
+      "subtasks": [
+        {
+          "id": "7.1",
+          "title": "API 호출 환경 설정",
+          "description": "fetch API 및 axios를 사용한 API 호출 환경 구성",
+          "status": "pending"
+        },
+        {
+          "id": "7.2",
+          "title": "지역 목록 API 연동",
+          "description": "지역 선택 드롭다운을 위한 API 데이터 연동",
+          "status": "pending"
+        },
+        {
+          "id": "7.3",
+          "title": "인기 검색어 API 연동",
+          "description": "동적 인기 검색어 데이터 API 연동",
+          "status": "pending"
+        },
+        {
+          "id": "7.4",
+          "title": "비동기 상태 관리",
+          "description": "로딩, 성공, 에러 상태를 관리하는 상태 구조 구현",
+          "status": "pending"
+        },
+        {
+          "id": "7.5",
+          "title": "에러 핸들링 구현",
+          "description": "API 실패 시 사용자 친화적 에러 메시지 표시",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "React Router 도입",
+      "description": "SPA 네비게이션 및 다중 페이지 구조 구현",
+      "status": "pending",
+      "priority": "medium", 
+      "dependencies": ["7"],
+      "details": [
+        "React Router 설정: BrowserRouter, Routes, Route 구성",
+        "메인 페이지와 검색 결과 페이지 분리",
+        "네비게이션: 카테고리 클릭 시 해당 페이지로 이동",
+        "검색 시 결과 페이지로 라우팅",
+        "useNavigate, useParams Hook 활용",
+        "동적 라우팅: 지역별, 카테고리별 URL 파라미터 처리"
+      ],
+      "testStrategy": "라우팅이 정상 동작하고 URL 파라미터가 올바르게 처리되는지 확인",
+      "subtasks": [
+        {
+          "id": "8.1",
+          "title": "React Router 설치 및 설정",
+          "description": "React Router 패키지 설치 및 기본 라우터 구성",
+          "status": "pending"
+        },
+        {
+          "id": "8.2",
+          "title": "페이지 컴포넌트 분리",
+          "description": "메인 페이지와 검색 결과 페이지를 별도 컴포넌트로 분리",
+          "status": "pending"
+        },
+        {
+          "id": "8.3",
+          "title": "카테고리 네비게이션",
+          "description": "카테고리 클릭 시 해당 페이지로 이동하는 네비게이션 구현",
+          "status": "pending"
+        },
+        {
+          "id": "8.4",
+          "title": "검색 결과 라우팅",
+          "description": "검색 실행 시 결과 페이지로 이동하는 라우팅 구현",
+          "status": "pending"
+        },
+        {
+          "id": "8.5",
+          "title": "동적 라우팅 구현",
+          "description": "URL 파라미터를 통한 지역별, 카테고리별 동적 라우팅",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Context API 상태관리 도입",
+      "description": "전역 상태 관리를 위한 React Context API 구현",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["8"],
+      "details": [
+        "React Context API 설정",
+        "전역 상태 설계 (선택된 지역, 검색어, API 데이터)",
+        "useState에서 Context로 상태 이전",
+        "Provider 패턴 구현",
+        "useContext Hook 활용"
+      ],
+      "testStrategy": "전역 상태가 모든 컴포넌트에서 올바르게 공유되는지 확인",
+      "subtasks": [
+        {
+          "id": "9.1",
+          "title": "Context API 설정",
+          "description": "React Context 생성 및 Provider 컴포넌트 구현",
+          "status": "pending"
+        },
+        {
+          "id": "9.2",
+          "title": "전역 상태 설계",
+          "description": "애플리케이션 전체에서 사용할 상태 구조 설계",
+          "status": "pending"
+        },
+        {
+          "id": "9.3",
+          "title": "기존 상태를 Context로 이전",
+          "description": "useState로 관리하던 상태들을 Context로 이전",
+          "status": "pending"
+        },
+        {
+          "id": "9.4",
+          "title": "useContext Hook 적용",
+          "description": "모든 컴포넌트에서 useContext를 통해 전역 상태 사용",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "성능 최적화 & 완성도 향상",
+      "description": "애플리케이션 성능 최적화 및 전체적인 완성도 향상",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["9"],
+      "details": [
+        "Reference 최종 점검: 모든 섹션이 원본과 유사한지 확인",
+        "성능 최적화: React.memo, useMemo, useCallback 적용",
+        "접근성 개선: ARIA 라벨, 키보드 네비게이션, 시멘틱 HTML",
+        "크로스 브라우저 테스트: Chrome, Firefox, Safari 호환성 확인",
+        "모바일 UX 최적화: 터치 인터페이스, 스크롤 성능 개선"
+      ],
+      "testStrategy": "성능 도구로 최적화 확인하고 다양한 브라우저에서 테스트",
+      "subtasks": [
+        {
+          "id": "10.1",
+          "title": "성능 최적화 적용",
+          "description": "React.memo, useMemo, useCallback을 통한 렌더링 최적화",
+          "status": "pending"
+        },
+        {
+          "id": "10.2",
+          "title": "접근성 개선",
+          "description": "ARIA 라벨, 키보드 네비게이션, 시멘틱 HTML 적용",
+          "status": "pending"
+        },
+        {
+          "id": "10.3",
+          "title": "크로스 브라우저 테스트",
+          "description": "Chrome, Firefox, Safari에서 호환성 테스트",
+          "status": "pending"
+        },
+        {
+          "id": "10.4",
+          "title": "모바일 UX 최적화",
+          "description": "터치 인터페이스와 모바일 성능 최적화",
+          "status": "pending"
+        },
+        {
+          "id": "10.5",
+          "title": "최종 외관 점검",
+          "description": "당근마켓 원본과 최종 완성도 비교 검토",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Redux 상태관리 전환 실습 (선택사항)",
+      "description": "Context API에서 Redux Toolkit으로 상태관리 전환",
+      "status": "deferred",
+      "priority": "low",
+      "dependencies": ["10"],
+      "details": [
+        "Redux Toolkit 설치 및 설정",
+        "Context API 상태를 Redux로 마이그레이션",
+        "Store, Slice, Action 구조 이해",
+        "useSelector, useDispatch 활용",
+        "상태관리 패턴 비교 분석"
+      ],
+      "testStrategy": "Redux로 전환 후에도 기존 기능이 모두 정상 동작하는지 확인",
+      "subtasks": [
+        {
+          "id": "11.1",
+          "title": "Redux Toolkit 설치 및 설정",
+          "description": "Redux Toolkit 패키지 설치 및 스토어 설정",
+          "status": "pending"
+        },
+        {
+          "id": "11.2",
+          "title": "Redux 상태 구조 설계",
+          "description": "Redux 슬라이스와 액션 구조 설계",
+          "status": "pending"
+        },
+        {
+          "id": "11.3",
+          "title": "Context에서 Redux로 마이그레이션",
+          "description": "기존 Context API 상태를 Redux로 점진적 이전",
+          "status": "pending"
+        },
+        {
+          "id": "11.4",
+          "title": "Redux Hook 적용",
+          "description": "useSelector, useDispatch를 통한 Redux 상태 사용",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Jotai 상태관리 전환 실습 (선택사항)",
+      "description": "Redux에서 Jotai로 상태관리 전환 및 비교 분석",
+      "status": "deferred",
+      "priority": "low",
+      "dependencies": ["11"],
+      "details": [
+        "Jotai 설치 및 기본 개념 학습",
+        "Atom 기반 상태 설계",
+        "Redux에서 Jotai로 전환",
+        "상태관리 도구별 장단점 정리",
+        "프로젝트 규모에 따른 도구 선택 가이드"
+      ],
+      "testStrategy": "Jotai로 전환 후 성능과 개발 경험 비교 분석",
+      "subtasks": [
+        {
+          "id": "12.1",
+          "title": "Jotai 설치 및 기본 개념 학습",
+          "description": "Jotai 패키지 설치 및 Atom 개념 이해",
+          "status": "pending"
+        },
+        {
+          "id": "12.2",
+          "title": "Atom 기반 상태 설계",
+          "description": "Jotai Atom을 사용한 상태 구조 설계",
+          "status": "pending"
+        },
+        {
+          "id": "12.3",
+          "title": "Redux에서 Jotai로 전환",
+          "description": "Redux 상태를 Jotai Atom으로 점진적 이전",
+          "status": "pending"
+        },
+        {
+          "id": "12.4",
+          "title": "상태관리 도구 비교 분석",
+          "description": "useState, Context API, Redux, Jotai 장단점 정리",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "projectName": "당근마켓 랜딩페이지 클론",
+    "description": "React를 사용한 당근마켓 메인 랜딩페이지 완전 복제 프로젝트",
+    "totalPhases": 12,
+    "corePhases": 10,
+    "optionalPhases": 2,
+    "lastUpdated": "2025-01-27T10:00:00Z",
+    "educationalApproach": "외관 우선 → 기능 구현 → 고급 패턴",
+    "targetFramework": "React 18 + TypeScript + Parcel"
+  }
+}

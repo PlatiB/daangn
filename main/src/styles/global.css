@@ -1,0 +1,99 @@
+/* 당근마켓 디자인 토큰 */
+:root {
+  /* 브랜드 컬러 */
+  --primary-orange: #FF7E36;
+  --primary-orange-hover: #FF6B1A;
+  --primary-orange-light: #FFF5F0;
+  
+  /* 그레이 스케일 */
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #424242;
+  --gray-800: #212121;
+  --gray-900: #000000;
+  
+  /* 텍스트 컬러 */
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-disabled: #BDBDBD;
+  
+  /* 배경 컬러 */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAFAFA;
+  
+  /* 간격 시스템 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  /* 폰트 크기 */
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --font-2xl: 24px;
+  --font-3xl: 32px;
+  --font-4xl: 40px;
+  
+  /* 브레이크포인트 */
+  --mobile: 768px;
+  --tablet: 1024px;
+  --desktop: 1200px;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #FFFFFF;
+    --text-secondary: #BDBDBD;
+    --text-disabled: #757575;
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --gray-50: #1E1E1E;
+    --gray-100: #242424;
+    --gray-200: #2A2A2A;
+    --gray-300: #303030;
+  }
+}
+
+/* 기본 폰트 설정 */
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-size: var(--font-md);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+/* 컨테이너 */
+.container {
+  max-width: var(--desktop);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+/* 헤더 스타일은 별도 header.css 파일에서 관리 */
+
+/* 메인 섹션 */
+.main {
+  min-height: calc(100vh - 64px);
+}
+
+/* 히어로 섹션 스타일은 별도 hero.css 파일에서 관리 */
+
+/* 카테고리 스타일은 별도 category.css 파일에서 관리 */
