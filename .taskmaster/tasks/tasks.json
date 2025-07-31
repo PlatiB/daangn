@@ -10,7 +10,53 @@
         "priority": "high",
         "dependencies": [],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Vite + React 18 + TypeScript 프로젝트 생성 및 기본 설정",
+            "description": "Vite를 사용하여 React 18 TypeScript 프로젝트를 생성하고 필수 의존성을 설치합니다.",
+            "dependencies": [],
+            "details": "1. Vite 프로젝트 생성: `npm create vite@latest daangn-clone -- --template react-ts`\n2. 프로젝트 디렉토리로 이동: `cd daangn-clone`\n3. 필수 의존성 설치: `npm install`\n4. React 18 관련 의존성 확인 및 업데이트: `npm install react@18 react-dom@18 @types/react@18 @types/react-dom@18`\n5. 개발 서버 실행 테스트: `npm run dev`\n6. TypeScript 설정 확인 및 기본 컴파일 테스트",
+            "status": "pending",
+            "testStrategy": "1. `npm run dev` 실행 시 개발 서버가 정상적으로 시작되는지 확인\n2. 브라우저에서 기본 Vite + React 페이지가 로드되는지 확인\n3. TypeScript 컴파일 오류가 없는지 확인\n4. Hot Module Replacement가 정상 작동하는지 테스트"
+          },
+          {
+            "id": 2,
+            "title": "프로젝트 폴더 구조 생성 및 기본 파일 설정",
+            "description": "체계적인 컴포넌트 구조와 스타일 관리를 위한 폴더 구조를 생성하고 기본 파일들을 설정합니다.",
+            "dependencies": [],
+            "details": "1. src 폴더 내 디렉토리 구조 생성:\n```\nsrc/\n├── components/\n│   ├── Header/\n│   ├── HeroSection/\n│   ├── CategoryGrid/\n│   └── common/\n├── styles/\n├── data/\n└── utils/\n```\n2. 각 컴포넌트 폴더에 index.ts 파일 생성\n3. styles 폴더에 기본 CSS 파일들 생성 (globals.css, variables.css, responsive.css)\n4. data 폴더에 mockData.ts 파일 생성\n5. utils 폴더에 helpers.ts 파일 생성",
+            "status": "pending",
+            "testStrategy": "1. 모든 폴더가 계획된 구조대로 생성되었는지 확인\n2. 각 index.ts 파일이 올바르게 생성되었는지 확인\n3. TypeScript에서 경로 import가 정상 작동하는지 테스트\n4. 파일 구조가 확장 가능한 형태로 설정되었는지 검증"
+          },
+          {
+            "id": 3,
+            "title": "CSS 변수 시스템 및 기본 스타일 설정",
+            "description": "당근마켓 디자인 시스템에 맞는 CSS 변수를 정의하고 CSS Reset 및 기본 스타일을 적용합니다.",
+            "dependencies": [],
+            "details": "1. variables.css에 CSS 변수 정의:\n```css\n:root {\n  --primary-color: #FF7E36;\n  --secondary-color: #FFF3E0;\n  --text-primary: #212529;\n  --text-secondary: #868E96;\n  --border-color: #DEE2E6;\n  --background-color: #FFFFFF;\n  --mobile-breakpoint: 768px;\n  --tablet-breakpoint: 1024px;\n  --font-size-base: clamp(14px, 2.5vw, 16px);\n  --spacing-xs: 4px;\n  --spacing-sm: 8px;\n  --spacing-md: 16px;\n  --spacing-lg: 24px;\n  --spacing-xl: 32px;\n}\n```\n2. globals.css에 CSS Reset 및 기본 스타일 적용\n3. 기본 폰트 설정 및 박스 모델 정규화\n4. main.tsx에서 스타일 파일들 import",
+            "status": "pending",
+            "testStrategy": "1. 개발자 도구에서 CSS 변수가 올바르게 정의되었는지 확인\n2. 기본 스타일이 모든 브라우저에서 일관되게 적용되는지 테스트\n3. clamp() 함수를 사용한 반응형 폰트 크기가 정상 작동하는지 확인\n4. CSS 변수를 사용한 스타일링이 정상 작동하는지 테스트"
+          },
+          {
+            "id": 4,
+            "title": "모바일 퍼스트 반응형 시스템 구축",
+            "description": "모바일 우선 접근법을 기반으로 한 반응형 미디어 쿼리 시스템을 구축하고 기본 레이아웃을 설정합니다.",
+            "dependencies": [],
+            "details": "1. responsive.css에 모바일 퍼스트 미디어 쿼리 구조 설정:\n```css\n/* Mobile First - 기본 스타일 */\n.container {\n  padding: 0 16px;\n  max-width: 100%;\n}\n\n/* Tablet */\n@media (min-width: 768px) {\n  .container {\n    padding: 0 24px;\n    max-width: 768px;\n    margin: 0 auto;\n  }\n}\n\n/* Desktop */\n@media (min-width: 1024px) {\n  .container {\n    padding: 0 32px;\n    max-width: 1200px;\n  }\n}\n```\n2. 반응형 그리드 시스템 구축\n3. 터치 친화적 인터랙션 요소 크기 설정 (최소 44px)\n4. App.tsx에 기본 컨테이너 구조 적용",
+            "status": "pending",
+            "testStrategy": "1. Chrome DevTools의 디바이스 시뮬레이터로 다양한 화면 크기 테스트\n2. 모바일(320px), 태블릿(768px), 데스크톱(1024px+)에서 레이아웃 확인\n3. 터치 타겟 크기가 접근성 가이드라인을 준수하는지 확인\n4. 가로/세로 모드 전환 시 레이아웃이 깨지지 않는지 테스트\n5. 실제 모바일 디바이스에서 스크롤 및 터치 동작 확인"
+          },
+          {
+            "id": 5,
+            "title": "기본 App 컴포넌트 구조 설정 및 통합 테스트",
+            "description": "설정된 스타일 시스템을 적용한 기본 App 컴포넌트를 구성하고 전체 시스템의 통합 테스트를 수행합니다.",
+            "dependencies": [],
+            "details": "1. App.tsx 기본 구조 설정:\n```tsx\nimport './styles/variables.css';\nimport './styles/globals.css';\nimport './styles/responsive.css';\n\nfunction App() {\n  return (\n    <div className=\"app\">\n      <div className=\"container\">\n        <h1 className=\"test-title\">당근마켓 클론 프로젝트</h1>\n        <p className=\"test-description\">모바일 퍼스트 반응형 시스템 테스트</p>\n      </div>\n    </div>\n  );\n}\n```\n2. 테스트용 스타일 적용하여 반응형 동작 확인\n3. TypeScript 타입 체크 및 빌드 테스트\n4. 성능 최적화를 위한 기본 설정 확인",
+            "status": "pending",
+            "testStrategy": "1. `npm run build` 실행하여 프로덕션 빌드가 성공하는지 확인\n2. TypeScript 컴파일 오류가 없는지 전체 검증\n3. 다양한 디바이스에서 기본 반응형 레이아웃이 올바르게 작동하는지 확인\n4. CSS 변수가 모든 컴포넌트에서 접근 가능한지 테스트\n5. 개발 서버 Hot Reload가 정상 작동하는지 확인\n6. 브라우저 호환성 테스트 (Chrome, Firefox, Safari, Edge)"
+          }
+        ]
       },
       {
         "id": 2,
@@ -23,7 +69,62 @@
           1
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "기본 Header 컴포넌트 구조 생성",
+            "description": "TypeScript 인터페이스와 기본 JSX 구조를 가진 Header 컴포넌트 생성",
+            "dependencies": [],
+            "details": "1. src/components/Header/index.tsx 파일 생성\n2. HeaderProps 인터페이스 정의 (className?: string)\n3. 기본 header 태그와 container div 구조 구현\n4. useState를 활용한 모바일 메뉴 토글 상태 관리 추가\n5. 컴포넌트 export 및 기본 props 처리",
+            "status": "pending",
+            "testStrategy": "1. 컴포넌트가 에러 없이 렌더링되는지 확인\n2. TypeScript 타입 체크 통과 확인\n3. className prop이 올바르게 적용되는지 테스트\n4. useState 상태가 정상적으로 초기화되는지 확인"
+          },
+          {
+            "id": 2,
+            "title": "Logo 컴포넌트 구현",
+            "description": "당근마켓 로고를 표시하는 재사용 가능한 Logo 컴포넌트 구현",
+            "dependencies": [
+              "2.1"
+            ],
+            "details": "1. src/components/Header/Logo.tsx 파일 생성\n2. SVG 또는 이미지 기반 로고 구현\n3. 접근성을 위한 alt 텍스트 및 aria-label 추가\n4. 로고 클릭 시 홈으로 이동하는 링크 기능 구현\n5. 반응형 크기 조정을 위한 기본 CSS 클래스 적용",
+            "status": "pending",
+            "testStrategy": "1. 로고 이미지가 올바르게 로딩되는지 확인\n2. 대체 텍스트가 스크린 리더에서 읽히는지 테스트\n3. 로고 클릭 시 홈 페이지로 이동하는지 확인\n4. 다양한 화면 크기에서 로고 크기가 적절한지 확인"
+          },
+          {
+            "id": 3,
+            "title": "DownloadButton 컴포넌트 구현",
+            "description": "앱 다운로드 버튼 컴포넌트를 터치 친화적으로 구현",
+            "dependencies": [
+              "2.1"
+            ],
+            "details": "1. src/components/Header/DownloadButton.tsx 파일 생성\n2. 최소 44px 터치 타겟 크기 적용\n3. 버튼 클릭 이벤트 핸들러 구현\n4. 모바일과 데스크톱에서 다른 텍스트 표시 로직\n5. 호버 및 포커스 상태 스타일링을 위한 CSS 클래스 추가",
+            "status": "pending",
+            "testStrategy": "1. 버튼 크기가 최소 44px인지 측정\n2. 클릭 이벤트가 정상적으로 발생하는지 확인\n3. 키보드 포커스가 올바르게 작동하는지 테스트\n4. 모바일과 데스크톱에서 적절한 텍스트가 표시되는지 확인"
+          },
+          {
+            "id": 4,
+            "title": "모바일 퍼스트 반응형 스타일링 구현",
+            "description": "Header 컴포넌트의 모바일 우선 CSS 스타일링 및 반응형 레이아웃 구현",
+            "dependencies": [
+              "2.2",
+              "2.3"
+            ],
+            "details": "1. src/components/Header/Header.module.css 파일 생성\n2. 모바일 기본 스타일 (320px~): padding 12px 16px, min-height 56px\n3. 태블릿 스타일 (768px+): padding 16px 24px\n4. 데스크톱 스타일 (1024px+): padding 20px 40px, max-width 1200px, 중앙 정렬\n5. flexbox를 활용한 로고와 버튼 간 공간 배치",
+            "status": "pending",
+            "testStrategy": "1. 320px, 768px, 1024px 화면에서 레이아웃 확인\n2. 패딩과 높이가 각 브레이크포인트에서 올바른지 측정\n3. 로고와 버튼이 적절히 정렬되는지 확인\n4. 가로 스크롤이 발생하지 않는지 테스트"
+          },
+          {
+            "id": 5,
+            "title": "Header 컴포넌트 통합 및 최적화",
+            "description": "모든 하위 컴포넌트를 통합하고 성능 최적화 및 접근성 개선",
+            "dependencies": [
+              "2.4"
+            ],
+            "details": "1. Header 컴포넌트에 Logo와 DownloadButton 통합\n2. React.memo를 활용한 불필요한 리렌더링 방지\n3. 접근성: semantic HTML, ARIA 속성, 키보드 네비게이션 지원\n4. 모바일 메뉴 토글 기능 완성 (향후 확장을 위한 기반)\n5. 컴포넌트 export 및 App.tsx에서 사용 설정",
+            "status": "pending",
+            "testStrategy": "1. 전체 헤더가 모든 디바이스에서 올바르게 표시되는지 확인\n2. 키보드만으로 모든 요소에 접근 가능한지 테스트\n3. 스크린 리더 호환성 확인\n4. React DevTools로 불필요한 리렌더링이 없는지 확인\n5. 성능: Lighthouse 접근성 점수 90점 이상 달성"
+          }
+        ]
       },
       {
         "id": 3,
@@ -36,7 +137,64 @@
           2
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "지역 데이터 구조 설계 및 Mock 데이터 생성",
+            "description": "LocationSelector에서 사용할 지역 데이터의 JSON 구조를 설계하고 mock 데이터를 생성합니다.",
+            "dependencies": [],
+            "details": "1. 지역 데이터 타입 정의:\n```tsx\ninterface Location {\n  id: string;\n  name: string;\n  district?: string;\n  popular?: boolean;\n}\n```\n2. data/locations.json 파일 생성\n3. 서울 주요 지역 20개 이상 포함 (강남구, 서초구, 송파구 등)\n4. 인기 지역 플래그 설정\n5. utils/locationUtils.ts에서 데이터 접근 함수 구현",
+            "status": "pending",
+            "testStrategy": "1. JSON 데이터가 올바른 형식인지 검증\n2. 모든 지역에 필수 필드(id, name)가 있는지 확인\n3. 인기 지역이 5개 이상 설정되어 있는지 확인\n4. locationUtils 함수들이 예상된 결과를 반환하는지 테스트"
+          },
+          {
+            "id": 2,
+            "title": "기본 HeroSection 컴포넌트 구조 구현",
+            "description": "동적 메시지를 표시하는 기본 HeroSection 컴포넌트를 구현합니다.",
+            "dependencies": [
+              "3.1"
+            ],
+            "details": "1. components/HeroSection/HeroSection.tsx 생성\n2. useState를 사용한 selectedLocation 상태 관리\n3. 동적 제목 메시지 렌더링: '{selectedLocation}에서 맛집 찾고 계신가요?'\n4. 기본 CSS 클래스 구조 설정\n5. TypeScript 인터페이스 정의\n6. 초기값을 '정자동'으로 설정",
+            "status": "pending",
+            "testStrategy": "1. 컴포넌트가 오류 없이 렌더링되는지 확인\n2. selectedLocation 상태 변경 시 제목이 동적으로 업데이트되는지 테스트\n3. TypeScript 타입 체크 통과 확인\n4. 초기 렌더링 시 '정자동에서 맛집 찾고 계신가요?' 메시지 표시 확인"
+          },
+          {
+            "id": 3,
+            "title": "LocationSelector 드롭다운 기본 구조 구현",
+            "description": "지역 선택을 위한 드롭다운 컴포넌트의 기본 구조를 구현합니다.",
+            "dependencies": [
+              "3.1",
+              "3.2"
+            ],
+            "details": "1. components/HeroSection/LocationSelector.tsx 생성\n2. LocationSelectorProps 인터페이스 정의\n3. 드롭다운 열림/닫힘 상태 관리\n4. 지역 목록 렌더링 (mock 데이터 사용)\n5. 선택된 지역 표시 및 변경 핸들러\n6. 기본 HTML 구조: button + ul/li 조합\n7. 접근성을 위한 ARIA 속성 추가",
+            "status": "pending",
+            "testStrategy": "1. 드롭다운 버튼 클릭 시 목록이 열리고 닫히는지 확인\n2. 지역 선택 시 onLocationChange 콜백이 호출되는지 테스트\n3. 선택된 지역이 버튼에 올바르게 표시되는지 확인\n4. ARIA 속성이 올바르게 설정되어 있는지 검증"
+          },
+          {
+            "id": 4,
+            "title": "모바일 퍼스트 반응형 스타일링 구현",
+            "description": "HeroSection과 LocationSelector의 모바일 우선 반응형 스타일을 구현합니다.",
+            "dependencies": [
+              "3.2",
+              "3.3"
+            ],
+            "details": "1. styles/HeroSection.css 생성\n2. 모바일 기본 스타일 (320px~767px):\n   - 세로 스택 레이아웃\n   - 전체 너비 활용\n   - 16px 좌우 패딩\n3. 태블릿+ 스타일 (768px+):\n   - 가로 배치 고려\n   - 중앙 정렬\n4. 터치 친화적 UI:\n   - 최소 44px 터치 타겟\n   - 충분한 간격\n5. 드롭다운 스타일링 및 애니메이션",
+            "status": "pending",
+            "testStrategy": "1. 모바일(375px), 태블릿(768px), 데스크톱(1024px)에서 레이아웃 확인\n2. 터치 타겟이 최소 44px인지 측정\n3. 드롭다운 애니메이션이 부드럽게 작동하는지 확인\n4. 다양한 텍스트 길이에서 레이아웃이 깨지지 않는지 테스트\n5. 가로/세로 화면 전환 시 레이아웃 유지 확인"
+          },
+          {
+            "id": 5,
+            "title": "키보드 접근성 및 사용자 경험 최적화",
+            "description": "키보드 네비게이션, 접근성, 그리고 향상된 사용자 경험을 구현합니다.",
+            "dependencies": [
+              "3.3",
+              "3.4"
+            ],
+            "details": "1. 키보드 이벤트 핸들러 구현:\n   - Tab: 포커스 이동\n   - Enter/Space: 드롭다운 열기/선택\n   - Escape: 드롭다운 닫기\n   - Arrow keys: 옵션 탐색\n2. 포커스 관리 및 시각적 표시\n3. 외부 클릭 시 드롭다운 닫기\n4. 로딩 상태 및 에러 처리\n5. 검색 기능 추가 (옵션)\n6. 성능 최적화: React.memo, useMemo 적용",
+            "status": "pending",
+            "testStrategy": "1. 키보드만으로 모든 기능 사용 가능한지 테스트\n2. 포커스 표시가 명확하게 보이는지 확인\n3. 스크린 리더로 접근성 테스트\n4. 외부 클릭 시 드롭다운이 닫히는지 확인\n5. 성능: 불필요한 리렌더링이 발생하지 않는지 React DevTools로 확인"
+          }
+        ]
       },
       {
         "id": 4,
@@ -49,7 +207,62 @@
           3
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "기본 SearchBar 컴포넌트 구조 및 인터페이스 정의",
+            "description": "Controlled Components 패턴을 적용한 기본 SearchBar 컴포넌트 구조를 생성하고 TypeScript 인터페이스를 정의합니다.",
+            "dependencies": [],
+            "details": "SearchBarProps 인터페이스 정의, 기본 컴포넌트 구조 생성, value와 onChange props를 통한 제어된 입력 구현, 기본 form 요소와 input 요소 구조 설정",
+            "status": "pending",
+            "testStrategy": "컴포넌트가 props를 올바르게 받는지 확인, 입력값 변경 시 onChange 콜백이 호출되는지 테스트, TypeScript 타입 검사 통과 확인"
+          },
+          {
+            "id": 2,
+            "title": "모바일 퍼스트 스타일링 및 반응형 디자인 적용",
+            "description": "SearchBar 컴포넌트에 모바일 우선 CSS 스타일을 적용하고 태블릿/데스크톱 반응형 레이아웃을 구현합니다.",
+            "dependencies": [
+              "4.1"
+            ],
+            "details": "모바일 기본 스타일 (width: 100%, min-height: 48px, font-size: 16px), 태블릿 이상에서 max-width 제한, border-radius와 padding 적용, iOS 줌 방지를 위한 font-size 설정",
+            "status": "pending",
+            "testStrategy": "모바일(320px), 태블릿(768px), 데스크톱에서 레이아웃 확인, iOS Safari에서 줌 발생하지 않는지 테스트, 터치 타겟 크기 44px 이상 확인"
+          },
+          {
+            "id": 3,
+            "title": "useEffect를 활용한 디바운스 기능 구현",
+            "description": "useEffect와 setTimeout을 사용하여 300ms 디바운스 효과를 구현하고 성능을 최적화합니다.",
+            "dependencies": [
+              "4.1"
+            ],
+            "details": "debouncedValue 상태 추가, useEffect로 300ms 타이머 설정, cleanup 함수로 이전 타이머 제거, 디바운스된 값을 활용한 검색 최적화",
+            "status": "pending",
+            "testStrategy": "입력 후 300ms 후에 디바운스 값이 업데이트되는지 확인, 연속 입력 시 이전 타이머가 취소되는지 테스트, 메모리 누수 없이 cleanup이 작동하는지 검증"
+          },
+          {
+            "id": 4,
+            "title": "폼 제출 처리 및 키보드 최적화 구현",
+            "description": "폼 제출 이벤트 처리를 구현하고 모바일 키보드 최적화 속성을 적용합니다.",
+            "dependencies": [
+              "4.2"
+            ],
+            "details": "handleSubmit 함수 구현, preventDefault로 기본 폼 제출 방지, onSubmit 콜백 호출, inputmode='search' 속성 추가, autocomplete 속성 설정",
+            "status": "pending",
+            "testStrategy": "Enter 키 또는 제출 버튼 클릭 시 onSubmit 콜백이 올바른 값으로 호출되는지 확인, 모바일에서 검색 키보드가 표시되는지 테스트, 페이지 새로고침이 발생하지 않는지 검증"
+          },
+          {
+            "id": 5,
+            "title": "HeroSection에서 상태 끌어올리기 및 통합 테스트",
+            "description": "SearchBar의 상태를 HeroSection으로 끌어올려 상위 컴포넌트에서 검색어를 관리하고 전체 기능을 통합 테스트합니다.",
+            "dependencies": [
+              "4.3",
+              "4.4"
+            ],
+            "details": "HeroSection에서 searchTerm 상태 관리, SearchBar에 value와 onChange props 전달, 검색 제출 시 상위 컴포넌트에서 처리, 접근성 속성 (aria-label, placeholder) 추가",
+            "status": "pending",
+            "testStrategy": "상위 컴포넌트에서 검색어 상태가 올바르게 관리되는지 확인, 디바운스와 폼 제출이 모두 정상 작동하는지 통합 테스트, 스크린 리더로 접근성 확인, 다양한 디바이스에서 전체 기능 검증"
+          }
+        ]
       },
       {
         "id": 5,
@@ -62,7 +275,61 @@
           4
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "PopularTags 기본 컴포넌트 구조 및 인터페이스 구현",
+            "description": "PopularTags 컴포넌트의 기본 구조와 TypeScript 인터페이스를 구현하고 mock 데이터를 생성합니다.",
+            "dependencies": [],
+            "details": "1. PopularTagsProps 인터페이스 정의 (tags: string[], onTagClick: (tag: string) => void)\n2. PopularTags 함수형 컴포넌트 기본 구조 생성\n3. 인기 검색어 mock 데이터 배열 생성 (['맛집', '카페', '치킨', '피자', '중식', '일식', '한식', '분식'])\n4. 기본 JSX 구조 구현 (제목 + 태그 컨테이너)\n5. 컴포넌트 export 및 기본 렌더링 테스트",
+            "status": "pending",
+            "testStrategy": "1. 컴포넌트가 에러 없이 렌더링되는지 확인\n2. props가 올바르게 전달되는지 확인\n3. mock 데이터가 화면에 표시되는지 확인\n4. TypeScript 타입 체크 통과 확인"
+          },
+          {
+            "id": 2,
+            "title": "모바일 퍼스트 태그 레이아웃 및 스타일링 구현",
+            "description": "모바일 우선 접근법으로 태그 컨테이너의 가로 스크롤 레이아웃과 반응형 스타일을 구현합니다.",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "1. .popular-tags 기본 스타일 구현\n2. .tags-container 가로 스크롤 레이아웃 (display: flex, overflow-x: auto)\n3. .tag-button 최소 터치 타겟 크기 44px 적용\n4. 태그 간격 및 패딩 설정 (gap: 8px, padding: 8px 16px)\n5. 태블릿 이상에서 멀티라인 래핑 스타일 (@media min-width: 768px)\n6. 스크롤바 숨김 및 부드러운 스크롤 효과 적용",
+            "status": "pending",
+            "testStrategy": "1. 모바일에서 가로 스크롤이 부드럽게 작동하는지 확인\n2. 태그 버튼 크기가 44px 이상인지 측정\n3. 태블릿에서 멀티라인 래핑 동작 확인\n4. 다양한 디바이스에서 레이아웃 깨짐 없는지 테스트"
+          },
+          {
+            "id": 3,
+            "title": "태그 클릭 이벤트 핸들링 및 상호작용 구현",
+            "description": "태그 클릭 시 onTagClick 콜백 함수 호출과 시각적 피드백을 구현합니다.",
+            "dependencies": [
+              "5.2"
+            ],
+            "details": "1. 태그 버튼 onClick 이벤트 핸들러 구현\n2. onTagClick prop 함수 호출 로직 추가\n3. 클릭 시 시각적 피드백 (active 상태 스타일)\n4. 호버 효과 및 포커스 스타일 구현\n5. 키보드 접근성 지원 (Tab, Enter 키)\n6. 터치 디바이스 최적화 (touch-action: manipulation)",
+            "status": "pending",
+            "testStrategy": "1. 태그 클릭 시 onTagClick 콜백이 올바른 태그 값과 함께 호출되는지 확인\n2. 클릭 시 시각적 피드백이 나타나는지 테스트\n3. 키보드로 태그 간 이동 및 선택 가능한지 확인\n4. 터치 디바이스에서 반응성 테스트"
+          },
+          {
+            "id": 4,
+            "title": "HeroSection에서 형제 컴포넌트 통신 구현",
+            "description": "HeroSection 컴포넌트에서 PopularTags와 SearchBar 간의 데이터 통신을 관리하는 로직을 구현합니다.",
+            "dependencies": [
+              "5.3"
+            ],
+            "details": "1. HeroSection에 searchValue 상태 추가 (useState)\n2. handleTagClick 함수 구현 (tag를 받아 searchValue 업데이트)\n3. PopularTags 컴포넌트에 onTagClick prop 전달\n4. SearchBar 컴포넌트에 value와 onChange prop 연결\n5. 상태 끌어올리기 패턴 적용\n6. 컴포넌트 간 데이터 흐름 최적화",
+            "status": "pending",
+            "testStrategy": "1. 태그 클릭 시 SearchBar에 값이 자동 입력되는지 확인\n2. SearchBar에서 직접 입력한 값이 상태에 반영되는지 테스트\n3. 양방향 데이터 바인딩이 올바르게 작동하는지 확인\n4. 상태 변경 시 리렌더링 최적화 확인"
+          },
+          {
+            "id": 5,
+            "title": "터치 스크롤 최적화 및 접근성 개선",
+            "description": "모바일 디바이스에서의 터치 스크롤 성능을 최적화하고 웹 접근성 기준을 충족하도록 개선합니다.",
+            "dependencies": [
+              "5.4"
+            ],
+            "details": "1. touch-action: pan-x 속성 적용으로 가로 스크롤 최적화\n2. 스크롤 인디케이터 또는 그라데이션 효과 추가\n3. ARIA 라벨 및 역할 속성 추가 (role=\"list\", aria-label)\n4. 키보드 네비게이션 개선 (방향키로 태그 간 이동)\n5. 스크린 리더 호환성 확보\n6. 성능 최적화 (React.memo 적용 검토)",
+            "status": "pending",
+            "testStrategy": "1. 모바일에서 터치 스크롤 성능 및 부드러움 확인\n2. 스크린 리더로 컴포넌트 탐색 가능한지 테스트\n3. 키보드만으로 모든 기능 사용 가능한지 확인\n4. WAVE 또는 axe 도구로 접근성 검사 수행\n5. 성능 프로파일링으로 렌더링 최적화 확인"
+          }
+        ]
       },
       {
         "id": 6,
@@ -75,7 +342,61 @@
         "priority": "medium",
         "details": "1. CategoryGrid 컨테이너 컴포넌트 (조건부 렌더링 패턴 강화):\n```tsx\ninterface Category {\n  id: string;\n  name: string;\n  icon: string;\n  description?: string;\n  link: string;\n  permission?: 'public' | 'member' | 'premium';\n}\n\ninterface CategoryGridProps {\n  userRole?: 'guest' | 'member' | 'premium';\n  maxItems?: number;\n}\n\nconst CategoryGrid: React.FC<CategoryGridProps> = ({ userRole = 'guest', maxItems }) => {\n  const [categories, setCategories] = useState<Category[]>([]);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState<string | null>(null);\n  const [retryCount, setRetryCount] = useState(0);\n  \n  // 권한에 따른 카테고리 필터링\n  const filteredCategories = useMemo(() => {\n    const filtered = categories.filter(category => {\n      if (!category.permission || category.permission === 'public') return true;\n      if (userRole === 'premium') return true;\n      if (userRole === 'member' && category.permission !== 'premium') return true;\n      return false;\n    });\n    \n    // 디바이스별 표시 개수 제한\n    return maxItems ? filtered.slice(0, maxItems) : filtered;\n  }, [categories, userRole, maxItems]);\n  \n  const fetchCategories = useCallback(async () => {\n    try {\n      setLoading(true);\n      setError(null);\n      // Mock 데이터 로딩 시뮬레이션\n      await new Promise(resolve => setTimeout(resolve, 500));\n      \n      // 에러 시뮬레이션 (재시도 테스트용)\n      if (retryCount === 0 && Math.random() < 0.3) {\n        throw new Error('네트워크 오류가 발생했습니다.');\n      }\n      \n      setCategories(mockCategories);\n    } catch (err) {\n      setError(err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.');\n    } finally {\n      setLoading(false);\n    }\n  }, [retryCount]);\n  \n  useEffect(() => {\n    fetchCategories();\n  }, [fetchCategories]);\n  \n  const handleRetry = () => {\n    setRetryCount(prev => prev + 1);\n    fetchCategories();\n  };\n  \n  // 조건부 렌더링 패턴들\n  if (loading) {\n    return <CategoryGridSkeleton />;\n  }\n  \n  if (error) {\n    return (\n      <div className=\"category-grid-error\">\n        <p className=\"error-message\">{error}</p>\n        <button onClick={handleRetry} className=\"retry-button\">\n          다시 시도\n        </button>\n      </div>\n    );\n  }\n  \n  // 빈 데이터 상태\n  if (filteredCategories.length === 0) {\n    return (\n      <div className=\"category-grid-empty\">\n        <p>표시할 카테고리가 없습니다.</p>\n        {userRole === 'guest' && (\n          <p className=\"upgrade-message\">\n            회원가입하시면 더 많은 카테고리를 이용하실 수 있습니다.\n          </p>\n        )}\n      </div>\n    );\n  }\n  \n  return (\n    <section className=\"category-grid\">\n      {filteredCategories.map((category, index) => (\n        <CategoryCard \n          key={category.id} \n          category={category}\n          // 조건부 props 전달\n          showDescription={index < 3} // 상위 3개만 설명 표시\n          isPremium={category.permission === 'premium'}\n          delay={index * 100} // 순차적 애니메이션\n        />\n      ))}\n      \n      {/* 더보기 버튼 조건부 렌더링 */}\n      {maxItems && categories.length > maxItems && (\n        <div className=\"show-more-card\">\n          <button className=\"show-more-button\">\n            +{categories.length - maxItems}개 더보기\n          </button>\n        </div>\n      )}\n    </section>\n  );\n};\n```\n\n2. 반응형 그리드 레이아웃 (상태별 스타일 추가):\n```css\n.category-grid {\n  display: grid;\n  gap: 16px;\n  padding: 20px 16px;\n  grid-template-columns: 1fr;\n  min-height: 200px;\n}\n\n/* 에러 및 빈 상태 스타일 */\n.category-grid-error,\n.category-grid-empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 40px 20px;\n  text-align: center;\n}\n\n.retry-button {\n  margin-top: 16px;\n  padding: 12px 24px;\n  background-color: #ff6b35;\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n}\n\n@media (min-width: 768px) {\n  .category-grid {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n\n@media (min-width: 1024px) {\n  .category-grid {\n    grid-template-columns: repeat(4, 1fr);\n    max-width: 1200px;\n    margin: 0 auto;\n  }\n}\n```\n\n3. CategoryCard 컴포넌트 (조건부 렌더링 적용):\n```tsx\ninterface CategoryCardProps {\n  category: Category;\n  showDescription?: boolean;\n  isPremium?: boolean;\n  delay?: number;\n}\n\nconst CategoryCard: React.FC<CategoryCardProps> = ({ \n  category, \n  showDescription = false, \n  isPremium = false,\n  delay = 0 \n}) => {\n  return (\n    <div \n      className={`category-card ${isPremium ? 'premium' : ''}`}\n      style={{ animationDelay: `${delay}ms` }}\n    >\n      <div className=\"card-icon\">{category.icon}</div>\n      <h3 className=\"card-title\">{category.name}</h3>\n      \n      {/* 조건부 설명 렌더링 */}\n      {showDescription && category.description && (\n        <p className=\"card-description\">{category.description}</p>\n      )}\n      \n      {/* 프리미엄 배지 조건부 렌더링 */}\n      {isPremium && (\n        <span className=\"premium-badge\">Premium</span>\n      )}\n    </div>\n  );\n};\n```\n\n4. 조건부 렌더링 패턴 학습 요소:\n   - 삼항 연산자와 && 연산자 활용\n   - 로딩/에러/빈 상태 처리\n   - 권한 기반 필터링\n   - 디바이스별 조건부 표시\n   - map과 조건부 렌더링 결합\n   - key prop 최적화\n\n5. CategoryGridSkeleton 로딩 컴포넌트 구현\n6. 7개 카테고리 mock 데이터 (권한 정보 포함)\n7. 에러 처리 및 재시도 로직 구현",
         "testStrategy": "1. 조건부 렌더링 패턴 테스트:\n   - 로딩 상태에서 스켈레톤 UI 표시 확인\n   - 에러 발생 시 에러 메시지와 재시도 버튼 표시 확인\n   - 빈 데이터일 때 안내 메시지 표시 확인\n   - 권한별 카테고리 필터링 동작 확인\n\n2. 리스트 렌더링과 조건부 렌더링 결합 테스트:\n   - map 함수와 조건부 props 전달 확인\n   - key prop이 올바르게 설정되었는지 확인\n   - 조건부 설명 표시 로직 테스트\n\n3. 반응형 그리드 테스트:\n   - 각 브레이크포인트에서 올바른 열 수 확인\n   - 디바이스별 최대 표시 개수 제한 테스트\n\n4. 사용자 권한별 테스트:\n   - guest, member, premium 권한별 카테고리 표시 확인\n   - 권한 업그레이드 메시지 표시 테스트\n\n5. 에러 처리 및 재시도 로직 테스트:\n   - 네트워크 오류 시뮬레이션 및 에러 상태 확인\n   - 재시도 버튼 클릭 시 데이터 재로딩 확인\n   - 재시도 카운트 증가 확인\n\n6. 접근성 및 사용성 테스트:\n   - 키보드 네비게이션으로 재시도 버튼 접근 확인\n   - 스크린 리더로 에러 메시지 읽기 확인\n   - 터치 디바이스에서 카드 터치 피드백 확인",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Category 인터페이스 및 Mock 데이터 구성",
+            "description": "Category 타입 정의, 7개 카테고리 mock 데이터 생성, 권한 시스템 기반 데이터 구조 설계",
+            "dependencies": [],
+            "details": "1. Category 인터페이스 정의 (id, name, icon, description, link, permission)\n2. 7개 주요 카테고리 mock 데이터 생성 (중고거래, 동네생활, 알바, 부동산, 중고차, 과외, 농수산물)\n3. 권한별 카테고리 분류 (public, member, premium)\n4. mockCategories 배열 생성 및 export\n5. TypeScript 타입 안전성 확보",
+            "status": "pending",
+            "testStrategy": "1. 인터페이스 타입 체크 확인\n2. Mock 데이터 구조 검증\n3. 권한별 카테고리 분류 정확성 확인\n4. 필수 필드 누락 여부 검사"
+          },
+          {
+            "id": 2,
+            "title": "CategoryCard 기본 컴포넌트 구현",
+            "description": "개별 카테고리를 표시하는 CategoryCard 컴포넌트 구현, 조건부 렌더링 패턴 적용",
+            "dependencies": [
+              "6.1"
+            ],
+            "details": "1. CategoryCardProps 인터페이스 정의\n2. 기본 CategoryCard 컴포넌트 구조 생성\n3. 조건부 설명 렌더링 (showDescription prop)\n4. 프리미엄 배지 조건부 표시\n5. 애니메이션 delay prop 적용\n6. 아이콘, 제목, 설명 레이아웃 구성",
+            "status": "pending",
+            "testStrategy": "1. Props 전달이 올바르게 작동하는지 확인\n2. 조건부 설명 표시/숨김 테스트\n3. 프리미엄 배지 조건부 렌더링 확인\n4. 애니메이션 delay 적용 검증"
+          },
+          {
+            "id": 3,
+            "title": "CategoryCard 스타일링 및 반응형 디자인",
+            "description": "CategoryCard의 모바일 퍼스트 스타일링, 프리미엄 상태별 스타일, 애니메이션 효과 구현",
+            "dependencies": [
+              "6.2"
+            ],
+            "details": "1. 기본 카드 스타일 (패딩, 보더, 그림자)\n2. 프리미엄 카드 스타일 차별화\n3. 아이콘 및 텍스트 레이아웃\n4. 호버 및 포커스 상태 스타일\n5. 순차적 애니메이션 효과 (fadeInUp)\n6. 터치 디바이스 최적화",
+            "status": "pending",
+            "testStrategy": "1. 모바일/태블릿/데스크톱 반응형 확인\n2. 프리미엄 카드 시각적 차별화 검증\n3. 애니메이션 순차 실행 확인\n4. 터치 타겟 크기 44px 이상 확인"
+          },
+          {
+            "id": 4,
+            "title": "CategoryGridSkeleton 로딩 컴포넌트 구현",
+            "description": "데이터 로딩 중 표시할 스켈레톤 UI 컴포넌트 구현, 그리드 레이아웃과 일치하는 구조",
+            "dependencies": [],
+            "details": "1. CategoryGridSkeleton 컴포넌트 생성\n2. 카드 형태의 스켈레톤 아이템 구현\n3. 반응형 그리드와 동일한 레이아웃 적용\n4. 애니메이션 효과 (shimmer, pulse)\n5. 접근성 고려 (aria-label, role)\n6. 7개 스켈레톤 카드 렌더링",
+            "status": "pending",
+            "testStrategy": "1. 로딩 상태에서 스켈레톤 표시 확인\n2. 실제 그리드와 레이아웃 일치성 검증\n3. 애니메이션 효과 작동 확인\n4. 접근성 속성 적용 검증"
+          },
+          {
+            "id": 5,
+            "title": "CategoryGrid 컨테이너 및 조건부 렌더링 구현",
+            "description": "CategoryGrid 메인 컴포넌트 구현, 권한 기반 필터링, 에러 처리, 조건부 렌더링 패턴 완성",
+            "dependencies": [
+              "6.2",
+              "6.3",
+              "6.4"
+            ],
+            "details": "1. CategoryGrid 컴포넌트 및 Props 인터페이스 정의\n2. useState, useEffect, useMemo, useCallback 훅 활용\n3. 권한 기반 카테고리 필터링 로직\n4. 로딩/에러/빈 상태 조건부 렌더링\n5. 에러 처리 및 재시도 로직\n6. 더보기 버튼 조건부 표시\n7. 반응형 그리드 CSS 구현",
+            "status": "pending",
+            "testStrategy": "1. 권한별 카테고리 필터링 동작 확인\n2. 로딩/에러/빈 상태 렌더링 테스트\n3. 재시도 버튼 클릭 시 데이터 재요청 확인\n4. 더보기 버튼 조건부 표시 검증\n5. 반응형 그리드 레이아웃 확인"
+          }
+        ]
       },
       {
         "id": 7,
@@ -88,7 +409,64 @@
           6
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "API 서비스 레이어 기본 구조 구현",
+            "description": "fetch API와 axios를 활용한 기본 API 서비스 클래스 구현 및 타입 정의",
+            "dependencies": [],
+            "details": "1. ApiResponse 인터페이스 정의\n2. ApiService 클래스 기본 구조 생성\n3. baseURL 환경변수 설정\n4. axios 설치 및 기본 설정\n5. Location, Category 타입 인터페이스 정의\n6. 기본 에러 처리 로직 구현",
+            "status": "pending",
+            "testStrategy": "1. 타입스크립트 컴파일 에러 없이 빌드되는지 확인\n2. 환경변수가 올바르게 로드되는지 테스트\n3. axios 인스턴스가 정상 생성되는지 확인\n4. 기본 API 구조가 예상대로 동작하는지 단위 테스트"
+          },
+          {
+            "id": 2,
+            "title": "지역 및 카테고리 데이터 API 메서드 구현",
+            "description": "getLocations, getCategories API 메서드 구현 및 에러 처리 로직 완성",
+            "dependencies": [
+              "7.1"
+            ],
+            "details": "1. getLocations 메서드 fetch API로 구현\n2. getCategories 메서드 axios로 구현\n3. HTTP 상태 코드별 에러 처리\n4. 네트워크 오류 처리\n5. 타임아웃 설정\n6. 응답 데이터 검증 로직 추가",
+            "status": "pending",
+            "testStrategy": "1. 성공적인 API 호출 시 올바른 데이터 반환 확인\n2. 네트워크 오류 시 적절한 에러 메시지 반환 테스트\n3. 타임아웃 발생 시 에러 처리 확인\n4. 잘못된 응답 형식에 대한 처리 테스트"
+          },
+          {
+            "id": 3,
+            "title": "커스텀 useApi Hook 구현 및 상태 관리",
+            "description": "재사용 가능한 API 호출 커스텀 Hook 구현 및 로딩, 에러 상태 관리",
+            "dependencies": [
+              "7.2"
+            ],
+            "details": "1. useApi 커스텀 Hook 기본 구조 구현\n2. loading, error, data 상태 관리\n3. useEffect를 활용한 API 호출 로직\n4. 재시도 기능 추가\n5. 클린업 함수로 메모리 누수 방지\n6. 제네릭 타입으로 타입 안전성 확보",
+            "status": "pending",
+            "testStrategy": "1. Hook이 올바른 초기 상태를 반환하는지 확인\n2. API 호출 중 loading 상태가 true인지 테스트\n3. 성공 시 data가 올바르게 설정되는지 확인\n4. 에러 발생 시 error 상태가 설정되는지 테스트\n5. 컴포넌트 언마운트 시 클린업이 실행되는지 확인"
+          },
+          {
+            "id": 4,
+            "title": "에러 바운더리 및 로딩 UI 컴포넌트 구현",
+            "description": "전역 에러 처리를 위한 에러 바운더리와 로딩 스피너, 에러 메시지 컴포넌트 구현",
+            "dependencies": [
+              "7.3"
+            ],
+            "details": "1. ErrorBoundary 클래스 컴포넌트 구현\n2. 에러 발생 시 fallback UI 표시\n3. LoadingSpinner 컴포넌트 구현\n4. ErrorMessage 컴포넌트 구현\n5. 재시도 버튼 기능 추가\n6. 모바일 친화적인 로딩 및 에러 UI 디자인",
+            "status": "pending",
+            "testStrategy": "1. 의도적으로 에러를 발생시켜 ErrorBoundary가 작동하는지 확인\n2. 로딩 스피너가 적절한 시점에 표시되는지 테스트\n3. 에러 메시지가 사용자 친화적으로 표시되는지 확인\n4. 재시도 버튼 클릭 시 API가 다시 호출되는지 테스트\n5. 모바일 디바이스에서 UI가 올바르게 표시되는지 확인"
+          },
+          {
+            "id": 5,
+            "title": "API 통합 테스트 및 실제 컴포넌트 연동",
+            "description": "구현된 API 서비스와 Hook을 실제 컴포넌트에 연동하고 통합 테스트 수행",
+            "dependencies": [
+              "7.1",
+              "7.2",
+              "7.3",
+              "7.4"
+            ],
+            "details": "1. 기존 컴포넌트에 useApi Hook 적용\n2. 지역 선택 드롭다운에 API 데이터 연동\n3. 카테고리 그리드에 API 데이터 연동\n4. 전역 에러 바운더리 App 컴포넌트에 적용\n5. 네트워크 상태에 따른 UI 상태 변화 테스트\n6. 성능 최적화 및 불필요한 API 호출 방지",
+            "status": "pending",
+            "testStrategy": "1. 실제 네트워크 환경에서 API 호출이 정상 작동하는지 확인\n2. 오프라인 상태에서 적절한 에러 메시지가 표시되는지 테스트\n3. 빠른 네트워크 전환 시 상태 변화가 올바른지 확인\n4. 여러 컴포넌트에서 동시에 API를 호출할 때 성능 이슈가 없는지 테스트\n5. React DevTools로 불필요한 리렌더링이 발생하지 않는지 확인"
+          }
+        ]
       },
       {
         "id": 8,
@@ -101,7 +479,61 @@
           7
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "React Router 패키지 설치 및 기본 설정",
+            "description": "React Router v6 패키지를 설치하고 App.tsx에서 BrowserRouter를 설정하여 라우팅 기반을 구축합니다.",
+            "dependencies": [],
+            "details": "1. React Router 패키지 설치: `npm install react-router-dom @types/react-router-dom`\n2. App.tsx에서 BrowserRouter 래핑:\n```tsx\nimport { BrowserRouter } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <div className=\"App\">\n        {/* 기존 컴포넌트들 */}\n      </div>\n    </BrowserRouter>\n  );\n}\n```\n3. 패키지 설치 확인 및 기본 라우터 구조 테스트",
+            "status": "pending",
+            "testStrategy": "1. npm install이 성공적으로 완료되는지 확인\n2. 애플리케이션이 오류 없이 실행되는지 테스트\n3. React DevTools에서 Router 컴포넌트가 렌더링되는지 확인\n4. 브라우저 URL이 변경 가능한 상태인지 확인"
+          },
+          {
+            "id": 2,
+            "title": "기본 페이지 컴포넌트 생성 및 Routes 구조 설정",
+            "description": "홈페이지, 검색결과페이지, 카테고리페이지, 404페이지 컴포넌트를 생성하고 Routes 구조를 설정합니다.",
+            "dependencies": [
+              "8.1"
+            ],
+            "details": "1. 페이지 컴포넌트 생성:\n```tsx\n// pages/HomePage.tsx\nconst HomePage: React.FC = () => {\n  return <div>홈페이지</div>;\n};\n\n// pages/SearchResultsPage.tsx\nconst SearchResultsPage: React.FC = () => {\n  return <div>검색 결과 페이지</div>;\n};\n\n// pages/CategoryPage.tsx\nconst CategoryPage: React.FC = () => {\n  return <div>카테고리 페이지</div>;\n};\n\n// pages/NotFoundPage.tsx\nconst NotFoundPage: React.FC = () => {\n  return <div>404 페이지</div>;\n};\n```\n2. App.tsx에서 Routes 설정:\n```tsx\n<Routes>\n  <Route path=\"/\" element={<HomePage />} />\n  <Route path=\"/search\" element={<SearchResultsPage />} />\n  <Route path=\"/category/:categoryId\" element={<CategoryPage />} />\n  <Route path=\"*\" element={<NotFoundPage />} />\n</Routes>\n```",
+            "status": "pending",
+            "testStrategy": "1. 각 경로로 직접 접근했을 때 해당 페이지가 렌더링되는지 확인\n2. 존재하지 않는 경로 접근 시 404 페이지가 표시되는지 테스트\n3. 브라우저 주소창에서 URL 변경 시 페이지가 올바르게 전환되는지 확인\n4. React DevTools에서 Route 매칭이 올바르게 작동하는지 확인"
+          },
+          {
+            "id": 3,
+            "title": "useNavigate Hook을 활용한 프로그래매틱 네비게이션 구현",
+            "description": "카테고리 카드 클릭 시 해당 카테고리 페이지로 이동하는 네비게이션 기능을 구현합니다.",
+            "dependencies": [
+              "8.2"
+            ],
+            "details": "1. CategoryCard 컴포넌트에서 useNavigate 활용:\n```tsx\nimport { useNavigate } from 'react-router-dom';\n\nconst CategoryCard: React.FC<{category: Category}> = ({ category }) => {\n  const navigate = useNavigate();\n  \n  const handleClick = () => {\n    navigate(`/category/${category.id}`);\n  };\n  \n  return (\n    <div className=\"category-card\" onClick={handleClick}>\n      <h3>{category.name}</h3>\n      <p>{category.description}</p>\n    </div>\n  );\n};\n```\n2. 키보드 접근성을 위한 onKeyDown 이벤트 추가\n3. 모바일에서 터치 피드백 스타일 적용",
+            "status": "pending",
+            "testStrategy": "1. 카테고리 카드 클릭 시 올바른 URL로 이동하는지 확인\n2. 키보드 Enter 키로도 네비게이션이 작동하는지 테스트\n3. 모바일에서 터치 시 적절한 피드백이 제공되는지 확인\n4. 브라우저 히스토리에 네비게이션이 올바르게 기록되는지 확인\n5. 뒤로가기 버튼이 정상 작동하는지 테스트"
+          },
+          {
+            "id": 4,
+            "title": "URL 파라미터 및 쿼리 스트링 처리 구현",
+            "description": "useParams와 useSearchParams를 활용하여 동적 라우팅과 검색 쿼리 처리를 구현합니다.",
+            "dependencies": [
+              "8.3"
+            ],
+            "details": "1. CategoryPage에서 useParams 활용:\n```tsx\nimport { useParams } from 'react-router-dom';\n\nconst CategoryPage: React.FC = () => {\n  const { categoryId } = useParams<{ categoryId: string }>();\n  \n  return (\n    <div className=\"category-page\">\n      <h1>카테고리 ID: {categoryId}</h1>\n      {/* 카테고리별 콘텐츠 */}\n    </div>\n  );\n};\n```\n2. SearchResultsPage에서 useSearchParams 활용:\n```tsx\nimport { useSearchParams } from 'react-router-dom';\n\nconst SearchResultsPage: React.FC = () => {\n  const [searchParams] = useSearchParams();\n  const query = searchParams.get('q');\n  const location = searchParams.get('location');\n  \n  return (\n    <div className=\"search-results\">\n      <h1>{location}에서 \"{query}\" 검색 결과</h1>\n    </div>\n  );\n};\n```\n3. 파라미터 유효성 검사 및 에러 처리 추가",
+            "status": "pending",
+            "testStrategy": "1. 다양한 categoryId로 접근했을 때 파라미터가 올바르게 추출되는지 확인\n2. 검색 쿼리 파라미터가 URL에서 정확히 파싱되는지 테스트\n3. 잘못된 파라미터나 누락된 파라미터에 대한 에러 처리 확인\n4. URL 직접 입력 시에도 파라미터가 올바르게 처리되는지 테스트\n5. 한글 검색어가 URL 인코딩/디코딩되는지 확인"
+          },
+          {
+            "id": 5,
+            "title": "네비게이션 상태 관리 및 사용자 경험 최적화",
+            "description": "로딩 상태, 페이지 전환 애니메이션, 브레드크럼 네비게이션을 구현하여 사용자 경험을 향상시킵니다.",
+            "dependencies": [
+              "8.4"
+            ],
+            "details": "1. 페이지 전환 로딩 상태 관리:\n```tsx\nconst [isNavigating, setIsNavigating] = useState(false);\n\nconst handleNavigation = (path: string) => {\n  setIsNavigating(true);\n  navigate(path);\n  // 페이지 로드 완료 후 setIsNavigating(false)\n};\n```\n2. 브레드크럼 컴포넌트 구현:\n```tsx\nconst Breadcrumb: React.FC = () => {\n  const location = useLocation();\n  const pathnames = location.pathname.split('/').filter(x => x);\n  \n  return (\n    <nav className=\"breadcrumb\">\n      <Link to=\"/\">홈</Link>\n      {pathnames.map((name, index) => {\n        const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;\n        return (\n          <span key={name}>\n            <span> / </span>\n            <Link to={routeTo}>{name}</Link>\n          </span>\n        );\n      })}\n    </nav>\n  );\n};\n```\n3. 페이지 전환 애니메이션 CSS 추가\n4. 모바일에서 뒤로가기 제스처 지원",
+            "status": "pending",
+            "testStrategy": "1. 페이지 전환 시 로딩 인디케이터가 적절히 표시되는지 확인\n2. 브레드크럼이 현재 경로를 정확히 반영하는지 테스트\n3. 페이지 전환 애니메이션이 부드럽게 작동하는지 확인\n4. 모바일에서 스와이프 제스처로 뒤로가기가 가능한지 테스트\n5. 접근성: 스크린 리더가 페이지 변경을 올바르게 안내하는지 확인"
+          }
+        ]
       },
       {
         "id": 9,
@@ -114,7 +546,61 @@
           8
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Context 구조 설계 및 타입 정의",
+            "description": "AppState 인터페이스와 AppContextType 정의, Context 생성 및 기본 구조 설계",
+            "dependencies": [],
+            "details": "1. contexts/AppContext.tsx 파일 생성\n2. AppState 인터페이스 정의 (selectedLocation, searchValue, categories, popularTags, loading, error)\n3. AppContextType 인터페이스 정의 (state, actions)\n4. createContext로 AppContext 생성\n5. TypeScript 타입 안전성 확보",
+            "status": "pending",
+            "testStrategy": "1. TypeScript 컴파일 오류가 없는지 확인\n2. Context 타입이 올바르게 정의되었는지 검증\n3. 인터페이스 구조가 요구사항과 일치하는지 확인"
+          },
+          {
+            "id": 2,
+            "title": "Context Provider 구현 및 상태 관리 로직 작성",
+            "description": "AppProvider 컴포넌트 구현, useState를 활용한 상태 관리 및 액션 함수들 구현",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "1. AppProvider 컴포넌트 구현\n2. useState로 초기 상태 설정\n3. 모든 액션 함수 구현 (setSelectedLocation, setSearchValue, setCategories, setLoading, setError)\n4. Context.Provider로 값 제공\n5. children props 처리",
+            "status": "pending",
+            "testStrategy": "1. Provider가 올바른 초기값을 제공하는지 확인\n2. 각 액션 함수가 상태를 올바르게 업데이트하는지 테스트\n3. 상태 변경 시 불변성이 유지되는지 확인"
+          },
+          {
+            "id": 3,
+            "title": "커스텀 Hook 구현 및 에러 처리",
+            "description": "useAppContext 커스텀 Hook 구현, Provider 외부 사용 시 에러 처리 로직 추가",
+            "dependencies": [
+              "9.2"
+            ],
+            "details": "1. useAppContext 커스텀 Hook 구현\n2. useContext로 AppContext 접근\n3. undefined 체크 및 에러 throw 로직 구현\n4. 명확한 에러 메시지 제공\n5. Hook 사용법 JSDoc 주석 추가",
+            "status": "pending",
+            "testStrategy": "1. Provider 내부에서 Hook이 정상 작동하는지 확인\n2. Provider 외부에서 Hook 사용 시 에러가 발생하는지 테스트\n3. 에러 메시지가 명확하고 도움이 되는지 확인"
+          },
+          {
+            "id": 4,
+            "title": "App.tsx에 Provider 래핑 및 기본 연결",
+            "description": "App.tsx에 AppProvider 래핑, 기본 Context 연결 테스트 및 개발자 도구 설정",
+            "dependencies": [
+              "9.3"
+            ],
+            "details": "1. App.tsx에서 AppProvider import\n2. 전체 앱을 AppProvider로 래핑\n3. React DevTools에서 Context 값 확인 가능하도록 설정\n4. 기본 테스트 컴포넌트로 Context 접근 테스트\n5. 개발 환경에서 Context 디버깅 설정",
+            "status": "pending",
+            "testStrategy": "1. 앱이 정상적으로 렌더링되는지 확인\n2. React DevTools에서 Context 값이 보이는지 확인\n3. Provider가 모든 하위 컴포넌트를 감싸고 있는지 검증\n4. Context 값에 접근할 수 있는지 테스트"
+          },
+          {
+            "id": 5,
+            "title": "기존 컴포넌트 Context API 마이그레이션",
+            "description": "기존 useState 기반 컴포넌트들을 Context API로 마이그레이션, 성능 최적화 및 통합 테스트",
+            "dependencies": [
+              "9.4"
+            ],
+            "details": "1. 기존 컴포넌트에서 useState 제거\n2. useAppContext Hook으로 상태 접근 변경\n3. 상태 변경 로직을 Context 액션으로 교체\n4. 불필요한 props drilling 제거\n5. 컴포넌트별 리렌더링 최적화 확인",
+            "status": "pending",
+            "testStrategy": "1. 기존 기능들이 모두 정상 작동하는지 통합 테스트\n2. 상태 변경이 관련된 모든 컴포넌트에 반영되는지 확인\n3. React DevTools로 불필요한 리렌더링이 없는지 확인\n4. 성능 비교: 마이그레이션 전후 렌더링 횟수 측정\n5. 모든 상호작용이 Context를 통해 올바르게 작동하는지 테스트"
+          }
+        ]
       },
       {
         "id": 10,
@@ -127,7 +613,61 @@
           9
         ],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Redux Toolkit 설치 및 기본 Store 설정",
+            "description": "Redux Toolkit과 React-Redux 설치 후 기본 Store 구성 및 Provider 설정",
+            "dependencies": [],
+            "details": "1. 패키지 설치: `npm install @reduxjs/toolkit react-redux`\n2. store/index.ts 파일 생성 및 configureStore 설정\n3. App.tsx에 Provider 래핑\n4. 기본 미들웨어 설정 및 TypeScript 타입 정의\n5. Redux DevTools 연결 확인",
+            "status": "pending",
+            "testStrategy": "1. 패키지가 올바르게 설치되었는지 package.json 확인\n2. Store가 정상적으로 생성되는지 콘솔 확인\n3. Redux DevTools에서 Store 상태 확인 가능한지 테스트\n4. TypeScript 컴파일 오류 없는지 확인"
+          },
+          {
+            "id": 2,
+            "title": "Location Slice 구현 및 타입 안전한 Hook 생성",
+            "description": "위치 관련 상태를 관리하는 locationSlice 구현 및 타입 안전한 Redux Hook 생성",
+            "dependencies": [
+              "10.1"
+            ],
+            "details": "1. store/slices/locationSlice.ts 생성\n2. LocationState 인터페이스 정의\n3. createSlice로 리듀서 및 액션 생성\n4. hooks/redux.ts에 useAppDispatch, useAppSelector 구현\n5. 초기 상태값 설정 (selectedLocation: '정자동')",
+            "status": "pending",
+            "testStrategy": "1. Slice가 올바른 초기 상태를 가지는지 확인\n2. 액션 디스패치 시 상태가 올바르게 변경되는지 테스트\n3. TypeScript 타입 체크가 정상 작동하는지 확인\n4. Redux DevTools에서 액션 히스토리 확인"
+          },
+          {
+            "id": 3,
+            "title": "Search 및 Category Slice 구현",
+            "description": "검색어와 카테고리 상태를 관리하는 searchSlice와 categorySlice 구현",
+            "dependencies": [
+              "10.2"
+            ],
+            "details": "1. store/slices/searchSlice.ts 생성 (searchValue, searchHistory 관리)\n2. store/slices/categorySlice.ts 생성 (categories, selectedCategory 관리)\n3. 각 Slice의 리듀서를 Store에 등록\n4. 비동기 액션을 위한 createAsyncThunk 활용 준비\n5. 상태 정규화 패턴 적용",
+            "status": "pending",
+            "testStrategy": "1. 각 Slice의 액션이 독립적으로 작동하는지 확인\n2. 여러 Slice 간 상태 변경이 서로 영향을 주지 않는지 테스트\n3. 복잡한 상태 업데이트가 올바르게 처리되는지 확인\n4. 메모리 누수 없이 상태가 관리되는지 확인"
+          },
+          {
+            "id": 4,
+            "title": "기존 Context API 컴포넌트를 Redux로 마이그레이션",
+            "description": "LocationSelector, SearchBar, CategoryGrid 컴포넌트를 Context API에서 Redux로 전환",
+            "dependencies": [
+              "10.3"
+            ],
+            "details": "1. LocationSelector 컴포넌트에서 useAppSelector/useAppDispatch 사용\n2. SearchBar 컴포넌트의 상태 관리를 Redux로 전환\n3. CategoryGrid에서 카테고리 상태를 Redux로 연결\n4. 기존 Context Provider 제거 및 정리\n5. 컴포넌트 간 props drilling 제거",
+            "status": "pending",
+            "testStrategy": "1. 마이그레이션 전후 기능이 동일하게 작동하는지 확인\n2. 상태 변경이 모든 관련 컴포넌트에 반영되는지 테스트\n3. 불필요한 리렌더링이 발생하지 않는지 React DevTools로 확인\n4. 사용자 인터랙션이 모두 정상 작동하는지 테스트"
+          },
+          {
+            "id": 5,
+            "title": "Redux 성능 최적화 및 Context API 비교 분석",
+            "description": "Redux 성능 최적화 적용 및 Context API 대비 성능 개선 효과 측정 및 문서화",
+            "dependencies": [
+              "10.4"
+            ],
+            "details": "1. createSelector를 활용한 메모이제이션 적용\n2. React.memo와 useCallback 최적화\n3. Redux Toolkit의 Immer 활용 최적화\n4. Context API vs Redux 성능 비교 측정\n5. 최적화 결과 문서화 및 베스트 프랙티스 정리",
+            "status": "pending",
+            "testStrategy": "1. React DevTools Profiler로 리렌더링 횟수 측정\n2. 메모리 사용량 비교 분석\n3. 복잡한 상태 업데이트 시 성능 차이 측정\n4. 타임 트래블 디버깅 기능 정상 작동 확인\n5. 전체 애플리케이션 통합 테스트 수행"
+          }
+        ]
       }
     ],
     "metadata": {
