@@ -17,7 +17,7 @@
             "description": "Vite를 사용하여 React 18 TypeScript 프로젝트를 생성하고 필수 의존성을 설치합니다.",
             "dependencies": [],
             "details": "1. Vite 프로젝트 생성: `npm create vite@latest daangn-clone -- --template react-ts`\n2. 프로젝트 디렉토리로 이동: `cd daangn-clone`\n3. 필수 의존성 설치: `npm install`\n4. React 18 관련 의존성 확인 및 업데이트: `npm install react@18 react-dom@18 @types/react@18 @types/react-dom@18`\n5. 개발 서버 실행 테스트: `npm run dev`\n6. TypeScript 설정 확인 및 기본 컴파일 테스트",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. `npm run dev` 실행 시 개발 서버가 정상적으로 시작되는지 확인\n2. 브라우저에서 기본 Vite + React 페이지가 로드되는지 확인\n3. TypeScript 컴파일 오류가 없는지 확인\n4. Hot Module Replacement가 정상 작동하는지 테스트"
           },
           {
@@ -26,7 +26,7 @@
             "description": "체계적인 컴포넌트 구조와 스타일 관리를 위한 폴더 구조를 생성하고 기본 파일들을 설정합니다.",
             "dependencies": [],
             "details": "1. src 폴더 내 디렉토리 구조 생성:\n```\nsrc/\n├── components/\n│   ├── Header/\n│   ├── HeroSection/\n│   ├── CategoryGrid/\n│   └── common/\n├── styles/\n├── data/\n└── utils/\n```\n2. 각 컴포넌트 폴더에 index.ts 파일 생성\n3. styles 폴더에 기본 CSS 파일들 생성 (globals.css, variables.css, responsive.css)\n4. data 폴더에 mockData.ts 파일 생성\n5. utils 폴더에 helpers.ts 파일 생성",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 모든 폴더가 계획된 구조대로 생성되었는지 확인\n2. 각 index.ts 파일이 올바르게 생성되었는지 확인\n3. TypeScript에서 경로 import가 정상 작동하는지 테스트\n4. 파일 구조가 확장 가능한 형태로 설정되었는지 검증"
           },
           {
@@ -35,7 +35,7 @@
             "description": "당근마켓 디자인 시스템에 맞는 CSS 변수를 정의하고 CSS Reset 및 기본 스타일을 적용합니다.",
             "dependencies": [],
             "details": "1. variables.css에 CSS 변수 정의:\n```css\n:root {\n  --primary-color: #FF7E36;\n  --secondary-color: #FFF3E0;\n  --text-primary: #212529;\n  --text-secondary: #868E96;\n  --border-color: #DEE2E6;\n  --background-color: #FFFFFF;\n  --mobile-breakpoint: 768px;\n  --tablet-breakpoint: 1024px;\n  --font-size-base: clamp(14px, 2.5vw, 16px);\n  --spacing-xs: 4px;\n  --spacing-sm: 8px;\n  --spacing-md: 16px;\n  --spacing-lg: 24px;\n  --spacing-xl: 32px;\n}\n```\n2. globals.css에 CSS Reset 및 기본 스타일 적용\n3. 기본 폰트 설정 및 박스 모델 정규화\n4. main.tsx에서 스타일 파일들 import",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 개발자 도구에서 CSS 변수가 올바르게 정의되었는지 확인\n2. 기본 스타일이 모든 브라우저에서 일관되게 적용되는지 테스트\n3. clamp() 함수를 사용한 반응형 폰트 크기가 정상 작동하는지 확인\n4. CSS 변수를 사용한 스타일링이 정상 작동하는지 테스트"
           },
           {
@@ -672,7 +672,7 @@
     ],
     "metadata": {
       "created": "2025-07-31T05:27:23.274Z",
-      "updated": "2025-07-31T05:37:55.842Z",
+      "updated": "2025-07-31T07:21:02.333Z",
       "description": "Tasks for master context"
     }
   }

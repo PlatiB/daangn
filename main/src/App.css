@@ -1,0 +1,211 @@
+/* 당근마켓 CSS 변수 테스트용 스타일 */
+
+.app {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+/* 테스트 헤더 */
+.test-header {
+  text-align: center;
+  padding: var(--spacing-2xl) 0;
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.test-header h1 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.test-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* 색상 팔레트 테스트 */
+.color-test {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.color-test h2 {
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.color-box {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid var(--border-color);
+}
+
+.color-box.primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.color-box.secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-primary);
+}
+
+.color-box.text-primary {
+  background-color: var(--text-primary);
+  color: white;
+}
+
+.color-box.text-secondary {
+  background-color: var(--text-secondary);
+  color: white;
+}
+
+/* 반응형 폰트 크기 테스트 */
+.font-test {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.font-test h2 {
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+.font-xs { font-size: var(--font-size-xs); }
+.font-sm { font-size: var(--font-size-sm); }
+.font-base { font-size: var(--font-size-base); }
+.font-lg { font-size: var(--font-size-lg); }
+.font-xl { font-size: var(--font-size-xl); }
+.font-2xl { font-size: var(--font-size-2xl); }
+
+.font-test p {
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--border-light);
+  border-radius: var(--border-radius);
+}
+
+/* 반응형 그리드 테스트 */
+.grid-test {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.grid-test h2 {
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+.grid-item {
+  padding: var(--spacing-lg);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* 간격 시스템 테스트 */
+.spacing-test {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.spacing-test h2 {
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+.spacing-demo {
+  background-color: var(--border-light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+}
+
+.spacing-demo > div {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+}
+
+.spacing-xs { 
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.spacing-sm { 
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.spacing-md { 
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.spacing-lg { 
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.spacing-xl { 
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* 반응형 테스트 - 모바일에서 그리드 숨김 표시 */
+.responsive-info {
+  position: fixed;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-xs);
+  z-index: 1000;
+}
+
+/* 모바일에서 정보 표시 */
+@media (max-width: 767px) {
+  .responsive-info::after {
+    content: "모바일 뷰";
+  }
+}
+
+/* 태블릿에서 정보 표시 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .responsive-info::after {
+    content: "태블릿 뷰";
+  }
+}
+
+/* 데스크톱에서 정보 표시 */
+@media (min-width: 1024px) {
+  .responsive-info::after {
+    content: "데스크톱 뷰";
+  }
+}
+
+/* 디버깅용: CSS 변수 표시 */
+.debug-info {
+  position: fixed;
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-xs);
+  font-family: monospace;
+  z-index: 1000;
+  max-width: 300px;
+}
