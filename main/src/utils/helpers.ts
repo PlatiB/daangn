@@ -6,11 +6,11 @@
  * @param delay 지연 시간 (밀리초)
  * @returns 디바운스된 함수
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => void {
-  let timeoutId: NodeJS.Timeout;
+  let timeoutId: number;
   return (...args: Parameters<T>) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => func(...args), delay);
@@ -23,7 +23,7 @@ export function debounce<T extends (...args: any[]) => any>(
  * @param delay 지연 시간 (밀리초)
  * @returns 스로틀된 함수
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => void {
