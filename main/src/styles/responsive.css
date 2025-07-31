@@ -1,0 +1,105 @@
+/* 모바일 퍼스트 반응형 시스템 */
+
+/* 기본 컨테이너 - 모바일 */
+.container {
+  width: 100%;
+  padding: 0 var(--spacing-md);
+  margin: 0 auto;
+}
+
+/* 모바일 퍼스트 - 기본 스타일 (320px 이상) */
+.responsive-text {
+  font-size: var(--font-size-base);
+}
+
+.responsive-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: 1fr;
+}
+
+/* 터치 친화적 최소 크기 */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* 태블릿 (768px 이상) */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+    max-width: 768px;
+  }
+  
+  .responsive-text {
+    font-size: var(--font-size-lg);
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .tablet-hidden {
+    display: none;
+  }
+  
+  .tablet-visible {
+    display: block;
+  }
+}
+
+/* 데스크톱 (1024px 이상) */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-xl);
+    max-width: 1200px;
+  }
+  
+  .responsive-text {
+    font-size: var(--font-size-xl);
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+  }
+  
+  .desktop-hidden {
+    display: none;
+  }
+  
+  .desktop-visible {
+    display: block;
+  }
+}
+
+/* 대형 데스크톱 (1440px 이상) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* 모바일 전용 유틸리티 */
+@media (max-width: 767px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+}
+
+/* 인쇄용 스타일 */
+@media print {
+  .no-print {
+    display: none;
+  }
+}

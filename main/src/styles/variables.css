@@ -1,0 +1,47 @@
+/* 당근마켓 디자인 시스템 CSS 변수 */
+:root {
+  /* 브랜드 컬러 */
+  --primary-color: #FF7E36;
+  --secondary-color: #FFF3E0;
+  
+  /* 텍스트 컬러 */
+  --text-primary: #212529;
+  --text-secondary: #868E96;
+  --text-muted: #ADB5BD;
+  
+  /* 배경 및 테두리 */
+  --background-color: #FFFFFF;
+  --border-color: #DEE2E6;
+  --border-light: #F8F9FA;
+  
+  /* 반응형 브레이크포인트 */
+  --mobile-breakpoint: 768px;
+  --tablet-breakpoint: 1024px;
+  
+  /* 반응형 폰트 크기 */
+  --font-size-xs: clamp(12px, 2vw, 14px);
+  --font-size-sm: clamp(14px, 2.2vw, 16px);
+  --font-size-base: clamp(16px, 2.5vw, 18px);
+  --font-size-lg: clamp(18px, 3vw, 24px);
+  --font-size-xl: clamp(24px, 4vw, 32px);
+  --font-size-2xl: clamp(32px, 5vw, 48px);
+  
+  /* 간격 시스템 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* 그림자 */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* 테두리 반지름 */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+}
