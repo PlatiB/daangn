@@ -1,0 +1,116 @@
+/* DownloadButton 컴포넌트 스타일 */
+
+/* 모바일 퍼스트 - 기본 스타일 (320px~) */
+.downloadButton {
+  /* 기본 스타일 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  outline: none;
+  transition: all 0.3s ease;
+  
+  /* 크기 및 간격 - 원본에 맞게 더 컴팩트하게 조정 */
+  min-height: 36px; /* 원본에 맞게 줄임 */
+  padding: 8px 12px; /* 더 컴팩트한 패딩 */
+  min-width: 76px; /* 최소 너비 감소 */
+  
+  /* 색상 */
+  background-color: #FF6F0F; /* 당근마켓 주 색상 */
+  color: white;
+  
+  /* 텍스트 - 원본에 맞게 조정 */
+  font-size: 13px; /* 약간 작게 */
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  
+  /* 그림자 - 더 부드럽게 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* 호버 상태 */
+.downloadButton:hover {
+  background-color: #e55a00; /* 더 어두운 주황색 */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 111, 15, 0.3);
+}
+
+/* 포커스 상태 */
+.downloadButton:focus {
+  outline: 2px solid #FF6F0F;
+  outline-offset: 2px;
+  background-color: #e55a00;
+}
+
+/* 액티브 상태 */
+.downloadButton:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* 비활성화 상태 */
+.downloadButton:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 버튼 텍스트 */
+.buttonText {
+  display: block;
+  line-height: 1;
+}
+
+/* 태블릿 스타일 (768px+) */
+@media (min-width: 768px) {
+  .downloadButton {
+    min-height: 38px;
+    padding: 9px 14px;
+    font-size: 14px;
+    min-width: 84px;
+  }
+}
+
+/* 데스크톱 스타일 (1024px+) */
+@media (min-width: 1024px) {
+  .downloadButton {
+    min-height: 40px;
+    padding: 10px 16px;
+    font-size: 14px;
+    min-width: 88px;
+    border-radius: 8px; /* 원본에 맞게 줄임 */
+  }
+}
+
+/* 접근성: 모션 감소 선호 시 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce) {
+  .downloadButton {
+    transition: none;
+  }
+  
+  .downloadButton:hover {
+    transform: none;
+  }
+  
+  .downloadButton:active {
+    transform: none;
+  }
+}
+
+/* 다크 모드 지원 (향후 확장용) */
+@media (prefers-color-scheme: dark) {
+  .downloadButton {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .downloadButton:hover {
+    box-shadow: 0 4px 12px rgba(255, 111, 15, 0.4);
+  }
+}

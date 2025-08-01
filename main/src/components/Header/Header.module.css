@@ -1,0 +1,112 @@
+/* Header 컴포넌트 기본 스타일 */
+
+/* 모바일 퍼스트 - 기본 스타일 (320px~) */
+.header {
+  width: 100%;
+  background-color: var(--background-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 로고 왼쪽, 버튼 오른쪽 */
+  padding: 10px 16px;
+  min-height: 52px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* 로고 영역 - 왼쪽 정렬 */
+.header-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* 헤더 액션 영역 - 오른쪽 정렬 */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* 다운로드 버튼 영역 스타일은 DownloadButton 컴포넌트에서 관리 */
+
+/* 모바일 메뉴 토글 (향후 확장용) */
+.mobile-menu-toggle {
+  padding: var(--spacing-sm);
+  min-height: 44px;
+  min-width: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  display: none; /* 현재는 사용하지 않음 */
+}
+
+.mobile-menu-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-toggle:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(0.95);
+}
+
+.hamburger-icon {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  transition: transform 0.3s ease;
+}
+
+/* 모바일 메뉴가 열렸을 때 햄버거 아이콘 회전 (향후 사용) */
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon {
+  transform: rotate(90deg);
+}
+
+/* 태블릿 스타일 (768px+) */
+@media (min-width: 768px) {
+  .header-container {
+    padding: 12px 20px;
+    min-height: 56px;
+  }
+}
+
+/* 데스크톱 스타일 (1024px+) */
+@media (min-width: 1024px) {
+  .header-container {
+    padding: 14px 32px;
+    max-width: 1200px;
+    min-height: 60px;
+  }
+  
+  .header-actions {
+    gap: var(--spacing-md);
+  }
+}
+
+/* 접근성: 모션 감소 선호 시 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-toggle,
+  .hamburger-icon {
+    transition: none;
+  }
+  
+  .mobile-menu-toggle:active {
+    transform: none;
+  }
+  
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-icon {
+    transform: none;
+  }
+}
