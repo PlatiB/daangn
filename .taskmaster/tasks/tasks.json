@@ -136,7 +136,7 @@
         "dependencies": [
           2
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -144,7 +144,7 @@
             "description": "LocationSelector에서 사용할 지역 데이터의 JSON 구조를 설계하고 mock 데이터를 생성합니다.",
             "dependencies": [],
             "details": "1. 지역 데이터 타입 정의:\n```tsx\ninterface Location {\n  id: string;\n  name: string;\n  district?: string;\n  popular?: boolean;\n}\n```\n2. data/locations.json 파일 생성\n3. 서울 주요 지역 20개 이상 포함 (강남구, 서초구, 송파구 등)\n4. 인기 지역 플래그 설정\n5. utils/locationUtils.ts에서 데이터 접근 함수 구현",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. JSON 데이터가 올바른 형식인지 검증\n2. 모든 지역에 필수 필드(id, name)가 있는지 확인\n3. 인기 지역이 5개 이상 설정되어 있는지 확인\n4. locationUtils 함수들이 예상된 결과를 반환하는지 테스트"
           },
           {
@@ -155,7 +155,7 @@
               "3.1"
             ],
             "details": "1. components/HeroSection/HeroSection.tsx 생성\n2. useState를 사용한 selectedLocation 상태 관리\n3. 동적 제목 메시지 렌더링: '{selectedLocation}에서 맛집 찾고 계신가요?'\n4. 기본 CSS 클래스 구조 설정\n5. TypeScript 인터페이스 정의\n6. 초기값을 '정자동'으로 설정",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 컴포넌트가 오류 없이 렌더링되는지 확인\n2. selectedLocation 상태 변경 시 제목이 동적으로 업데이트되는지 테스트\n3. TypeScript 타입 체크 통과 확인\n4. 초기 렌더링 시 '정자동에서 맛집 찾고 계신가요?' 메시지 표시 확인"
           },
           {
@@ -167,7 +167,7 @@
               "3.2"
             ],
             "details": "1. components/HeroSection/LocationSelector.tsx 생성\n2. LocationSelectorProps 인터페이스 정의\n3. 드롭다운 열림/닫힘 상태 관리\n4. 지역 목록 렌더링 (mock 데이터 사용)\n5. 선택된 지역 표시 및 변경 핸들러\n6. 기본 HTML 구조: button + ul/li 조합\n7. 접근성을 위한 ARIA 속성 추가",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 드롭다운 버튼 클릭 시 목록이 열리고 닫히는지 확인\n2. 지역 선택 시 onLocationChange 콜백이 호출되는지 테스트\n3. 선택된 지역이 버튼에 올바르게 표시되는지 확인\n4. ARIA 속성이 올바르게 설정되어 있는지 검증"
           },
           {
@@ -179,20 +179,8 @@
               "3.3"
             ],
             "details": "1. styles/HeroSection.css 생성\n2. 모바일 기본 스타일 (320px~767px):\n   - 세로 스택 레이아웃\n   - 전체 너비 활용\n   - 16px 좌우 패딩\n3. 태블릿+ 스타일 (768px+):\n   - 가로 배치 고려\n   - 중앙 정렬\n4. 터치 친화적 UI:\n   - 최소 44px 터치 타겟\n   - 충분한 간격\n5. 드롭다운 스타일링 및 애니메이션",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 모바일(375px), 태블릿(768px), 데스크톱(1024px)에서 레이아웃 확인\n2. 터치 타겟이 최소 44px인지 측정\n3. 드롭다운 애니메이션이 부드럽게 작동하는지 확인\n4. 다양한 텍스트 길이에서 레이아웃이 깨지지 않는지 테스트\n5. 가로/세로 화면 전환 시 레이아웃 유지 확인"
-          },
-          {
-            "id": 5,
-            "title": "키보드 접근성 및 사용자 경험 최적화",
-            "description": "키보드 네비게이션, 접근성, 그리고 향상된 사용자 경험을 구현합니다.",
-            "dependencies": [
-              "3.3",
-              "3.4"
-            ],
-            "details": "1. 키보드 이벤트 핸들러 구현:\n   - Tab: 포커스 이동\n   - Enter/Space: 드롭다운 열기/선택\n   - Escape: 드롭다운 닫기\n   - Arrow keys: 옵션 탐색\n2. 포커스 관리 및 시각적 표시\n3. 외부 클릭 시 드롭다운 닫기\n4. 로딩 상태 및 에러 처리\n5. 검색 기능 추가 (옵션)\n6. 성능 최적화: React.memo, useMemo 적용",
-            "status": "pending",
-            "testStrategy": "1. 키보드만으로 모든 기능 사용 가능한지 테스트\n2. 포커스 표시가 명확하게 보이는지 확인\n3. 스크린 리더로 접근성 테스트\n4. 외부 클릭 시 드롭다운이 닫히는지 확인\n5. 성능: 불필요한 리렌더링이 발생하지 않는지 React DevTools로 확인"
           }
         ]
       },
@@ -672,7 +660,7 @@
     ],
     "metadata": {
       "created": "2025-07-31T05:27:23.274Z",
-      "updated": "2025-07-31T09:03:19.329Z",
+      "updated": "2025-08-01T06:23:59.719Z",
       "description": "Tasks for master context"
     }
   }

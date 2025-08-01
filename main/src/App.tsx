@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './components/Header/Header'
+import HeroSection from './components/HeroSection/HeroSection'
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       
       {/* 메인 컨텐츠 영역 */}
       <main className="main-content">
-        {/* 향후 HeroSection 컴포넌트가 들어갈 영역 */}
+        {/* HeroSection 컴포넌트 */}
+        <HeroSection />
         
         {/* 향후 PopularTags 컴포넌트가 들어갈 영역 */}
         

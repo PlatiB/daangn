@@ -4,10 +4,18 @@
   --primary-color: #FF7E36;
   --secondary-color: #FFF3E0;
   
+  /* 당근마켓 실습 규칙에 맞는 색상 팔레트 (필수 사용) */
+  --primary: #FF6F0F;
+  --secondary: #FF9F30;
+  --text: #212529;
+  --text-muted: #6C757D;
+  --background: #FFFFFF;
+  --border: #DEE2E6;
+  
   /* 텍스트 컬러 */
   --text-primary: #212529;
   --text-secondary: #868E96;
-  --text-muted: #ADB5BD;
+  --text-muted-legacy: #ADB5BD;
   
   /* 배경 및 테두리 */
   --background-color: #FFFFFF;

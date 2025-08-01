@@ -1,0 +1,401 @@
+/* HeroSection 컴포넌트 기본 스타일 */
+
+/* 모바일 퍼스트 - 기본 스타일 (320px~767px) */
+.hero-section {
+  width: 100%;
+  padding: 1.5rem 1rem; /* 모바일에서 더 컴팩트한 패딩 */
+  background-color: var(--background);
+  text-align: center;
+  min-height: 400px; /* 최소 높이 보장 */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 모바일에서 왼쪽 정렬 */
+}
+
+.hero-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 모바일에서 왼쪽 정렬 */
+  gap: 1.25rem; /* 모바일에서 간격 조정 */
+}
+
+/* 동적 제목 스타일 */
+.hero-title {
+  font-size: clamp(1.25rem, 5vw, 2.5rem); /* 모바일에서 더 작은 시작 크기 */
+  font-weight: 700;
+  color: var(--text);
+  word-break: keep-all;
+  line-height: 1.4; /* 모바일에서 더 넓은 줄 간격 */
+  margin: 0 0 0.5rem 0; /* 하단 마진 추가 */
+  padding: 0 0.5rem; /* 좌우 여백 */
+  min-height: 3.5rem; /* 고정 높이 설정 - 애니메이션 텍스트 길이 변화에 관계없이 일정한 영역 확보 */
+  display: block; /* block으로 변경하여 자연스러운 텍스트 흐름 */
+  text-align: left; /* 왼쪽 정렬 */
+}
+
+.location-text {
+  color: var(--primary);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 111, 15, 0.3);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  display: inline; /* 인라인 요소로 설정 */
+  /* 자연스러운 텍스트 흐름을 위해 flex 관련 속성 제거 */
+}
+
+/* 애니메이션 텍스트 스타일 */
+.animated-text {
+  color: var(--primary); /* 폴백 색상 - 모든 브라우저에서 보임 */
+  font-weight: 800;
+  display: inline-block;
+  animation: fadeInUp 0.5s ease-in-out;
+  position: relative;
+  white-space: nowrap; /* 줄바꿈 방지 */
+  /* 자연스러운 텍스트 흐름을 위해 margin, padding, flex 속성 최소화 */
+}
+
+/* 그라데이션 효과 - 지원하는 브라우저에서만 적용 */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .animated-text {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInUp 0.5s ease-in-out, gradientShift 3s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Location과 Search 컨트롤 컨테이너 */
+.hero-controls {
+  display: flex;
+  flex-direction: column; /* 모바일: 세로 배치 */
+  align-items: center;
+  gap: 1.25rem; /* 모바일에서 간격 조정 */
+  width: 100%;
+  max-width: 100%;
+}
+
+/* LocationSelector 컨테이너 */
+.location-selector-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px; /* 모바일에서 최대 너비 제한 */
+}
+
+/* 검색 폼 플레이스홀더 */
+.search-form-placeholder {
+  display: flex;
+  width: 100%;
+  max-width: 350px; /* 모바일에서 더 작은 최대 너비 */
+  border: 2px solid var(--border);
+  border-radius: 12px; /* 더 둥근 모서리 */
+  overflow: hidden;
+  background-color: var(--background);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-form-placeholder:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(255, 111, 15, 0.15);
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.875rem 1rem; /* 모바일에서 패딩 증가 */
+  border: none;
+  font-size: 0.95rem; /* 모바일에서 폰트 크기 조정 */
+  background: transparent;
+  min-height: 44px; /* 터치 친화적 크기 */
+  color: var(--text);
+  font-weight: 400;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.9rem; /* 플레이스홀더 폰트 크기 조정 */
+}
+
+.search-button {
+  padding: 0.875rem 1rem; /* 입력 필드와 동일한 패딩 */
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  font-size: 1.1rem; /* 모바일에서 폰트 크기 조정 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 48px; /* 모바일에서 최소 너비 증가 */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.search-button:hover {
+  background-color: var(--secondary);
+  transform: translateY(-1px); /* 호버 시 미세한 움직임 */
+  box-shadow: 0 4px 8px rgba(255, 111, 15, 0.2);
+}
+
+.search-button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.search-button:active {
+  transform: translateY(0); /* 클릭 시 원위치 */
+}
+
+/* 태블릿 스타일 (768px+) */
+@media (min-width: 768px) {
+  .hero-section {
+    padding: 2.5rem 2rem; /* 태블릿에서 패딩 조정 */
+    min-height: 500px; /* 태블릿에서 최소 높이 증가 */
+    justify-content: center; /* 태블릿에서 중앙 정렬 */
+  }
+
+  .hero-container {
+    max-width: 700px; /* 태블릿에서 최대 너비 증가 */
+    gap: 2rem;
+    align-items: center; /* 태블릿에서 중앙 정렬 */
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 4.5vw, 3rem); /* 태블릿에서 제목 크기 조정 */
+    line-height: 1.3; /* 줄 간격 조정 */
+    margin: 0 0 0.75rem 0;
+    min-height: 4rem; /* 태블릿에서 높이 증가 */
+    text-align: center; /* 태블릿에서 중앙 정렬 */
+  }
+  
+  /* 태블릿에서 br 태그 숨김 - 한 줄로 표시 */
+  .hero-title br {
+    display: none;
+  }
+
+  .hero-controls {
+    gap: 1.75rem; /* 태블릿에서 간격 증가 */
+  }
+
+  .location-selector-container {
+    max-width: 320px; /* 태블릿에서 LocationSelector 너비 증가 */
+  }
+
+  .search-form-placeholder {
+    max-width: 450px; /* 태블릿에서 검색 폼 너비 증가 */
+  }
+
+  .search-input {
+    font-size: 1rem; /* 태블릿에서 폰트 크기 복원 */
+    padding: 0.9375rem 1.25rem; /* 태블릿에서 패딩 증가 */
+  }
+
+  .search-input::placeholder {
+    font-size: 0.95rem; /* 태블릿에서 플레이스홀더 크기 증가 */
+  }
+
+  .search-button {
+    font-size: 1.2rem; /* 태블릿에서 버튼 폰트 크기 증가 */
+    padding: 0.9375rem 1.25rem;
+    min-width: 52px; /* 태블릿에서 최소 너비 증가 */
+  }
+
+  /* animated-text 여백 조정 */
+  .animated-text {
+    margin: 0 0.375rem; /* 태블릿에서 여백 증가 */
+    padding: 0 0.25rem; /* 태블릿에서 내부 패딩 증가 */
+  }
+
+  /* location-text 너비 제한 제거 - 제목에서 글자 생략은 허용되지 않음 */
+}
+
+/* 데스크톱 스타일 (1024px+) */
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 3.5rem 2rem; /* 데스크톱에서 패딩 조정 */
+    min-height: 600px; /* 데스크톱에서 최소 높이 증가 */
+    justify-content: center; /* 데스크톱에서 중앙 정렬 */
+  }
+
+  .hero-container {
+    max-width: 1000px; /* 데스크톱에서 최대 너비 증가 */
+    gap: 3rem; /* 데스크톱에서 간격 증가 */
+    align-items: center; /* 데스크톱에서 중앙 정렬 */
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem); /* 데스크톱에서 제목 크기 조정 */
+    line-height: 1.2; /* 데스크톱에서 줄 간격 조정 */
+    margin: 0 0 1rem 0;
+    min-height: 4.5rem; /* 데스크톱에서 높이 증가 */
+    text-align: center; /* 데스크톱에서 중앙 정렬 */
+  }
+  
+  /* 데스크톱에서 br 태그 숨김 - 한 줄로 표시 */
+  .hero-title br {
+    display: none;
+  }
+
+  /* 데스크톱에서 Location과 Search를 가로 배치 */
+  .hero-controls {
+    flex-direction: row; /* 데스크톱: 가로 배치 */
+    gap: 2rem; /* 데스크톱에서 간격 조정 */
+    justify-content: center;
+    align-items: center;
+    max-width: 900px; /* 데스크톱에서 컨트롤 최대 너비 증가 */
+    width: 100%;
+  }
+
+  .location-selector-container {
+    flex-shrink: 0;
+    min-width: 180px; /* LocationSelector 최소 너비 보장 */
+  }
+
+  .search-form-placeholder {
+    flex: 1;
+    max-width: 480px; /* 데스크톱에서 검색 폼 최대 너비 조정 */
+    min-width: 300px; /* 최소 너비 보장 */
+  }
+
+  .search-input {
+    font-size: 1.1rem; /* 데스크톱에서 폰트 크기 증가 */
+    padding: 1rem 1.5rem; /* 데스크톱에서 패딩 증가 */
+    min-height: 48px;
+  }
+
+  .search-input::placeholder {
+    font-size: 1rem; /* 데스크톱에서 플레이스홀더 크기 증가 */
+  }
+
+  .search-button {
+    font-size: 1.3rem; /* 데스크톱에서 버튼 폰트 크기 증가 */
+    padding: 1rem 1.5rem;
+    min-width: 56px; /* 데스크톱에서 최소 너비 증가 */
+    min-height: 48px;
+  }
+
+  /* animated-text 여백 조정 */
+  .animated-text {
+    margin: 0 0.5rem; /* 데스크톱에서 여백 증가 */
+    padding: 0 0.375rem; /* 데스크톱에서 내부 패딩 증가 */
+  }
+
+  /* location-text 너비 제한 제거 - 제목에서 글자 생략은 허용되지 않음 */
+  .location-text {
+    text-decoration-thickness: 3px; /* 데스크톱에서 밑줄 두께 증가 */
+  }
+}
+
+/* 큰 데스크톱 스타일 (1200px+) */
+@media (min-width: 1200px) {
+  .hero-controls {
+    max-width: 1000px; /* 더 큰 화면에서 너비 추가 증가 */
+    gap: 2.5rem; /* 더 큰 화면에서 간격 복원 */
+  }
+
+  .search-form-placeholder {
+    max-width: 550px; /* 더 큰 화면에서 검색 폼 너비 증가 */
+  }
+
+  .location-selector-container {
+    min-width: 200px; /* 더 큰 화면에서 LocationSelector 너비 증가 */
+  }
+}
+
+/* 접근성: 모션 감소 선호 시 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce) {
+  .animated-text {
+    animation: none; /* 모든 애니메이션 비활성화 */
+    transition: none; /* 전환 애니메이션 비활성화 */
+    background: none; /* 그라데이션 제거 */
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: var(--primary); /* 단순한 주황색으로 표시 */
+  }
+
+  .search-button {
+    transition: none; /* 버튼 전환 애니메이션 비활성화 */
+  }
+
+  .search-button:hover {
+    transform: none; /* 호버 애니메이션 비활성화 */
+    box-shadow: none;
+  }
+
+  .search-form-placeholder {
+    transition: none; /* 폼 전환 애니메이션 비활성화 */
+  }
+
+  .location-text {
+    text-decoration: none; /* 접근성을 위해 밑줄 제거 */
+  }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .hero-title {
+    color: var(--text);
+    font-weight: 900; /* 고대비에서 폰트 굵기 증가 */
+  }
+
+  .animated-text,
+  .location-text {
+    color: var(--primary);
+    background: none; /* 그라데이션 제거 */
+    background-clip: initial;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    font-weight: 900;
+  }
+
+  .search-form-placeholder {
+    border-width: 3px; /* 고대비에서 테두리 두께 증가 */
+  }
+
+  .search-button {
+    border: 2px solid var(--primary);
+  }
+}
+
+/* 다크 모드 준비 (향후 확장용) */
+@media (prefers-color-scheme: dark) {
+  .search-form-placeholder {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 다크 모드에서 더 진한 그림자 */
+  }
+
+  .search-form-placeholder:focus-within {
+    box-shadow: 0 4px 12px rgba(255, 111, 15, 0.25); /* 다크 모드에서 포커스 그림자 */
+  }
+}
