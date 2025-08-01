@@ -1,0 +1,81 @@
+/* Logo 컴포넌트 스타일 */
+
+/* 모바일 퍼스트 - 기본 스타일 (320px~) */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  transition: all 0.3s ease;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xs);
+  margin: calc(-1 * var(--spacing-xs)); /* 클릭 영역 확장을 위한 네거티브 마진 */
+}
+
+.logo:hover {
+  background-color: rgba(255, 126, 54, 0.1);
+  transform: scale(1.05);
+}
+
+.logo:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  background-color: rgba(255, 126, 54, 0.1);
+}
+
+.logo:active {
+  transform: scale(0.98);
+}
+
+/* 로고 SVG */
+.logoSvg {
+  height: 22px; /* 헤더에 맞게 더 컴팩트하게 */
+  width: auto;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.logo:hover .logoSvg {
+  transform: scale(1.05);
+}
+
+/* 태블릿 스타일 (768px+) */
+@media (min-width: 768px) {
+  .logo {
+    padding: var(--spacing-sm);
+    margin: calc(-1 * var(--spacing-sm));
+  }
+  
+  .logoSvg {
+    height: 24px; /* 태블릿에 맞게 조정 */
+  }
+}
+
+/* 데스크톱 스타일 (1024px+) */
+@media (min-width: 1024px) {
+  .logoSvg {
+    height: 26px; /* 데스크톱에 맞게 조정 */
+  }
+}
+
+/* 접근성: 모션 감소 선호 시 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .logoSvg {
+    transition: none;
+  }
+  
+  .logo:hover {
+    transform: none;
+  }
+  
+  .logo:hover .logoSvg {
+    transform: none;
+  }
+  
+  .logo:active {
+    transform: none;
+  }
+}
