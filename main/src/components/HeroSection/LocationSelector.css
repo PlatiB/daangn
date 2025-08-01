@@ -1,0 +1,298 @@
+/* LocationSelector 컴포넌트 스타일 */
+
+/* 모바일 퍼스트 - 기본 스타일 (320px~) */
+.location-selector {
+  position: relative;
+  display: inline-block;
+}
+
+/* 드롭다운 버튼 스타일 */
+.location-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--background);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px; /* 터치 친화적 크기 */
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.location-button:hover {
+  border-color: var(--primary);
+  background-color: rgba(255, 111, 15, 0.05);
+}
+
+.location-button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.location-button.open {
+  border-color: var(--primary);
+  background-color: rgba(255, 111, 15, 0.1);
+}
+
+/* 버튼 내부 요소들 */
+.location-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.location-text {
+  flex: 1;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.dropdown-arrow.up {
+  transform: rotate(180deg);
+}
+
+/* 드롭다운 목록 컨테이너 */
+.location-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background-color: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 320px;
+  overflow-y: auto;
+  animation: dropdownSlideDown 0.2s ease-out;
+}
+
+@keyframes dropdownSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 지역 목록 */
+.location-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+/* 섹션 헤더 */
+.location-section-header {
+  padding: 0.625rem 0.75rem 0.375rem; /* 모바일에서 패딩 줄임 */
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 0.8rem; /* 모바일에서 섹션 제목 크기 줄임 */
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* 지역 아이템 */
+.location-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.75rem; /* 모바일에서 패딩 줄임 */
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  min-height: 44px; /* 터치 친화적 크기 */
+  border: none;
+  outline: none;
+}
+
+.location-item:hover {
+  background-color: rgba(255, 111, 15, 0.08);
+}
+
+.location-item:focus {
+  background-color: rgba(255, 111, 15, 0.12);
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.location-item.selected {
+  background-color: rgba(255, 111, 15, 0.15);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* 지역명과 구/군 정보 컨테이너 */
+.location-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  overflow: hidden; /* 내용이 넘치면 숨김 */
+}
+
+/* 지역명과 구/군 정보 */
+.location-name {
+  font-size: 0.9rem; /* 모바일에서 글자 크기 줄임 */
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap; /* 줄바꿈 방지 */
+  flex-shrink: 0; /* 지역명은 줄어들지 않음 */
+}
+
+.location-item.selected .location-name {
+  color: var(--primary);
+}
+
+.location-district {
+  font-size: 0.75rem; /* 더 작게 조정 */
+  color: var(--text-muted);
+  margin-left: 0.375rem; /* 간격 줄임 */
+  white-space: nowrap; /* 줄바꿈 방지 */
+  flex-shrink: 1; /* 공간이 부족하면 줄어들 수 있음 */
+  text-overflow: ellipsis; /* 텍스트가 넘치면 ... 표시 */
+  overflow: hidden;
+}
+
+.location-item.selected .location-district {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+/* 선택 표시 아이콘 */
+.selected-indicator {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* 구분선 */
+.location-divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 0.5rem 1rem;
+}
+
+/* 스크롤바 스타일링 */
+.location-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.location-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.location-dropdown::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+
+.location-dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-muted);
+}
+
+/* 태블릿 스타일 (768px+) */
+@media (min-width: 768px) {
+  .location-button {
+    min-width: 140px;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .location-dropdown {
+    min-width: 280px;
+    max-height: 400px;
+  }
+
+  .location-item {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .location-section-header {
+    padding: 0.75rem 1.25rem 0.5rem; /* 태블릿에서 패딩 복원 */
+  }
+
+  .section-title {
+    font-size: 0.875rem; /* 태블릿에서 섹션 제목 크기 복원 */
+  }
+
+  .location-name {
+    font-size: 1rem; /* 태블릿에서 지역명 크기 복원 */
+  }
+
+  .location-district {
+    font-size: 0.8rem; /* 태블릿에서 구/군 정보 크기 복원 */
+    margin-left: 0.5rem; /* 간격도 복원 */
+  }
+}
+
+/* 데스크톱 스타일 (1024px+) */
+@media (min-width: 1024px) {
+  .location-button {
+    min-width: 160px;
+    padding: 1rem 1.5rem;
+  }
+
+  .location-dropdown {
+    min-width: 320px;
+    max-height: 480px;
+  }
+
+  .location-item {
+    padding: 1rem 1.5rem;
+    min-height: 48px;
+  }
+
+  .location-section-header {
+    padding: 0.75rem 1.5rem 0.5rem; /* 데스크톱에서 패딩 복원 */
+  }
+
+  .section-title {
+    font-size: 0.9rem;
+  }
+
+  .location-name {
+    font-size: 1rem; /* 데스크톱에서 지역명 크기 복원 */
+  }
+
+  .location-district {
+    font-size: 0.85rem; /* 데스크톱에서 구/군 정보 크기 복원 */
+    margin-left: 0.5rem; /* 간격도 복원 */
+  }
+}
+
+/* 접근성: 모션 감소 선호 시 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce) {
+  .location-button,
+  .dropdown-arrow,
+  .location-item {
+    transition: none;
+  }
+
+  .location-dropdown {
+    animation: none;
+  }
+}
+
+/* 다크 모드 준비 (향후 확장용) */
+@media (prefers-color-scheme: dark) {
+  .location-dropdown {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
