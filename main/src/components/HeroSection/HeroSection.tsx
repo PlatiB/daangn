@@ -1,6 +1,7 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, memo, useCallback } from 'react';
 import { currentLocation, animatedKeywords } from '../../data/mockData';
 import LocationSelector from './LocationSelector';
+import SearchBar from './SearchBar';
 import './HeroSection.css';
 
 /**
@@ -20,6 +21,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   const [selectedLocation, setSelectedLocation] = useState(currentLocation.name);
   const [currentKeyword, setCurrentKeyword] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedService, setSelectedService] = useState("중고거래");
 
   // 2. Effect hooks - 동적 텍스트 애니메이션 (3초마다 순환)
   useEffect(() => {
@@ -39,6 +42,35 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   const handleDropdownToggle = (isOpen: boolean) => {
     setIsDropdownOpen(isOpen);
   };
+
+  // 4. Search handlers
+  const handleSearchChange = useCallback((value: string) => {
+    setSearchTerm(value);
+  }, []);
+
+  const handleSearchSubmit = useCallback((value: string) => {
+    console.log('Search submitted:', value);
+    
+    // 검색어 유효성 검사
+    if (!value || value.trim().length < 1) {
+      console.log('검색어가 비어있습니다.');
+      return;
+    }
+    
+    const trimmedValue = value.trim();
+    
+    // 실제 검색 로직 구현 (향후 API 호출로 대체)
+    console.log(`[${selectedService}] "${trimmedValue}" 검색을 시작합니다...`);
+    
+    // 검색 후 입력창 초기화 (선택사항)
+    // setSearchTerm('');
+  }, [selectedService]);
+
+  // 5. Service handlers
+  const handleServiceChange = useCallback((service: string) => {
+    console.log('Service changed:', service);
+    setSelectedService(service);
+  }, []);
 
   // 4. Render
   return (
@@ -65,22 +97,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
             />
           </div>
 
-          {/* 검색 폼 플레이스홀더 (향후 SearchForm 컴포넌트로 교체) */}
-          <div className="search-form-placeholder">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="검색어를 입력해주세요"
-              aria-label="검색어 입력"
-            />
-            <button 
-              type="submit"
-              className="search-button"
-              aria-label="검색"
-            >
-              🔍
-            </button>
-          </div>
+          {/* SearchBar 컴포넌트 */}
+          <SearchBar
+            value={searchTerm}
+            onChange={handleSearchChange}
+            onSubmit={handleSearchSubmit}
+            selectedService={selectedService}
+            onServiceChange={handleServiceChange}
+          />
         </div>
       </div>
     </section>

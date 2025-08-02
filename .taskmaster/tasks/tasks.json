@@ -194,7 +194,7 @@
         "dependencies": [
           3
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -202,7 +202,7 @@
             "description": "Controlled Components 패턴을 적용한 기본 SearchBar 컴포넌트 구조를 생성하고 TypeScript 인터페이스를 정의합니다.",
             "dependencies": [],
             "details": "SearchBarProps 인터페이스 정의, 기본 컴포넌트 구조 생성, value와 onChange props를 통한 제어된 입력 구현, 기본 form 요소와 input 요소 구조 설정",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "컴포넌트가 props를 올바르게 받는지 확인, 입력값 변경 시 onChange 콜백이 호출되는지 테스트, TypeScript 타입 검사 통과 확인"
           },
           {
@@ -213,41 +213,29 @@
               "4.1"
             ],
             "details": "모바일 기본 스타일 (width: 100%, min-height: 48px, font-size: 16px), 태블릿 이상에서 max-width 제한, border-radius와 padding 적용, iOS 줌 방지를 위한 font-size 설정",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "모바일(320px), 태블릿(768px), 데스크톱에서 레이아웃 확인, iOS Safari에서 줌 발생하지 않는지 테스트, 터치 타겟 크기 44px 이상 확인"
           },
           {
             "id": 3,
-            "title": "useEffect를 활용한 디바운스 기능 구현",
-            "description": "useEffect와 setTimeout을 사용하여 300ms 디바운스 효과를 구현하고 성능을 최적화합니다.",
-            "dependencies": [
-              "4.1"
-            ],
-            "details": "debouncedValue 상태 추가, useEffect로 300ms 타이머 설정, cleanup 함수로 이전 타이머 제거, 디바운스된 값을 활용한 검색 최적화",
-            "status": "pending",
-            "testStrategy": "입력 후 300ms 후에 디바운스 값이 업데이트되는지 확인, 연속 입력 시 이전 타이머가 취소되는지 테스트, 메모리 누수 없이 cleanup이 작동하는지 검증"
-          },
-          {
-            "id": 4,
             "title": "폼 제출 처리 및 키보드 최적화 구현",
             "description": "폼 제출 이벤트 처리를 구현하고 모바일 키보드 최적화 속성을 적용합니다.",
             "dependencies": [
               "4.2"
             ],
             "details": "handleSubmit 함수 구현, preventDefault로 기본 폼 제출 방지, onSubmit 콜백 호출, inputmode='search' 속성 추가, autocomplete 속성 설정",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "Enter 키 또는 제출 버튼 클릭 시 onSubmit 콜백이 올바른 값으로 호출되는지 확인, 모바일에서 검색 키보드가 표시되는지 테스트, 페이지 새로고침이 발생하지 않는지 검증"
           },
           {
-            "id": 5,
+            "id": 4,
             "title": "HeroSection에서 상태 끌어올리기 및 통합 테스트",
             "description": "SearchBar의 상태를 HeroSection으로 끌어올려 상위 컴포넌트에서 검색어를 관리하고 전체 기능을 통합 테스트합니다.",
             "dependencies": [
-              "4.3",
-              "4.4"
+              "4.3"
             ],
             "details": "HeroSection에서 searchTerm 상태 관리, SearchBar에 value와 onChange props 전달, 검색 제출 시 상위 컴포넌트에서 처리, 접근성 속성 (aria-label, placeholder) 추가",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "상위 컴포넌트에서 검색어 상태가 올바르게 관리되는지 확인, 디바운스와 폼 제출이 모두 정상 작동하는지 통합 테스트, 스크린 리더로 접근성 확인, 다양한 디바이스에서 전체 기능 검증"
           }
         ]
@@ -660,7 +648,7 @@
     ],
     "metadata": {
       "created": "2025-07-31T05:27:23.274Z",
-      "updated": "2025-08-01T06:23:59.719Z",
+      "updated": "2025-08-02T02:37:14.645Z",
       "description": "Tasks for master context"
     }
   }
