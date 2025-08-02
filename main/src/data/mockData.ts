@@ -152,3 +152,10 @@ export const animatedKeywords: string[] = [
   '중고거래',
   '알바'
 ];
+
+// 검색 관련 설정
+export const searchConfig = {
+  placeholder: "검색어를 입력해주세요",
+  debounceDelay: 300,
+  minSearchLength: 1
+};
