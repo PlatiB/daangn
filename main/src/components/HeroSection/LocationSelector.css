@@ -1,4 +1,4 @@
-/* LocationSelector 컴포넌트 스타일 */
+/* LocationSelector 컴포넌트 스타일 - 원본 디자인 기반 */
 
 /* 모바일 퍼스트 - 기본 스타일 (320px~) */
 .location-selector {
@@ -6,26 +6,27 @@
   display: inline-block;
 }
 
-/* 드롭다운 버튼 스타일 */
+/* 드롭다운 버튼 스타일 - SearchBar와 동일한 테두리 */
 .location-button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  gap: 0.25rem;
+  padding: 0.25rem 0.25rem;
   background-color: var(--background);
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px; /* SearchBar와 동일한 full radius */
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-height: 44px; /* 터치 친화적 크기 */
-  min-width: 120px;
-  white-space: nowrap;
+  min-height: 44px;
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* SearchBar와 동일한 그림자 */
 }
 
 .location-button:hover {
   border-color: var(--primary);
-  background-color: rgba(255, 111, 15, 0.05);
+  box-shadow: 0 2px 8px rgba(255, 111, 15, 0.2); /* SearchBar와 동일한 호버 효과 */
 }
 
 .location-button:focus {
@@ -35,27 +36,34 @@
 
 .location-button.open {
   border-color: var(--primary);
-  background-color: rgba(255, 111, 15, 0.1);
+  box-shadow: 0 2px 8px rgba(255, 111, 15, 0.2);
 }
 
-/* 버튼 내부 요소들 */
+/* 버튼 내부 요소들 - 원본 디자인 기반 */
 .location-icon {
-  font-size: 1.1rem;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
-}
-
-.location-text {
-  flex: 1;
-  text-align: left;
-  font-weight: 500;
   color: var(--text);
 }
 
+.location-button .location-text {
+  flex: 1;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 .dropdown-arrow {
-  font-size: 0.8rem;
+  width: 14px;
+  height: 14px;
   transition: transform 0.2s ease;
   flex-shrink: 0;
-  color: var(--text-muted);
+  color: var(--text);
+  margin-left: 0.25rem;
 }
 
 .dropdown-arrow.up {
@@ -69,13 +77,14 @@
   left: 0;
   right: 0;
   background-color: var(--background);
-  border: 2px solid var(--primary);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   max-height: 320px;
   overflow-y: auto;
   animation: dropdownSlideDown 0.2s ease-out;
+  min-width: 200px;
 }
 
 @keyframes dropdownSlideDown {
@@ -98,12 +107,12 @@
 
 /* 섹션 헤더 */
 .location-section-header {
-  padding: 0.625rem 0.75rem 0.375rem; /* 모바일에서 패딩 줄임 */
+  padding: 0.5rem 0.75rem 0.25rem;
   border-bottom: none;
 }
 
 .section-title {
-  font-size: 0.8rem; /* 모바일에서 섹션 제목 크기 줄임 */
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-muted);
   display: flex;
@@ -116,10 +125,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.625rem 0.75rem; /* 모바일에서 패딩 줄임 */
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
   transition: background-color 0.15s ease;
-  min-height: 44px; /* 터치 친화적 크기 */
+  min-height: 44px;
   border: none;
   outline: none;
 }
@@ -145,16 +154,16 @@
   display: flex;
   align-items: center;
   flex: 1;
-  overflow: hidden; /* 내용이 넘치면 숨김 */
+  overflow: hidden;
 }
 
 /* 지역명과 구/군 정보 */
 .location-name {
-  font-size: 0.9rem; /* 모바일에서 글자 크기 줄임 */
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text);
-  white-space: nowrap; /* 줄바꿈 방지 */
-  flex-shrink: 0; /* 지역명은 줄어들지 않음 */
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .location-item.selected .location-name {
@@ -162,12 +171,12 @@
 }
 
 .location-district {
-  font-size: 0.75rem; /* 더 작게 조정 */
+  font-size: 0.75rem;
   color: var(--text-muted);
-  margin-left: 0.375rem; /* 간격 줄임 */
-  white-space: nowrap; /* 줄바꿈 방지 */
-  flex-shrink: 1; /* 공간이 부족하면 줄어들 수 있음 */
-  text-overflow: ellipsis; /* 텍스트가 넘치면 ... 표시 */
+  margin-left: 0.375rem;
+  white-space: nowrap;
+  flex-shrink: 1;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 
@@ -180,14 +189,14 @@
 .selected-indicator {
   color: var(--primary);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* 구분선 */
 .location-divider {
   height: 1px;
   background-color: var(--border);
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 0.75rem;
 }
 
 /* 스크롤바 스타일링 */
@@ -211,69 +220,77 @@
 /* 태블릿 스타일 (768px+) */
 @media (min-width: 768px) {
   .location-button {
-    min-width: 140px;
-    padding: 0.875rem 1.25rem;
+    padding: 0.375rem 0.5rem;
+    gap: 0.375rem;
+  }
+
+  .location-button .location-text {
+    font-size: 1rem;
   }
 
   .location-dropdown {
-    min-width: 280px;
+    min-width: 240px;
     max-height: 400px;
   }
 
   .location-item {
-    padding: 0.875rem 1.25rem;
+    padding: 0.75rem 1rem;
   }
 
   .location-section-header {
-    padding: 0.75rem 1.25rem 0.5rem; /* 태블릿에서 패딩 복원 */
+    padding: 0.625rem 1rem 0.375rem;
   }
 
   .section-title {
-    font-size: 0.875rem; /* 태블릿에서 섹션 제목 크기 복원 */
+    font-size: 0.8rem;
   }
 
   .location-name {
-    font-size: 1rem; /* 태블릿에서 지역명 크기 복원 */
+    font-size: 0.9rem;
   }
 
   .location-district {
-    font-size: 0.8rem; /* 태블릿에서 구/군 정보 크기 복원 */
-    margin-left: 0.5rem; /* 간격도 복원 */
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
   }
 }
 
 /* 데스크톱 스타일 (1024px+) */
 @media (min-width: 1024px) {
   .location-button {
-    min-width: 160px;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .location-button .location-text {
+    font-size: 1rem;
   }
 
   .location-dropdown {
-    min-width: 320px;
+    min-width: 280px;
     max-height: 480px;
   }
 
   .location-item {
-    padding: 1rem 1.5rem;
+    padding: 0.875rem 1.25rem;
     min-height: 48px;
   }
 
   .location-section-header {
-    padding: 0.75rem 1.5rem 0.5rem; /* 데스크톱에서 패딩 복원 */
+    padding: 0.75rem 1.25rem 0.5rem;
   }
 
   .section-title {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
   }
 
   .location-name {
-    font-size: 1rem; /* 데스크톱에서 지역명 크기 복원 */
+    font-size: 1rem;
   }
 
   .location-district {
-    font-size: 0.85rem; /* 데스크톱에서 구/군 정보 크기 복원 */
-    margin-left: 0.5rem; /* 간격도 복원 */
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
   }
 }
 
@@ -293,6 +310,6 @@
 /* 다크 모드 준비 (향후 확장용) */
 @media (prefers-color-scheme: dark) {
   .location-dropdown {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 }
