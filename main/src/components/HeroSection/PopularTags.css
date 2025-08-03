@@ -1,0 +1,180 @@
+/* PopularTags 컴포넌트 스타일 - 원본 디자인 기반 */
+
+/* 기본 스타일 (모바일 우선) */
+.popular-tags {
+  position: relative;
+  width: 100%;
+  background-color: var(--background);
+}
+
+/* 메인 컨테이너 - 원본과 동일한 인라인 플렉스 */
+.popular-tags-container {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: 350px; /* SearchBar와 동일한 최대 너비 */
+  padding: 0 1rem; /* 검색창과의 간격을 완전히 제거하기 위해 상하 패딩 제거 */
+  margin: 0 auto; /* SearchBar와 동일한 중앙 정렬 */
+}
+
+/* 태그 목록 - 원본과 동일한 UL 구조 */
+.tags-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+  touch-action: pan-x; /* 터치 스크롤 최적화 */
+}
+
+/* Chrome, Safari 스크롤바 숨김 */
+.tags-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* 태그 아이템 - 원본과 동일한 LI 구조 */
+.tag-item {
+  margin-right: 0.05rem; /* 간격 대폭 감소 */
+  flex-shrink: 0;
+}
+
+/* 제목 아이템 - 스와이프 영역에 포함 */
+.title-item {
+  margin-right: 0.75rem; /* 제목과 태그 사이 간격 */
+}
+
+/* 인기 검색어 제목 */
+.tags-title {
+  font-size: 0.875rem; /* 원본과 동일한 폰트 크기 */
+  font-weight: 600; /* 원본과 동일한 폰트 굵기 */
+  color: var(--text-muted); /* 원본과 동일한 색상 */
+  white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 태그 링크 - 원본과 동일한 A 태그 스타일 */
+.tag-link {
+  display: flex;
+  align-items: center;
+  padding: 0.125rem 0.25rem; /* 패딩 30% 감소 (0.375rem 0.75rem → 0.125rem 0.25rem) */
+  background-color: transparent;
+  border: none;
+  border-radius: 4px; /* 원본과 동일한 둥근 모서리 */
+  color: var(--text);
+  font-size: 0.75rem; /* 원본과 동일한 폰트 크기 */
+  font-weight: 500; /* 원본과 동일한 폰트 굵기 */
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.15s ease; /* 원본과 동일한 전환 시간 */
+  outline: none;
+  touch-action: manipulation; /* 터치 최적화 */
+  line-height: 1.2; /* 원본과 동일한 줄 높이 */
+}
+
+/* 모든 상태 스타일 제거 */
+
+/* 좌우 페이드 효과 - 원본과 동일한 구조 */
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1rem;
+  display: none; /* 모바일에서는 숨김 */
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--background), transparent);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--background), transparent);
+}
+
+/* 태블릿 스타일 (768px+) - 원본과 동일 */
+@media (min-width: 768px) {
+  .popular-tags-container {
+    padding: 0 1.5rem; /* 상하 패딩 제거 */
+    max-width: 450px; /* SearchBar와 동일한 최대 너비 */
+    margin: 0 auto; /* SearchBar와 동일한 중앙 정렬 */
+  }
+
+  .title-item {
+    margin-right: 1rem; /* 태블릿에서 제목과 태그 사이 간격 증가 */
+  }
+
+  .tags-title {
+    font-size: 1rem; /* 원본과 동일한 폰트 크기 */
+  }
+
+  .tag-item {
+    margin-right: 0.075rem; /* 간격 대폭 감소 */
+  }
+
+  .tag-link {
+    padding: 0.175rem 0.35rem; /* 패딩 30% 감소 (0.5rem 1rem → 0.175rem 0.35rem) */
+    font-size: 0.875rem; /* 원본과 동일한 폰트 크기 */
+  }
+
+  /* 페이드 효과 표시 */
+  .fade-left,
+  .fade-right {
+    display: block;
+  }
+}
+
+/* 데스크톱 스타일 (1024px+) - 원본과 동일 */
+@media (min-width: 1024px) {
+  .popular-tags-container {
+    padding: 0 2rem; /* 상하 패딩 제거 */
+    max-width: 480px; /* SearchBar와 동일한 최대 너비 */
+    margin: 0 auto; /* SearchBar와 동일한 중앙 정렬 */
+  }
+
+  .title-item {
+    margin-right: 1.25rem; /* 데스크톱에서 제목과 태그 사이 간격 증가 */
+  }
+
+  .tags-title {
+    font-size: 1.125rem; /* 원본과 동일한 폰트 크기 */
+  }
+
+  .tag-item {
+    margin-right: 0.1rem; /* 간격 대폭 감소 */
+  }
+
+  .tag-link {
+    padding: 0.225rem 0.45rem; /* 패딩 30% 감소 (0.625rem 1.25rem → 0.225rem 0.45rem) */
+    font-size: 1rem; /* 원본과 동일한 폰트 크기 */
+  }
+}
+
+/* 접근성: 모션 감소 선호 시 애니메이션 제거 */
+@media (prefers-reduced-motion: reduce) {
+  .tags-list {
+    scroll-behavior: auto;
+  }
+
+  .tag-link {
+    transition: none;
+  }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .tag-link {
+    border: 1px solid var(--text);
+    font-weight: 600;
+  }
+}
+
+/* 다크 모드 준비 (향후 확장용) */
+@media (prefers-color-scheme: dark) {
+} 

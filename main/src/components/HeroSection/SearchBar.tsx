@@ -11,6 +11,7 @@ import './SearchBar.css';
  * 초보자도 쉽게 이해할 수 있도록 기본적인 함수 문법을 사용합니다.
  *
  * 📌 props 설명:
+ * - value: 외부에서 제어하는 검색어 값 (선택사항, PopularTags 연동용)
  * - onChange: 디바운스된 검색어가 변경될 때 호출되는 함수
  * - onSubmit: 검색 버튼을 클릭하거나 Enter를 누를 때 호출되는 함수
  * - placeholder: 검색창이 비어있을 때 보여줄 안내 문구 (선택사항)
@@ -19,6 +20,7 @@ import './SearchBar.css';
  * - debounceDelay: 디바운스 지연 시간 (선택사항, 기본값: 300ms)
  */
 function SearchBar(props: {
+  value?: string;                           // 외부 제어 값 (선택사항, PopularTags용)
   onChange: (value: string) => void;       // 디바운스된 텍스트 변경 시 호출될 함수
   onSubmit: (searchTerm: string) => void;  // 검색 실행 시 호출될 함수
   placeholder?: string;                     // 안내 문구 (선택사항)
@@ -28,6 +30,7 @@ function SearchBar(props: {
 }) {
   // props에서 필요한 값들을 꺼내옵니다
   // 기본값을 설정해서 props가 없을 때도 동작하도록 합니다
+  const value = props.value;                              // 외부 제어 값 (선택사항)
   const onChange = props.onChange;
   const onSubmit = props.onSubmit;
   const debounceDelay = props.debounceDelay || 1000;        // 기본값 300ms (0.3초)
@@ -39,8 +42,22 @@ function SearchBar(props: {
    * 🎯 내부 상태 관리
    * 사용자가 타이핑하는 동안 즉시 UI를 업데이트하기 위한 내부 state입니다.
    * 이 값은 즉시 화면에 반영되고, 디바운스 후에 부모 컴포넌트로 전달됩니다.
+   *
+   * 초기값: 외부 value가 있으면 그 값, 없으면 빈 문자열
    */
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(value || '');
+
+  /**
+   * 🔧 외부 value 동기화
+   * PopularTags에서 태그를 클릭하면 외부 value가 변경됩니다.
+   * 이때 내부 inputValue를 동기화하여 검색창에 자동으로 입력되도록 합니다.
+   */
+  useEffect(() => {
+    // 외부 value가 변경되면 내부 state 동기화
+    if (value !== undefined) {
+      setInputValue(value);
+    }
+  }, [value]); // value가 변경될 때마다 실행
 
   // 검색어가 유효한지 확인합니다 (최소 2글자 이상)
   const searchText = inputValue.trim(); // 앞뒤 공백 제거

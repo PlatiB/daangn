@@ -1,44 +1,38 @@
-import React, { useState, useEffect, memo, useCallback } from 'react';
-import { currentLocation, animatedKeywords } from '../../data/mockData';
+import { useState, useEffect, useCallback } from 'react';
 import LocationSelector from './LocationSelector';
 import SearchBar from './SearchBar';
+import PopularTags from './PopularTags';
+import { currentLocation, animatedKeywords } from '../../data/mockData';
 import './HeroSection.css';
 
-/**
- * 당근마켓 메인 히어로 섹션 컴포넌트
- * 동적 위치 기반 메시지와 애니메이션 텍스트를 표시
- */
 function HeroSection() {
-  // 1. State 선언
-  const [selectedLocation, setSelectedLocation] = useState(currentLocation.name);
   const [currentKeyword, setCurrentKeyword] = useState(0);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState(currentLocation.name);
   const [selectedService, setSelectedService] = useState("중고거래");
 
-  // 2. Effect hooks - 동적 텍스트 애니메이션 (3초마다 순환)
+  // 애니메이션 키워드 순환
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentKeyword(prev => (prev + 1) % animatedKeywords.length);
     }, 3000);
-
-    // cleanup 함수 필수
     return () => clearInterval(interval);
   }, []);
 
-  // 3. Event handlers
-  const handleLocationChange = (newLocation) => {
-    setSelectedLocation(newLocation);
-  };
+  const handleTagClick = useCallback((tag: string) => {
+    console.log('태그 클릭으로 검색어 설정:', tag);
+    setSearchTerm(tag);
+  }, []);
 
-  const handleDropdownToggle = (isOpen: boolean) => {
-    setIsDropdownOpen(isOpen);
-  };
+  const handleLocationChange = useCallback((location: string) => {
+    setSelectedLocation(location);
+  }, []);
 
-  // 4. Search handlers
+  // Search handlers
   const handleSearchChange = useCallback((value: string) => {
     // 디바운스된 값을 받아서 처리
-    // 이 값은 사용자가 타이핑을 멈춘 후 300ms 후에 전달됩니다
     console.log('디바운스된 검색어:', value);
+    setSearchTerm(value);
 
     // 여기서 자동완성 API 호출 등을 수행할 수 있습니다
     // 예: fetchAutoComplete(value);
@@ -57,32 +51,30 @@ function HeroSection() {
 
     // 실제 검색 로직 구현 (향후 API 호출로 대체)
     console.log(`[${selectedService}] "${trimmedValue}" 검색을 시작합니다...`);
-
-    // 검색 후 입력창 초기화는 SearchBar 내부에서 처리 가능
   }, [selectedService]);
 
-  // 5. Service handlers
   const handleServiceChange = useCallback((service: string) => {
     console.log('Service changed:', service);
     setSelectedService(service);
   }, []);
 
-  // 4. Render
+
   return (
     <section className="hero-section">
       <div className="hero-container">
-        {/* 동적 제목 메시지 */}
         <h1 className="hero-title">
-          <span className="location-text">{selectedLocation}</span>에서<br />
-          <span className="animated-text" key={currentKeyword}>
+          <span className="location-text">{selectedLocation}</span>
+          <span>에서</span><br/>
+          <span 
+            className="animated-text"
+            key={currentKeyword}
+          >
             {animatedKeywords[currentKeyword]}
-          </span>{' '}
-          찾고 계신가요?
+          </span>
+          <span>찾고 계신가요?</span>
         </h1>
-
-        {/* Location과 Search가 들어갈 컨테이너 */}
+        
         <div className="hero-controls">
-          {/* LocationSelector 드롭다운 컴포넌트 */}
           <div className="location-selector-container">
             <LocationSelector
               selectedLocation={selectedLocation}
@@ -90,14 +82,18 @@ function HeroSection() {
             />
           </div>
 
-          {/* SearchBar 컴포넌트 */}
+          {/* SearchBar 컴포넌트 - value prop 추가하여 태그 클릭 시 자동 입력 지원 */}
           <SearchBar
+            value={searchTerm}
             onChange={handleSearchChange}
             onSubmit={handleSearchSubmit}
             selectedService={selectedService}
             onServiceChange={handleServiceChange}
           />
         </div>
+        
+        {/* PopularTags를 HeroSection 안으로 이동 */}
+        <PopularTags onTagClick={handleTagClick} />
       </div>
     </section>
   );
