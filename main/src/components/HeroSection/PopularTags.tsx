@@ -1,33 +1,31 @@
+import { useState, useEffect } from 'react';
+import { fetchPopularTagsWithAxios } from '../../services/api';
 import './PopularTags.css';
-
-/**
- * 원본 당근마켓 인기 검색어 태그 데이터
- */
-const originalPopularTags = [
-  '에어컨',
-  '에어컨청소',
-  '노트북',
-  '원룸',
-  '현대 중고차',
-  '이사짐 알바',
-  '근처 맛집',
-  '투표',
-  '동네친구',
-  '배드민턴 모임',
-  '자전거',
-  '플스',
-  '투룸 빌라',
-  '닌텐도',
-  '서빙 알바',
-  '기아 중고차',
-  '전세 매물'
-];
 
 /**
  * 인기 검색어 태그 컴포넌트
  * 원본 당근마켓 스타일의 인기 검색어 태그 목록
  */
 function PopularTags({ onTagClick }) {
+  const [popularTags, setPopularTags] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // API에서 인기 태그 데이터 로드 (Axios 사용)
+  useEffect(() => {
+    setLoading(true);
+    fetchPopularTagsWithAxios()
+      .then(data => {
+        setPopularTags(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        // axios 에러 처리로 더 구체적인 에러 메시지 제공
+        setError(error.message || '인기 검색어를 불러오는데 실패했습니다.');
+        setLoading(false);
+      });
+  }, []);
+
   // 태그 클릭 핸들러
   const handleTagClick = (tag) => {
     console.log('태그 클릭:', tag);
@@ -42,6 +40,42 @@ function PopularTags({ onTagClick }) {
     }
   };
 
+  // 로딩 상태
+  if (loading) {
+    return (
+      <div className="popular-tags">
+        <div className="popular-tags-container">
+          <ul className="tags-list">
+            <li className="tag-item title-item">
+              <span className="tags-title">인기 검색어</span>
+            </li>
+            <li className="tag-item loading-item">
+              <span>인기 검색어를 불러오는 중...</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
+  // 에러 상태
+  if (error) {
+    return (
+      <div className="popular-tags">
+        <div className="popular-tags-container">
+          <ul className="tags-list">
+            <li className="tag-item title-item">
+              <span className="tags-title">인기 검색어</span>
+            </li>
+            <li className="tag-item error-item">
+              <span>{error}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="popular-tags">
       <div className="popular-tags-container">
@@ -50,7 +84,7 @@ function PopularTags({ onTagClick }) {
           <li className="tag-item title-item">
             <span className="tags-title">인기 검색어</span>
           </li>
-          {originalPopularTags.map((tag, index) => (
+          {popularTags.map((tag, index) => (
             <li key={`${tag}-${index}`} className="tag-item">
               <button
                 className="tag-link"
@@ -65,7 +99,7 @@ function PopularTags({ onTagClick }) {
           ))}
         </ul>
       </div>
-      
+
       {/* 좌우 페이드 효과 - 태블릿에서만 표시 */}
       <div className="fade-left"></div>
       <div className="fade-right"></div>
@@ -73,4 +107,4 @@ function PopularTags({ onTagClick }) {
   );
 }
 
-export default PopularTags; 
+export default PopularTags;

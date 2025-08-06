@@ -305,7 +305,4 @@
 
 /* 다크 모드 준비 (향후 확장용) */
 @media (prefers-color-scheme: dark) {
-  .location-dropdown {
-    /* box-shadow 제거 */
-  }
 }
