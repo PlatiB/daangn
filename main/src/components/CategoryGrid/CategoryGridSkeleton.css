@@ -1,0 +1,86 @@
+.category-grid-skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 32px 16px 16px 16px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  width: calc(50% - 2px);
+  min-height: 120px;
+  gap: 32px;
+}
+
+.skeleton-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(90deg, #e9ecef 25%, #f8f9fa 50%, #e9ecef 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-title {
+  width: 60px;
+  height: 16px;
+  background: linear-gradient(90deg, #e9ecef 25%, #f8f9fa 50%, #e9ecef 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 반응형 그리드 - 실제 CategoryGrid와 동일 */
+@media (min-width: 768px) {
+  .category-grid-skeleton {
+    gap: 8px;
+    padding: 32px 20px 20px 20px;
+  }
+  
+  .skeleton-card {
+    width: calc(33.333% - 5.33px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .category-grid-skeleton {
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 12px;
+    padding: 32px 24px 24px 24px;
+  }
+  
+  .skeleton-card {
+    width: calc(25% - 9px);
+  }
+}
+
+/* 모바일 최적화 */
+@media (max-width: 767px) {
+  .category-grid-skeleton {
+    padding: 24px 12px 12px 12px;
+    gap: 4px;
+  }
+  
+  .skeleton-card {
+    width: calc(50% - 2px);
+  }
+} 
