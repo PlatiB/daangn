@@ -1,0 +1,151 @@
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 32px 16px 16px 16px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.category-card {
+  width: calc(50% - 2px);
+  min-width: 0;
+  max-width: none;
+}
+
+/* 에러 및 빈 상태 스타일 */
+.category-grid-error,
+.category-grid-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  min-height: 200px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.retry-button {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.retry-button:hover {
+  background-color: #e55a2b;
+}
+
+.category-grid-empty p {
+  color: #6c757d;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.upgrade-message {
+  color: #ff6b35;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.show-more-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 120px;
+}
+
+.show-more-button {
+  background: none;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.show-more-button:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
+/* 반응형 그리드 - 참조 HTML은 Flexbox 사용 */
+@media (min-width: 768px) {
+  .category-grid {
+    gap: 8px;
+    padding: 32px 20px 20px 20px;
+  }
+  
+  .category-card {
+    width: calc(33.333% - 5.33px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .category-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 12px;
+    padding: 32px 24px 24px 24px;
+  }
+  
+  .category-card {
+    width: calc(25% - 9px);
+  }
+}
+
+/* 모바일 최적화 */
+@media (max-width: 767px) {
+  .category-grid {
+    padding: 24px 12px 12px 12px;
+    gap: 4px;
+  }
+  
+  .category-card {
+    width: calc(50% - 2px);
+  }
+  
+  .category-grid-error,
+  .category-grid-empty {
+    padding: 32px 16px;
+  }
+  
+  .error-message {
+    font-size: 14px;
+  }
+  
+  .retry-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  
+  .show-more-card {
+    padding: 16px 12px;
+    min-height: 100px;
+  }
+  
+  .show-more-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+} 
