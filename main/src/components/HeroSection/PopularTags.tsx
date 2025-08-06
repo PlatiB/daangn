@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect, useCallback } from 'react';
+import { fetchPopularTags } from '../../services/api';
 import './PopularTags.css';
 
 /**
@@ -12,29 +13,6 @@ export interface PopularTagsProps {
 }
 
 /**
- * 원본 당근마켓 인기 검색어 태그 데이터
- */
-const originalPopularTags = [
-  '에어컨',
-  '에어컨청소',
-  '노트북',
-  '원룸',
-  '현대 중고차',
-  '이사짐 알바',
-  '근처 맛집',
-  '투표',
-  '동네친구',
-  '배드민턴 모임',
-  '자전거',
-  '플스',
-  '투룸 빌라',
-  '닌텐도',
-  '서빙 알바',
-  '기아 중고차',
-  '전세 매물'
-];
-
-/**
  * 인기 검색어 태그 컴포넌트
  * 원본 당근마켓 스타일의 인기 검색어 태그 목록
  */
@@ -42,6 +20,30 @@ const PopularTags: React.FC<PopularTagsProps> = ({
   onTagClick,
   className = ''
 }) => {
+  // State
+  const [popularTags, setPopularTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // API에서 인기 태그 데이터 로드
+  const loadPopularTags = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const fetchedTags = await fetchPopularTags();
+      setPopularTags(fetchedTags);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '인기 검색어를 불러오는데 실패했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // 컴포넌트 마운트 시 인기 태그 데이터 로드
+  useEffect(() => {
+    loadPopularTags();
+  }, [loadPopularTags]);
+
   // 태그 클릭 핸들러
   const handleTagClick = (tag: string) => {
     console.log('태그 클릭:', tag);
@@ -56,6 +58,45 @@ const PopularTags: React.FC<PopularTagsProps> = ({
     }
   };
 
+  // 로딩 상태
+  if (loading) {
+    return (
+      <div className={`popular-tags ${className}`.trim()}>
+        <div className="popular-tags-container">
+          <ul className="tags-list">
+            <li className="tag-item title-item">
+              <span className="tags-title">인기 검색어</span>
+            </li>
+            <li className="tag-item loading-item">
+              <span>인기 검색어를 불러오는 중...</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
+  // 에러 상태
+  if (error) {
+    return (
+      <div className={`popular-tags ${className}`.trim()}>
+        <div className="popular-tags-container">
+          <ul className="tags-list">
+            <li className="tag-item title-item">
+              <span className="tags-title">인기 검색어</span>
+            </li>
+            <li className="tag-item error-item">
+              <span>{error}</span>
+              <button onClick={loadPopularTags} className="retry-button">
+                다시 시도
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`popular-tags ${className}`.trim()}>
       <div className="popular-tags-container">
@@ -64,7 +105,7 @@ const PopularTags: React.FC<PopularTagsProps> = ({
           <li className="tag-item title-item">
             <span className="tags-title">인기 검색어</span>
           </li>
-          {originalPopularTags.map((tag, index) => (
+          {popularTags.map((tag, index) => (
             <li key={`${tag}-${index}`} className="tag-item">
               <button
                 className="tag-link"

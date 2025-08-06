@@ -384,7 +384,7 @@
         "dependencies": [
           6
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -392,7 +392,7 @@
             "description": "fetch API와 axios를 활용한 기본 API 서비스 클래스 구현 및 타입 정의",
             "dependencies": [],
             "details": "1. ApiResponse 인터페이스 정의\n2. ApiService 클래스 기본 구조 생성\n3. baseURL 환경변수 설정\n4. axios 설치 및 기본 설정\n5. Location, Category 타입 인터페이스 정의\n6. 기본 에러 처리 로직 구현",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 타입스크립트 컴파일 에러 없이 빌드되는지 확인\n2. 환경변수가 올바르게 로드되는지 테스트\n3. axios 인스턴스가 정상 생성되는지 확인\n4. 기본 API 구조가 예상대로 동작하는지 단위 테스트"
           },
           {
@@ -403,7 +403,7 @@
               "7.1"
             ],
             "details": "1. getLocations 메서드 fetch API로 구현\n2. getCategories 메서드 axios로 구현\n3. HTTP 상태 코드별 에러 처리\n4. 네트워크 오류 처리\n5. 타임아웃 설정\n6. 응답 데이터 검증 로직 추가",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 성공적인 API 호출 시 올바른 데이터 반환 확인\n2. 네트워크 오류 시 적절한 에러 메시지 반환 테스트\n3. 타임아웃 발생 시 에러 처리 확인\n4. 잘못된 응답 형식에 대한 처리 테스트"
           },
           {
@@ -414,7 +414,7 @@
               "7.2"
             ],
             "details": "1. useApi 커스텀 Hook 기본 구조 구현\n2. loading, error, data 상태 관리\n3. useEffect를 활용한 API 호출 로직\n4. 재시도 기능 추가\n5. 클린업 함수로 메모리 누수 방지\n6. 제네릭 타입으로 타입 안전성 확보",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. Hook이 올바른 초기 상태를 반환하는지 확인\n2. API 호출 중 loading 상태가 true인지 테스트\n3. 성공 시 data가 올바르게 설정되는지 확인\n4. 에러 발생 시 error 상태가 설정되는지 테스트\n5. 컴포넌트 언마운트 시 클린업이 실행되는지 확인"
           },
           {
@@ -425,7 +425,7 @@
               "7.3"
             ],
             "details": "1. ErrorBoundary 클래스 컴포넌트 구현\n2. 에러 발생 시 fallback UI 표시\n3. LoadingSpinner 컴포넌트 구현\n4. ErrorMessage 컴포넌트 구현\n5. 재시도 버튼 기능 추가\n6. 모바일 친화적인 로딩 및 에러 UI 디자인",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 의도적으로 에러를 발생시켜 ErrorBoundary가 작동하는지 확인\n2. 로딩 스피너가 적절한 시점에 표시되는지 테스트\n3. 에러 메시지가 사용자 친화적으로 표시되는지 확인\n4. 재시도 버튼 클릭 시 API가 다시 호출되는지 테스트\n5. 모바일 디바이스에서 UI가 올바르게 표시되는지 확인"
           },
           {
@@ -439,7 +439,7 @@
               "7.4"
             ],
             "details": "1. 기존 컴포넌트에 useApi Hook 적용\n2. 지역 선택 드롭다운에 API 데이터 연동\n3. 카테고리 그리드에 API 데이터 연동\n4. 전역 에러 바운더리 App 컴포넌트에 적용\n5. 네트워크 상태에 따른 UI 상태 변화 테스트\n6. 성능 최적화 및 불필요한 API 호출 방지",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 실제 네트워크 환경에서 API 호출이 정상 작동하는지 확인\n2. 오프라인 상태에서 적절한 에러 메시지가 표시되는지 테스트\n3. 빠른 네트워크 전환 시 상태 변화가 올바른지 확인\n4. 여러 컴포넌트에서 동시에 API를 호출할 때 성능 이슈가 없는지 테스트\n5. React DevTools로 불필요한 리렌더링이 발생하지 않는지 확인"
           }
         ]
@@ -648,7 +648,7 @@
     ],
     "metadata": {
       "created": "2025-07-31T05:27:23.274Z",
-      "updated": "2025-08-05T13:38:09.598Z",
+      "updated": "2025-08-06T08:15:59.652Z",
       "description": "Tasks for master context"
     }
   }

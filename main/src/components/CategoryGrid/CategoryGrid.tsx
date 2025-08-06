@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import type { Category } from '../../data/mockData';
-import { categories as mockCategories } from '../../data/mockData';
+import type { Category } from '../../services/api';
+import { fetchCategories } from '../../services/api';
 import CategoryCard from './CategoryCard';
 import CategoryGridSkeleton from './CategoryGridSkeleton';
 import './CategoryGrid.css';
@@ -32,34 +32,27 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
     return maxItems ? filtered.slice(0, maxItems) : filtered;
   }, [categories, userRole, maxItems]);
 
-  const fetchCategories = useCallback(async () => {
+  const loadCategories = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
       
-      // Mock API 호출 시뮬레이션
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // 에러 시뮬레이션 (재시도 테스트용)
-      if (retryCount === 0 && Math.random() < 0.3) {
-        throw new Error('네트워크 오류가 발생했습니다.');
-      }
-      
-      setCategories(mockCategories);
+      const fetchedCategories = await fetchCategories();
+      setCategories(fetchedCategories);
     } catch (err) {
-      setError(err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.');
+      setError(err instanceof Error ? err.message : '카테고리를 불러오는데 실패했습니다.');
     } finally {
       setLoading(false);
     }
-  }, [retryCount]);
+  }, []);
 
   useEffect(() => {
-    fetchCategories();
-  }, [fetchCategories]);
+    loadCategories();
+  }, [loadCategories]);
 
   const handleRetry = () => {
     setRetryCount(prev => prev + 1);
-    fetchCategories();
+    loadCategories();
   };
 
   // 로딩 상태
