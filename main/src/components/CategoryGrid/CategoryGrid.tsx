@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import type { Category } from '../../services/api';
-import { fetchCategories } from '../../services/api';
+import { categories as mockCategories } from '../../data/mockData';
+import type { Category } from '../../data/mockData';
 import CategoryCard from './CategoryCard';
 import CategoryGridSkeleton from './CategoryGridSkeleton';
 import './CategoryGrid.css';
@@ -17,7 +17,6 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [retryCount, setRetryCount] = useState(0);
 
   // 권한에 따른 카테고리 필터링
   const filteredCategories = useMemo(() => {
@@ -37,8 +36,8 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
       setLoading(true);
       setError(null);
       
-      const fetchedCategories = await fetchCategories();
-      setCategories(fetchedCategories);
+      // 실제 API 호출 대신 mock 데이터 사용
+      setCategories(mockCategories);
     } catch (err) {
       setError(err instanceof Error ? err.message : '카테고리를 불러오는데 실패했습니다.');
     } finally {
@@ -51,7 +50,6 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
   }, [loadCategories]);
 
   const handleRetry = () => {
-    setRetryCount(prev => prev + 1);
     loadCategories();
   };
 

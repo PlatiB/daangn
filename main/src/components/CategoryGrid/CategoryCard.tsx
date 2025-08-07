@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Category } from '../../data/mockData';
 import './CategoryCard.css';
 
@@ -13,11 +14,29 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   isPremium = false,
   delay = 0
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(`/category/${category.id}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navigate(`/category/${category.id}`);
+    }
+  };
+
   return (
-    <a
-      href={category.href}
+    <div
       className={`category-card ${isPremium ? 'premium' : ''}`}
       style={{ animationDelay: `${delay}ms` }}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`${category.name} 카테고리로 이동`}
     >
       <div className="card-icon" style={{ color: category.color }}>
         {category.iconPath ? (
@@ -34,7 +53,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       {isPremium && (
         <span className="premium-badge">Premium</span>
       )}
-    </a>
+    </div>
   );
 };
 
