@@ -199,3 +199,108 @@ export const searchConfig = {
   debounceDelay: 300,
   minSearchLength: 1
 };
+
+// 중고거래 아이템 데이터 타입 정의
+export interface BuySellItem {
+  id: string;
+  title: string;
+  price: number;
+  location: string;
+  description: string;
+  image: string;
+  category: string;
+  condition: 'new' | 'like-new' | 'good' | 'fair';
+  createdAt: string;
+}
+
+// 중고거래 아이템 데이터
+export const buySellItems: BuySellItem[] = [
+  {
+    id: '1',
+    title: '아이폰 14 Pro 256GB',
+    price: 850000,
+    location: '정자동',
+    description: '1년 사용한 아이폰 14 Pro입니다. 상태 좋고 박스 포함입니다.',
+    image: 'https://via.placeholder.com/300x200/FF6F0F/FFFFFF?text=iPhone+14+Pro',
+    category: '전자기기',
+    condition: 'good',
+    createdAt: '2024-01-15'
+  },
+  {
+    id: '2',
+    title: '삼성 65인치 QLED TV',
+    price: 1200000,
+    location: '정자동',
+    description: '2년 사용한 QLED TV입니다. 화질 좋고 리모컨 포함입니다.',
+    image: 'https://via.placeholder.com/300x200/318EFF/FFFFFF?text=QLED+TV',
+    category: '전자기기',
+    condition: 'good',
+    createdAt: '2024-01-14'
+  },
+  {
+    id: '3',
+    title: '에어컨 청소 서비스',
+    price: 50000,
+    location: '정자동',
+    description: '전문가가 방문해서 에어컨 청소해드립니다. 1시간 소요.',
+    image: 'https://via.placeholder.com/300x200/00C7BE/FFFFFF?text=Air+Conditioner',
+    category: '서비스',
+    condition: 'new',
+    createdAt: '2024-01-13'
+  },
+  {
+    id: '4',
+    title: '노트북 맥북 프로 13인치',
+    price: 1500000,
+    location: '정자동',
+    description: 'M1 칩 탑재 맥북 프로입니다. 개발용으로 사용했어요.',
+    image: 'https://via.placeholder.com/300x200/FFAA00/FFFFFF?text=MacBook+Pro',
+    category: '전자기기',
+    condition: 'like-new',
+    createdAt: '2024-01-12'
+  },
+  {
+    id: '5',
+    title: '자전거 MTB',
+    price: 300000,
+    location: '정자동',
+    description: '산악용 자전거입니다. 헬멧과 장갑 포함해서 드려요.',
+    image: 'https://via.placeholder.com/300x200/22C55E/FFFFFF?text=Mountain+Bike',
+    category: '스포츠용품',
+    condition: 'good',
+    createdAt: '2024-01-11'
+  },
+  {
+    id: '6',
+    title: '플스5 게임기',
+    price: 400000,
+    location: '정자동',
+    description: '플스5 게임기와 컨트롤러 2개, 게임 3개 포함입니다.',
+    image: 'https://via.placeholder.com/300x200/DF5BC2/FFFFFF?text=PlayStation+5',
+    category: '게임',
+    condition: 'good',
+    createdAt: '2024-01-10'
+  },
+  {
+    id: '7',
+    title: '닌텐도 스위치',
+    price: 250000,
+    location: '정자동',
+    description: '닌텐도 스위치와 조이콘, 게임 2개 포함입니다.',
+    image: 'https://via.placeholder.com/300x200/FF6F0F/FFFFFF?text=Nintendo+Switch',
+    category: '게임',
+    condition: 'like-new',
+    createdAt: '2024-01-09'
+  },
+  {
+    id: '8',
+    title: '에어컨 삼성 18평형',
+    price: 800000,
+    location: '정자동',
+    description: '3년 사용한 삼성 에어컨입니다. 설치비 별도입니다.',
+    image: 'https://via.placeholder.com/300x200/00C7BE/FFFFFF?text=Air+Conditioner',
+    category: '가전제품',
+    condition: 'good',
+    createdAt: '2024-01-08'
+  }
+];

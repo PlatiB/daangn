@@ -448,13 +448,13 @@
         "id": 8,
         "title": "React Router 도입 및 네비게이션 구현",
         "description": "React Router v6를 활용한 SPA 라우팅 및 카테고리별 페이지 네비게이션 구현",
-        "details": "1. React Router 설치 및 설정:\n```bash\nnpm install react-router-dom @types/react-router-dom\n```\n\n2. 라우터 구조 설정:\n```tsx\n// App.tsx\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <div className=\"App\">\n        <Header />\n        <Routes>\n          <Route path=\"/\" element={<HomePage />} />\n          <Route path=\"/search\" element={<SearchResultsPage />} />\n          <Route path=\"/category/:categoryId\" element={<CategoryPage />} />\n          <Route path=\"*\" element={<NotFoundPage />} />\n        </Routes>\n      </div>\n    </BrowserRouter>\n  );\n}\n```\n\n3. 네비게이션 Hook 활용:\n```tsx\nconst CategoryCard: React.FC<{category: Category}> = ({ category }) => {\n  const navigate = useNavigate();\n  \n  const handleClick = () => {\n    navigate(`/category/${category.id}`);\n  };\n  \n  return (\n    <div className=\"category-card\" onClick={handleClick}>\n      {/* 카드 내용 */}\n    </div>\n  );\n};\n```\n\n4. 검색 결과 페이지 구현:\n```tsx\nconst SearchResultsPage: React.FC = () => {\n  const [searchParams] = useSearchParams();\n  const query = searchParams.get('q');\n  const location = searchParams.get('location');\n  \n  return (\n    <div className=\"search-results\">\n      <h1>{location}에서 \"{query}\" 검색 결과</h1>\n      {/* 검색 결과 컴포넌트 */}\n    </div>\n  );\n};\n```\n\n5. 동적 라우팅 및 URL 파라미터 처리",
+        "details": "1. React Router 설치 및 설정:\n```bash\nnpm install react-router-dom @types/react-router-dom\n```\n\n2. 라우터 구조 설정:\n```tsx\n// App.tsx\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <div className=\"App\">\n        <Header />\n        <Routes>\n          <Route path=\"/\" element={<HomePage />} />\n          <Route path=\"/category/:categoryId\" element={<CategoryPage />} />\n          <Route path=\"*\" element={<NotFoundPage />} />\n        </Routes>\n      </div>\n    </BrowserRouter>\n  );\n}\n```\n\n3. 네비게이션 Hook 활용:\n```tsx\nconst CategoryCard: React.FC<{category: Category}> = ({ category }) => {\n  const navigate = useNavigate();\n  \n  const handleClick = () => {\n    navigate(`/category/${category.id}`);\n  };\n  \n  return (\n    <div className=\"category-card\" onClick={handleClick}>\n      {/* 카드 내용 */}\n    </div>\n  );\n};\n```\n\n4. 중고거래 검색 페이지 구현:\n```tsx\nconst CategoryPage: React.FC = () => {\n  const { categoryId } = useParams<{ categoryId: string }>();\n  \n  if (categoryId === 'buy-sell') {\n    return <BuySellPage />; // 중고거래 특별 페이지\n  }\n  \n  return <DefaultCategoryPage />;\n};\n```\n\n5. 동적 라우팅 및 URL 파라미터 처리\n\n**완료된 구현 사항:**\n- ✅ React Router v6 설치 및 설정 완료\n- ✅ BrowserRouter, Routes, Route 구조 구현\n- ✅ HomePage, CategoryPage, NotFoundPage 컴포넌트 생성\n- ✅ useNavigate를 활용한 프로그래매틱 네비게이션 구현\n- ✅ useParams를 활용한 동적 라우팅 처리\n- ✅ 중고거래 검색 페이지 특별 구현 (8개 아이템 데이터)\n- ✅ 키보드 접근성 및 ARIA 속성 지원\n- ✅ CSS 모듈화 (각 페이지별 전용 CSS 파일)\n- ✅ TypeScript 타입 안전성 확보\n- ✅ 빌드 성공 및 프로덕션 배포 준비 완료",
         "testStrategy": "1. 브라우저 뒤로가기/앞으로가기 버튼이 올바르게 작동하는지 확인\n2. 카테고리 클릭 시 해당 URL로 이동하는지 테스트\n3. 검색 시 쿼리 파라미터가 URL에 반영되는지 확인\n4. 잘못된 URL 접근 시 404 페이지가 표시되는지 테스트\n5. 페이지 새로고침 시 현재 상태가 유지되는지 확인",
         "priority": "medium",
         "dependencies": [
           7
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -462,7 +462,7 @@
             "description": "React Router v6 패키지를 설치하고 App.tsx에서 BrowserRouter를 설정하여 라우팅 기반을 구축합니다.",
             "dependencies": [],
             "details": "1. React Router 패키지 설치: `npm install react-router-dom @types/react-router-dom`\n2. App.tsx에서 BrowserRouter 래핑:\n```tsx\nimport { BrowserRouter } from 'react-router-dom';\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <div className=\"App\">\n        {/* 기존 컴포넌트들 */}\n      </div>\n    </BrowserRouter>\n  );\n}\n```\n3. 패키지 설치 확인 및 기본 라우터 구조 테스트",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. npm install이 성공적으로 완료되는지 확인\n2. 애플리케이션이 오류 없이 실행되는지 테스트\n3. React DevTools에서 Router 컴포넌트가 렌더링되는지 확인\n4. 브라우저 URL이 변경 가능한 상태인지 확인"
           },
           {
@@ -473,7 +473,7 @@
               "8.1"
             ],
             "details": "1. 페이지 컴포넌트 생성:\n```tsx\n// pages/HomePage.tsx\nconst HomePage: React.FC = () => {\n  return <div>홈페이지</div>;\n};\n\n// pages/SearchResultsPage.tsx\nconst SearchResultsPage: React.FC = () => {\n  return <div>검색 결과 페이지</div>;\n};\n\n// pages/CategoryPage.tsx\nconst CategoryPage: React.FC = () => {\n  return <div>카테고리 페이지</div>;\n};\n\n// pages/NotFoundPage.tsx\nconst NotFoundPage: React.FC = () => {\n  return <div>404 페이지</div>;\n};\n```\n2. App.tsx에서 Routes 설정:\n```tsx\n<Routes>\n  <Route path=\"/\" element={<HomePage />} />\n  <Route path=\"/search\" element={<SearchResultsPage />} />\n  <Route path=\"/category/:categoryId\" element={<CategoryPage />} />\n  <Route path=\"*\" element={<NotFoundPage />} />\n</Routes>\n```",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 각 경로로 직접 접근했을 때 해당 페이지가 렌더링되는지 확인\n2. 존재하지 않는 경로 접근 시 404 페이지가 표시되는지 테스트\n3. 브라우저 주소창에서 URL 변경 시 페이지가 올바르게 전환되는지 확인\n4. React DevTools에서 Route 매칭이 올바르게 작동하는지 확인"
           },
           {
@@ -484,7 +484,7 @@
               "8.2"
             ],
             "details": "1. CategoryCard 컴포넌트에서 useNavigate 활용:\n```tsx\nimport { useNavigate } from 'react-router-dom';\n\nconst CategoryCard: React.FC<{category: Category}> = ({ category }) => {\n  const navigate = useNavigate();\n  \n  const handleClick = () => {\n    navigate(`/category/${category.id}`);\n  };\n  \n  return (\n    <div className=\"category-card\" onClick={handleClick}>\n      <h3>{category.name}</h3>\n      <p>{category.description}</p>\n    </div>\n  );\n};\n```\n2. 키보드 접근성을 위한 onKeyDown 이벤트 추가\n3. 모바일에서 터치 피드백 스타일 적용",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 카테고리 카드 클릭 시 올바른 URL로 이동하는지 확인\n2. 키보드 Enter 키로도 네비게이션이 작동하는지 테스트\n3. 모바일에서 터치 시 적절한 피드백이 제공되는지 확인\n4. 브라우저 히스토리에 네비게이션이 올바르게 기록되는지 확인\n5. 뒤로가기 버튼이 정상 작동하는지 테스트"
           },
           {
@@ -495,19 +495,8 @@
               "8.3"
             ],
             "details": "1. CategoryPage에서 useParams 활용:\n```tsx\nimport { useParams } from 'react-router-dom';\n\nconst CategoryPage: React.FC = () => {\n  const { categoryId } = useParams<{ categoryId: string }>();\n  \n  return (\n    <div className=\"category-page\">\n      <h1>카테고리 ID: {categoryId}</h1>\n      {/* 카테고리별 콘텐츠 */}\n    </div>\n  );\n};\n```\n2. SearchResultsPage에서 useSearchParams 활용:\n```tsx\nimport { useSearchParams } from 'react-router-dom';\n\nconst SearchResultsPage: React.FC = () => {\n  const [searchParams] = useSearchParams();\n  const query = searchParams.get('q');\n  const location = searchParams.get('location');\n  \n  return (\n    <div className=\"search-results\">\n      <h1>{location}에서 \"{query}\" 검색 결과</h1>\n    </div>\n  );\n};\n```\n3. 파라미터 유효성 검사 및 에러 처리 추가",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 다양한 categoryId로 접근했을 때 파라미터가 올바르게 추출되는지 확인\n2. 검색 쿼리 파라미터가 URL에서 정확히 파싱되는지 테스트\n3. 잘못된 파라미터나 누락된 파라미터에 대한 에러 처리 확인\n4. URL 직접 입력 시에도 파라미터가 올바르게 처리되는지 테스트\n5. 한글 검색어가 URL 인코딩/디코딩되는지 확인"
-          },
-          {
-            "id": 5,
-            "title": "네비게이션 상태 관리 및 사용자 경험 최적화",
-            "description": "로딩 상태, 페이지 전환 애니메이션, 브레드크럼 네비게이션을 구현하여 사용자 경험을 향상시킵니다.",
-            "dependencies": [
-              "8.4"
-            ],
-            "details": "1. 페이지 전환 로딩 상태 관리:\n```tsx\nconst [isNavigating, setIsNavigating] = useState(false);\n\nconst handleNavigation = (path: string) => {\n  setIsNavigating(true);\n  navigate(path);\n  // 페이지 로드 완료 후 setIsNavigating(false)\n};\n```\n2. 브레드크럼 컴포넌트 구현:\n```tsx\nconst Breadcrumb: React.FC = () => {\n  const location = useLocation();\n  const pathnames = location.pathname.split('/').filter(x => x);\n  \n  return (\n    <nav className=\"breadcrumb\">\n      <Link to=\"/\">홈</Link>\n      {pathnames.map((name, index) => {\n        const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;\n        return (\n          <span key={name}>\n            <span> / </span>\n            <Link to={routeTo}>{name}</Link>\n          </span>\n        );\n      })}\n    </nav>\n  );\n};\n```\n3. 페이지 전환 애니메이션 CSS 추가\n4. 모바일에서 뒤로가기 제스처 지원",
-            "status": "pending",
-            "testStrategy": "1. 페이지 전환 시 로딩 인디케이터가 적절히 표시되는지 확인\n2. 브레드크럼이 현재 경로를 정확히 반영하는지 테스트\n3. 페이지 전환 애니메이션이 부드럽게 작동하는지 확인\n4. 모바일에서 스와이프 제스처로 뒤로가기가 가능한지 테스트\n5. 접근성: 스크린 리더가 페이지 변경을 올바르게 안내하는지 확인"
           }
         ]
       },

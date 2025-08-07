@@ -1,10 +1,21 @@
+import { useNavigate } from 'react-router-dom';
 import './CategoryCard.css';
 
 function CategoryCard({ category }) {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate(`/category/${category.id}`);
+  };
+
   return (
-    <a
-      href={category.href}
+    <div
       className="category-card"
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`${category.name} 카테고리로 이동`}
     >
       <div className="card-icon" style={{ color: category.color }}>
         {category.iconPath ? (
@@ -16,8 +27,7 @@ function CategoryCard({ category }) {
         )}
       </div>
       <span className="card-title">{category.name}</span>
-      
-    </a>
+    </div>
   );
 }
 
