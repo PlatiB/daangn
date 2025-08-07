@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { categories as mockCategories } from '../../data/mockData';
-import type { Category } from '../../data/mockData';
+import React, { useMemo } from 'react';
 import CategoryCard from './CategoryCard';
 import CategoryGridSkeleton from './CategoryGridSkeleton';
+import { useAppContext } from '../../contexts';
 import './CategoryGrid.css';
 
 interface CategoryGridProps {
@@ -14,13 +13,11 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
   userRole = 'guest', 
   maxItems 
 }) => {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { state } = useAppContext();
 
   // 권한에 따른 카테고리 필터링
   const filteredCategories = useMemo(() => {
-    const filtered = categories.filter(category => {
+    const filtered = state.categories.filter(category => {
       if (!category.permission || category.permission === 'public') return true;
       if (userRole === 'premium') return true;
       if (userRole === 'member' && category.permission !== 'premium') return true;
@@ -29,45 +26,16 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
     
     // 디바이스별 표시 개수 제한
     return maxItems ? filtered.slice(0, maxItems) : filtered;
-  }, [categories, userRole, maxItems]);
+  }, [state.categories, userRole, maxItems]);
 
-  const loadCategories = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // 실제 API 호출 대신 mock 데이터 사용
-      setCategories(mockCategories);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '카테고리를 불러오는데 실패했습니다.');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadCategories();
-  }, [loadCategories]);
-
-  const handleRetry = () => {
-    loadCategories();
-  };
-
-  // 로딩 상태
-  if (loading) {
+  // 로딩 상태 (Context에서 관리)
+  if (state.loading && state.categories.length === 0) {
     return <CategoryGridSkeleton />;
   }
 
-  // 에러 상태
-  if (error) {
-    return (
-      <div className="category-grid-error">
-        <p className="error-message">{error}</p>
-        <button onClick={handleRetry} className="retry-button">
-          다시 시도
-        </button>
-      </div>
-    );
+  // 데이터가 없으면 아무것도 렌더링하지 않음
+  if (state.categories.length === 0) {
+    return null;
   }
 
   // 빈 데이터 상태

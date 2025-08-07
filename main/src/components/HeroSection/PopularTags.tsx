@@ -1,5 +1,5 @@
-import React, { memo, useState, useEffect, useCallback } from 'react';
-import { fetchPopularTags } from '../../services/api';
+import React, { memo } from 'react';
+import { useAppContext } from '../../contexts';
 import './PopularTags.css';
 
 /**
@@ -20,29 +20,7 @@ const PopularTags: React.FC<PopularTagsProps> = ({
   onTagClick,
   className = ''
 }) => {
-  // State
-  const [popularTags, setPopularTags] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // API에서 인기 태그 데이터 로드
-  const loadPopularTags = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const fetchedTags = await fetchPopularTags();
-      setPopularTags(fetchedTags);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '인기 검색어를 불러오는데 실패했습니다.');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  // 컴포넌트 마운트 시 인기 태그 데이터 로드
-  useEffect(() => {
-    loadPopularTags();
-  }, [loadPopularTags]);
+  const { state } = useAppContext();
 
   // 태그 클릭 핸들러
   const handleTagClick = (tag: string) => {
@@ -58,8 +36,8 @@ const PopularTags: React.FC<PopularTagsProps> = ({
     }
   };
 
-  // 로딩 상태
-  if (loading) {
+  // 로딩 상태 (Context에서 관리)
+  if (state.loading && state.popularTags.length === 0) {
     return (
       <div className={`popular-tags ${className}`.trim()}>
         <div className="popular-tags-container">
@@ -76,25 +54,9 @@ const PopularTags: React.FC<PopularTagsProps> = ({
     );
   }
 
-  // 에러 상태
-  if (error) {
-    return (
-      <div className={`popular-tags ${className}`.trim()}>
-        <div className="popular-tags-container">
-          <ul className="tags-list">
-            <li className="tag-item title-item">
-              <span className="tags-title">인기 검색어</span>
-            </li>
-            <li className="tag-item error-item">
-              <span>{error}</span>
-              <button onClick={loadPopularTags} className="retry-button">
-                다시 시도
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    );
+  // 데이터가 없으면 아무것도 렌더링하지 않음
+  if (state.popularTags.length === 0) {
+    return null;
   }
 
   return (
@@ -105,7 +67,7 @@ const PopularTags: React.FC<PopularTagsProps> = ({
           <li className="tag-item title-item">
             <span className="tags-title">인기 검색어</span>
           </li>
-          {popularTags.map((tag, index) => (
+          {state.popularTags.map((tag, index) => (
             <li key={`${tag}-${index}`} className="tag-item">
               <button
                 className="tag-link"
@@ -128,5 +90,4 @@ const PopularTags: React.FC<PopularTagsProps> = ({
   );
 };
 
-// React.memo로 감싸서 불필요한 리렌더링 방지
 export default memo(PopularTags); 

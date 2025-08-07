@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, memo, useState, useCallback } from 'react';
+import React, { useRef, useEffect, memo } from 'react';
 import type { Location } from '../../services/api';
-import { fetchLocations } from '../../services/api';
 import { getPopularLocations } from '../../utils/locationUtils';
+import { useAppContext } from '../../contexts';
 import './LocationSelector.css';
 
 /**
@@ -31,37 +31,15 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
   onToggle,
   className = ''
 }) => {
+  const { state } = useAppContext();
+  
   // Refs
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // State
-  const [locations, setLocations] = useState<Location[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  // API에서 지역 데이터 로드
-  const loadLocations = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const fetchedLocations = await fetchLocations();
-      setLocations(fetchedLocations);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '지역 정보를 불러오는데 실패했습니다.');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  // 컴포넌트 마운트 시 지역 데이터 로드
-  useEffect(() => {
-    loadLocations();
-  }, [loadLocations]);
-
   // 인기 지역과 전체 지역 분리
-  const popularLocations = getPopularLocations(locations);
-  const allLocations = locations;
+  const popularLocations = getPopularLocations(state.locations);
+  const allLocations = state.locations;
 
   // 외부 클릭 감지로 드롭다운 닫기
   useEffect(() => {
@@ -120,16 +98,16 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
       className={`location-selector ${className}`.trim()}
       ref={dropdownRef}
     >
-      {/* 드롭다운 버튼 - 원본 디자인 기반 */}
+      {/* 드롭다운 버튼 - 원본 디자인 복원 */}
       <button
         ref={buttonRef}
         type="button"
         className={`location-button ${isOpen ? 'open' : ''}`}
         onClick={handleToggle}
         onKeyDown={handleKeyDown}
+        aria-label={`현재 선택된 지역: ${selectedLocation}. 지역 변경하기`}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
-        aria-label={`현재 선택된 지역: ${selectedLocation}. 지역 변경하기`}
       >
         {/* 위치 아이콘 - 원본 SVG 사용 */}
         <svg 
@@ -177,25 +155,8 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
             role="listbox"
             aria-label="지역 목록"
           >
-            {/* 로딩 상태 */}
-            {loading && (
-              <li className="location-loading">
-                <span>지역 정보를 불러오는 중...</span>
-              </li>
-            )}
-
-            {/* 에러 상태 */}
-            {error && (
-              <li className="location-error">
-                <span>{error}</span>
-                <button onClick={loadLocations} className="retry-button">
-                  다시 시도
-                </button>
-              </li>
-            )}
-
             {/* 인기 지역 섹션 */}
-            {!loading && !error && popularLocations.length > 0 && (
+            {popularLocations.length > 0 && (
               <>
                 <li className="location-section-header" role="presentation">
                   <span className="section-title">🔥 인기 지역</span>
@@ -226,7 +187,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
             )}
 
             {/* 전체 지역 섹션 */}
-            {!loading && !error && (
+            {allLocations.length > 0 && (
               <>
                 <li className="location-section-header" role="presentation">
                   <span className="section-title">📍 전체 지역</span>
@@ -261,5 +222,4 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
   );
 };
 
-// React.memo로 감싸서 불필요한 리렌더링 방지
 export default memo(LocationSelector);
