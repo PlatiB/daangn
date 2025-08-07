@@ -2,13 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import LocationSelector from './LocationSelector';
 import SearchBar from './SearchBar';
 import PopularTags from './PopularTags';
-import { currentLocation, animatedKeywords } from '../../data/mockData';
+import { animatedKeywords } from '../../data/mockData';
+import { useAppContext } from '../../contexts';
 import './HeroSection.css';
 
 function HeroSection() {
+  const { state, actions } = useAppContext();
   const [currentKeyword, setCurrentKeyword] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState(currentLocation.name);
   const [selectedService, setSelectedService] = useState("중고거래");
 
   // 애니메이션 키워드 순환
@@ -21,22 +21,22 @@ function HeroSection() {
 
   const handleTagClick = useCallback((tag: string) => {
     console.log('태그 클릭으로 검색어 설정:', tag);
-    setSearchTerm(tag);
-  }, []);
+    actions.setSearchValue(tag);
+  }, [actions]);
 
   const handleLocationChange = useCallback((location: string) => {
-    setSelectedLocation(location);
-  }, []);
+    actions.setSelectedLocation(location);
+  }, [actions]);
 
   // Search handlers
   const handleSearchChange = useCallback((value: string) => {
     // 디바운스된 값을 받아서 처리
     console.log('디바운스된 검색어:', value);
-    setSearchTerm(value);
+    actions.setSearchValue(value);
 
     // 여기서 자동완성 API 호출 등을 수행할 수 있습니다
     // 예: fetchAutoComplete(value);
-  }, []);
+  }, [actions]);
 
   const handleSearchSubmit = useCallback((value: string) => {
     console.log('Search submitted:', value);
@@ -63,7 +63,7 @@ function HeroSection() {
     <section className="hero-section">
       <div className="hero-container">
         <h1 className="hero-title">
-          <span className="location-text">{selectedLocation}</span>
+          <span className="location-text">{state.selectedLocation}</span>
           <span>에서</span><br/>
           <span 
             className="animated-text"
@@ -77,14 +77,14 @@ function HeroSection() {
         <div className="hero-controls">
           <div className="location-selector-container">
             <LocationSelector
-              selectedLocation={selectedLocation}
+              selectedLocation={state.selectedLocation}
               onLocationChange={handleLocationChange}
             />
           </div>
 
-          {/* SearchBar 컴포넌트 - value prop 추가하여 태그 클릭 시 자동 입력 지원 */}
+          {/* SearchBar 컴포넌트 - Context와 통합, 디바운스 유지 */}
           <SearchBar
-            value={searchTerm}
+            value={state.searchValue}
             onChange={handleSearchChange}
             onSubmit={handleSearchSubmit}
             selectedService={selectedService}

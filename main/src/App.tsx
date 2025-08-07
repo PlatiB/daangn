@@ -4,19 +4,22 @@ import Header from './components/Header/Header'
 import HomePage from './pages/HomePage'
 import CategoryPage from './pages/CategoryPage'
 import NotFoundPage from './pages/NotFoundPage'
+import { AppProvider } from './contexts'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/category/:categoryId" element={<CategoryPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <div className="app">
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/category/:categoryId" element={<CategoryPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </AppProvider>
   )
 }
 
