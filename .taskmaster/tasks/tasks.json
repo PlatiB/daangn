@@ -577,7 +577,7 @@
         "dependencies": [
           9
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [
           {
             "id": 1,
@@ -585,7 +585,7 @@
             "description": "Redux Toolkit과 React-Redux 설치 후 기본 Store 구성 및 Provider 설정",
             "dependencies": [],
             "details": "1. 패키지 설치: `npm install @reduxjs/toolkit react-redux`\n2. store/index.ts 파일 생성 및 configureStore 설정\n3. App.tsx에 Provider 래핑\n4. 기본 미들웨어 설정 및 TypeScript 타입 정의\n5. Redux DevTools 연결 확인",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 패키지가 올바르게 설치되었는지 package.json 확인\n2. Store가 정상적으로 생성되는지 콘솔 확인\n3. Redux DevTools에서 Store 상태 확인 가능한지 테스트\n4. TypeScript 컴파일 오류 없는지 확인"
           },
           {
@@ -596,7 +596,7 @@
               "10.1"
             ],
             "details": "1. store/slices/locationSlice.ts 생성\n2. LocationState 인터페이스 정의\n3. createSlice로 리듀서 및 액션 생성\n4. hooks/redux.ts에 useAppDispatch, useAppSelector 구현\n5. 초기 상태값 설정 (selectedLocation: '정자동')",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. Slice가 올바른 초기 상태를 가지는지 확인\n2. 액션 디스패치 시 상태가 올바르게 변경되는지 테스트\n3. TypeScript 타입 체크가 정상 작동하는지 확인\n4. Redux DevTools에서 액션 히스토리 확인"
           },
           {
@@ -607,7 +607,7 @@
               "10.2"
             ],
             "details": "1. store/slices/searchSlice.ts 생성 (searchValue, searchHistory 관리)\n2. store/slices/categorySlice.ts 생성 (categories, selectedCategory 관리)\n3. 각 Slice의 리듀서를 Store에 등록\n4. 비동기 액션을 위한 createAsyncThunk 활용 준비\n5. 상태 정규화 패턴 적용",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 각 Slice의 액션이 독립적으로 작동하는지 확인\n2. 여러 Slice 간 상태 변경이 서로 영향을 주지 않는지 테스트\n3. 복잡한 상태 업데이트가 올바르게 처리되는지 확인\n4. 메모리 누수 없이 상태가 관리되는지 확인"
           },
           {
@@ -618,7 +618,7 @@
               "10.3"
             ],
             "details": "1. LocationSelector 컴포넌트에서 useAppSelector/useAppDispatch 사용\n2. SearchBar 컴포넌트의 상태 관리를 Redux로 전환\n3. CategoryGrid에서 카테고리 상태를 Redux로 연결\n4. 기존 Context Provider 제거 및 정리\n5. 컴포넌트 간 props drilling 제거",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. 마이그레이션 전후 기능이 동일하게 작동하는지 확인\n2. 상태 변경이 모든 관련 컴포넌트에 반영되는지 테스트\n3. 불필요한 리렌더링이 발생하지 않는지 React DevTools로 확인\n4. 사용자 인터랙션이 모두 정상 작동하는지 테스트"
           },
           {
@@ -629,7 +629,7 @@
               "10.4"
             ],
             "details": "1. createSelector를 활용한 메모이제이션 적용\n2. React.memo와 useCallback 최적화\n3. Redux Toolkit의 Immer 활용 최적화\n4. Context API vs Redux 성능 비교 측정\n5. 최적화 결과 문서화 및 베스트 프랙티스 정리",
-            "status": "pending",
+            "status": "done",
             "testStrategy": "1. React DevTools Profiler로 리렌더링 횟수 측정\n2. 메모리 사용량 비교 분석\n3. 복잡한 상태 업데이트 시 성능 차이 측정\n4. 타임 트래블 디버깅 기능 정상 작동 확인\n5. 전체 애플리케이션 통합 테스트 수행"
           }
         ]
@@ -637,7 +637,7 @@
     ],
     "metadata": {
       "created": "2025-07-31T05:27:23.274Z",
-      "updated": "2025-08-06T08:15:59.652Z",
+      "updated": "2025-08-08T02:11:51.950Z",
       "description": "Tasks for master context"
     }
   }

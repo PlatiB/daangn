@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import CategoryCard from './CategoryCard';
 import CategoryGridSkeleton from './CategoryGridSkeleton';
-import { useAppContext } from '../../contexts';
+import { useAppSelector } from '../../hooks/redux';
+import { selectCategories, selectCategoryLoading } from '../../store/selectors';
 import './CategoryGrid.css';
 
 interface CategoryGridProps {
@@ -13,11 +14,12 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
   userRole = 'guest', 
   maxItems 
 }) => {
-  const { state } = useAppContext();
-
+  const categories = useAppSelector(selectCategories);
+  const loading = useAppSelector(selectCategoryLoading);
+  
   // 권한에 따른 카테고리 필터링
   const filteredCategories = useMemo(() => {
-    const filtered = state.categories.filter(category => {
+    const filtered = categories.filter((category: any) => {
       if (!category.permission || category.permission === 'public') return true;
       if (userRole === 'premium') return true;
       if (userRole === 'member' && category.permission !== 'premium') return true;
@@ -26,15 +28,15 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
     
     // 디바이스별 표시 개수 제한
     return maxItems ? filtered.slice(0, maxItems) : filtered;
-  }, [state.categories, userRole, maxItems]);
+  }, [categories, userRole, maxItems]);
 
-  // 로딩 상태 (Context에서 관리)
-  if (state.loading && state.categories.length === 0) {
+  // 로딩 상태 (Redux에서 관리)
+  if (loading && categories.length === 0) {
     return <CategoryGridSkeleton />;
   }
 
   // 데이터가 없으면 아무것도 렌더링하지 않음
-  if (state.categories.length === 0) {
+  if (categories.length === 0) {
     return null;
   }
 
@@ -54,14 +56,14 @@ const CategoryGrid: React.FC<CategoryGridProps> = ({
 
   return (
     <section className="category-grid">
-      {filteredCategories.map((category, index) => (
-        <CategoryCard 
-          key={category.id} 
-          category={category}
-          isPremium={category.permission === 'premium'}
-          delay={index * 100} // 순차적 애니메이션
-        />
-      ))}
+                {filteredCategories.map((category: any, index: number) => (
+            <CategoryCard 
+              key={category.id} 
+              category={category}
+              isPremium={category.permission === 'premium'}
+              delay={index * 100} // 순차적 애니메이션
+            />
+          ))}
     </section>
   );
 };

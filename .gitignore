@@ -1,3 +1,7 @@
+# Sensitive local configs (do not commit)
+.cursor/mcp.json
+.env
+main/.env
 # Logs
 logs
 *.log

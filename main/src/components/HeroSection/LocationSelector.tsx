@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, memo } from 'react';
 import type { Location } from '../../services/api';
+import type { RootState } from '../../store';
 import { getPopularLocations } from '../../utils/locationUtils';
-import { useAppContext } from '../../contexts';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setSelectedLocation } from '../../store/slices/locationSlice';
 import './LocationSelector.css';
 
 /**
@@ -31,15 +33,16 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
   onToggle,
   className = ''
 }) => {
-  const { state } = useAppContext();
+  const dispatch = useAppDispatch();
+  const locations = useAppSelector((state: RootState) => state.location.locations);
   
   // Refs
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // 인기 지역과 전체 지역 분리
-  const popularLocations = getPopularLocations(state.locations);
-  const allLocations = state.locations;
+  const popularLocations = getPopularLocations(locations);
+  const allLocations = locations;
 
   // 외부 클릭 감지로 드롭다운 닫기
   useEffect(() => {
@@ -79,14 +82,15 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
   };
 
   // 지역 선택 핸들러
-  const handleLocationSelect = (location: Location) => {
+  const handleLocationSelect = (location: any) => {
     onLocationChange(location.name);
+    dispatch(setSelectedLocation(location.name));
     onToggle(false);
     buttonRef.current?.focus();
   };
 
   // 지역 아이템 키보드 핸들러
-  const handleLocationKeyDown = (event: React.KeyboardEvent, location: Location) => {
+  const handleLocationKeyDown = (event: React.KeyboardEvent, location: any) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       handleLocationSelect(location);
@@ -192,7 +196,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
                 <li className="location-section-header" role="presentation">
                   <span className="section-title">📍 전체 지역</span>
                 </li>
-                {allLocations.map((location) => (
+                {allLocations.map((location: Location) => (
                   <li
                     key={`all-${location.id}`}
                     className={`location-item ${selectedLocation === location.name ? 'selected' : ''}`}

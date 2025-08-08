@@ -3,11 +3,17 @@ import LocationSelector from './LocationSelector';
 import SearchBar from './SearchBar';
 import PopularTags from './PopularTags';
 import { animatedKeywords } from '../../data/mockData';
-import { useAppContext } from '../../contexts';
+import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { setSearchValue } from '../../store/slices/searchSlice';
+import { setSelectedLocation } from '../../store/slices/locationSlice';
+import { selectSearchValue, selectSelectedLocation } from '../../store/selectors';
 import './HeroSection.css';
 
 export const HeroSection: React.FC = () => {
-  const { state, actions } = useAppContext();
+  const dispatch = useAppDispatch();
+  const searchValue = useAppSelector(selectSearchValue);
+  const selectedLocation = useAppSelector(selectSelectedLocation);
+  
   const [currentKeyword, setCurrentKeyword] = useState(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("중고거래");
@@ -22,20 +28,20 @@ export const HeroSection: React.FC = () => {
 
   const handleTagClick = useCallback((tag: string) => {
     console.log('태그 클릭으로 검색어 설정:', tag);
-    actions.setSearchValue(tag);
-  }, [actions]);
+    dispatch(setSearchValue(tag));
+  }, [dispatch]);
 
   const handleLocationChange = useCallback((location: string) => {
-    actions.setSelectedLocation(location);
-  }, [actions]);
+    dispatch(setSelectedLocation(location));
+  }, [dispatch]);
 
   const handleDropdownToggle = useCallback((isOpen: boolean) => {
     setIsDropdownOpen(isOpen);
   }, []);
 
   const handleSearchChange = useCallback((value: string) => {
-    actions.setSearchValue(value);
-  }, [actions]);
+    dispatch(setSearchValue(value));
+  }, [dispatch]);
 
   const handleSearchSubmit = useCallback((value: string) => {
     console.log('Search submitted:', value);
@@ -49,7 +55,7 @@ export const HeroSection: React.FC = () => {
     <section className="hero-section">
       <div className="hero-container">
         <h1 className="hero-title">
-          <span className="location-text">{state.selectedLocation}</span>
+          <span className="location-text">{selectedLocation}</span>
           <span>에서</span><br/>
           <span 
             className="animated-text"
@@ -63,7 +69,7 @@ export const HeroSection: React.FC = () => {
         <div className="hero-controls">
           <div className="location-selector-container">
             <LocationSelector
-              selectedLocation={state.selectedLocation}
+              selectedLocation={selectedLocation}
               onLocationChange={handleLocationChange}
               isOpen={isDropdownOpen}
               onToggle={handleDropdownToggle}
@@ -71,7 +77,7 @@ export const HeroSection: React.FC = () => {
           </div>
           <div className="search-form-placeholder">
             <SearchBar
-              value={state.searchValue}
+              value={searchValue}
               onChange={handleSearchChange}
               onSubmit={handleSearchSubmit}
               selectedService={selectedService}
