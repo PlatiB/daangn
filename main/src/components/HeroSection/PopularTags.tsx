@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
-import { useAppContext } from '../../contexts';
+import { useAppSelector } from '../../hooks/redux';
+import { selectPopularTags, selectCategoryLoading } from '../../store/selectors';
 import './PopularTags.css';
 
 /**
@@ -20,7 +21,8 @@ const PopularTags: React.FC<PopularTagsProps> = ({
   onTagClick,
   className = ''
 }) => {
-  const { state } = useAppContext();
+  const popularTags = useAppSelector(selectPopularTags);
+  const loading = useAppSelector(selectCategoryLoading);
 
   // 태그 클릭 핸들러
   const handleTagClick = (tag: string) => {
@@ -36,8 +38,8 @@ const PopularTags: React.FC<PopularTagsProps> = ({
     }
   };
 
-  // 로딩 상태 (Context에서 관리)
-  if (state.loading && state.popularTags.length === 0) {
+  // 로딩 상태 (Redux에서 관리)
+  if (loading && popularTags.length === 0) {
     return (
       <div className={`popular-tags ${className}`.trim()}>
         <div className="popular-tags-container">
@@ -55,7 +57,7 @@ const PopularTags: React.FC<PopularTagsProps> = ({
   }
 
   // 데이터가 없으면 아무것도 렌더링하지 않음
-  if (state.popularTags.length === 0) {
+  if (popularTags.length === 0) {
     return null;
   }
 
@@ -67,7 +69,7 @@ const PopularTags: React.FC<PopularTagsProps> = ({
           <li className="tag-item title-item">
             <span className="tags-title">인기 검색어</span>
           </li>
-          {state.popularTags.map((tag, index) => (
+          {popularTags.map((tag: string, index: number) => (
             <li key={`${tag}-${index}`} className="tag-item">
               <button
                 className="tag-link"

@@ -11,7 +11,7 @@ interface SearchBarProps {
   onServiceChange?: (service: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = memo(({
+const SearchBar: React.FC<SearchBarProps> = ({
   value,
   onChange,
   onSubmit,
@@ -19,6 +19,8 @@ const SearchBar: React.FC<SearchBarProps> = memo(({
   selectedService = "중고거래",
   onServiceChange
 }) => {
+  // eslint-disable-next-line no-console
+  console.log('[SearchBar] render');
   // 검색어 유효성 검사
   const isValidSearch = value.trim().length >= searchConfig.minSearchLength;
   
@@ -145,8 +147,8 @@ const SearchBar: React.FC<SearchBarProps> = memo(({
       )}
     </form>
   );
-});
+};
 
 SearchBar.displayName = 'SearchBar';
 
-export default SearchBar;
+export default memo(SearchBar);
