@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { getPopularLocations } from '../../utils/locationUtils';
-import { useAppContext } from '../../contexts';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setSelectedLocation } from '../../store/slices/locationSlice';
 import './LocationSelector.css';
 
 /**
@@ -9,14 +10,16 @@ import './LocationSelector.css';
  */
 function LocationSelector({ selectedLocation, onLocationChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { state } = useAppContext();
+  const dispatch = useAppDispatch();
+  // @ts-ignore
+  const locations = useAppSelector(state => state.location.locations || []);
   // Refs
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
 
   // 인기 지역과 전체 지역 분리
-  const popularLocations = getPopularLocations(state.locations);
-  const allLocations = state.locations;
+  const popularLocations = getPopularLocations(locations);
+  const allLocations = locations;
 
   // 외부 클릭 감지로 드롭다운 닫기
   useEffect(() => {
@@ -58,6 +61,7 @@ function LocationSelector({ selectedLocation, onLocationChange }) {
   // 지역 선택 핸들러
   const handleLocationSelect = (location) => {
     onLocationChange(location.name);
+    dispatch(setSelectedLocation(location.name));
     setIsOpen(false);
     buttonRef.current?.focus();
   };

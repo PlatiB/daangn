@@ -1,4 +1,7 @@
-import { useAppContext } from '../../contexts';
+// PopularTags 컴포넌트 - 간결한 Redux 버전
+// selector 없이 직접 state 접근
+
+import { useSelector } from 'react-redux';
 import './PopularTags.css';
 
 /**
@@ -6,12 +9,16 @@ import './PopularTags.css';
  * 원본 당근마켓 스타일의 인기 검색어 태그 목록
  */
 function PopularTags({ onTagClick }) {
-  const { state } = useAppContext();
+  // Redux store에서 직접 데이터 가져오기 (selector 없이)
+  const popularTags = useSelector(state => state.category.popularTags);
+  const loading = useSelector(state => state.category.loading);
 
   // 태그 클릭 핸들러
   const handleTagClick = (tag) => {
     console.log('태그 클릭:', tag);
-    onTagClick?.(tag);
+    if (onTagClick) {
+      onTagClick(tag);
+    }
   };
 
   // 키보드 이벤트 핸들러
@@ -22,8 +29,8 @@ function PopularTags({ onTagClick }) {
     }
   };
 
-  // 로딩 상태 (Context에서 관리)
-  if (state.loading && state.popularTags.length === 0) {
+  // 로딩 상태
+  if (loading && popularTags.length === 0) {
     return (
       <div className="popular-tags">
         <div className="popular-tags-container">
@@ -41,7 +48,7 @@ function PopularTags({ onTagClick }) {
   }
 
   // 데이터가 없으면 아무것도 렌더링하지 않음
-  if (!state.popularTags || state.popularTags.length === 0) {
+  if (!popularTags || popularTags.length === 0) {
     return null;
   }
 
@@ -53,7 +60,7 @@ function PopularTags({ onTagClick }) {
           <li className="tag-item title-item">
             <span className="tags-title">인기 검색어</span>
           </li>
-          {state.popularTags.map((tag, index) => (
+          {popularTags.map((tag, index) => (
             <li key={`${tag}-${index}`} className="tag-item">
               <button
                 className="tag-link"

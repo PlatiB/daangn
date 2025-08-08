@@ -1,5 +1,5 @@
-import HeroSection from '../components/HeroSection/HeroSection';
-import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
+import HeroSection from '../components/HeroSection/HeroSection.jsx';
+import CategoryGrid from '../components/CategoryGrid/CategoryGrid.jsx';
 
 function HomePage() {
   return (
